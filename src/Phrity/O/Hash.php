@@ -2,15 +2,14 @@
 
 namespace Phrity\O;
 
-class ArrayO implements \ArrayAccess, \Countable, \Iterator
+class Hash implements \ArrayAccess, \Countable, \Iterator
 {
     protected $o_content = [];
     protected $o_position = 0;
 
-    public function __construct()
+    public function __construct(...$input)
     {
-        $values = func_get_args();
-        foreach ($values as $value) {
+        foreach ($input as $value) {
           $this->o_content[] = $value;
         }
     }
@@ -83,10 +82,11 @@ class ArrayO implements \ArrayAccess, \Countable, \Iterator
 
 
     // Private helper method
+
     private function requireOffset($offset)
     {
         if (!$this->offsetExists($offset)) {
-            throw new \InvalidArgumentException("Array index {$offset} out of bounds");
+            throw new \OutOfBoundsException("Array index {$offset} out of bounds");
         }
     }
 }
