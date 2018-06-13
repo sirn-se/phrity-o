@@ -2,7 +2,7 @@
 
 namespace Phrity\O;
 
-class Hash implements \ArrayAccess, \Countable, \Iterator
+class Arr implements \ArrayAccess, \Countable, \Iterator
 {
     protected $o_content = [];
     protected $o_position = 0;
