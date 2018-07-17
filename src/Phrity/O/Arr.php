@@ -5,13 +5,10 @@ namespace Phrity\O;
 class Arr implements \ArrayAccess, \Countable, \Iterator
 {
     protected $o_content = [];
-    protected $o_position = 0;
 
-    public function __construct(...$input)
+    public function __construct(array $input = [])
     {
-        foreach ($input as $value) {
-          $this->o_content[] = $value;
-        }
+        $this->o_content = $input;
     }
 
 
@@ -57,27 +54,27 @@ class Arr implements \ArrayAccess, \Countable, \Iterator
 
     public function current()
     {
-        return $this->o_content[$this->o_position];
+        return current($this->o_content);
     }
 
     public function key()
     {
-        return $this->o_position;
+        return key($this->o_content);
     }
 
     public function next()
     {
-        ++$this->o_position;
+        return next($this->o_content);
     }
 
     public function rewind()
     {
-        $this->o_position = 0;
+        return reset($this->o_content);
     }
 
     public function valid()
     {
-        return $this->offsetExists($this->o_position);
+        return $this->offsetExists(key($this->o_content));
     }
 
 
