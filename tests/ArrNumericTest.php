@@ -1,5 +1,7 @@
 <?php
 
+namespace Phrity\O;
+
 use Phrity\O\Arr;
 
 class ArrNumericTest extends \PHPUnit_Framework_TestCase
@@ -10,6 +12,7 @@ class ArrNumericTest extends \PHPUnit_Framework_TestCase
      */
     public function testCountableImplementation()
     {
+        error_reporting(-1);
         $array = new Arr([1, 2, 3]);
         $this->assertEquals(3, $array->count());
     }
@@ -19,6 +22,7 @@ class ArrNumericTest extends \PHPUnit_Framework_TestCase
      */
     public function testArrayAccessImplementation()
     {
+        error_reporting(-1);
         $array = new Arr([1, 2, 3]);
 
         $this->assertTrue($array->offsetExists(0));
@@ -48,6 +52,11 @@ class ArrNumericTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(20, $array[0]);
         $array[] = 20;
         $this->assertEquals(20, $array[4]);
+
+        $array->offsetUnset(0);
+        $this->assertFalse(isset($array[0]));
+        unset($array[1]);
+        $this->assertFalse(isset($array[1]));
     }
 
     /**
@@ -55,6 +64,7 @@ class ArrNumericTest extends \PHPUnit_Framework_TestCase
      */
     public function testIteratorImplementation()
     {
+        error_reporting(-1);
         $array = new Arr([1, 2, 3]);
 
         $this->assertEquals(1, $array->current());
@@ -79,5 +89,4 @@ class ArrNumericTest extends \PHPUnit_Framework_TestCase
         $array = new Arr([1, 2, 3]);
         $array->offsetGet(4);
     }
-
 }

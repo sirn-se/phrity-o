@@ -9,7 +9,7 @@ class Arr implements \ArrayAccess, \Countable, \Iterator
     public function __construct(...$args)
     {
         if (is_array($args[0])) {
-          $this->o_content = array_shift($args);;
+            $this->o_content = array_shift($args);
         }
     }
 
@@ -74,15 +74,5 @@ class Arr implements \ArrayAccess, \Countable, \Iterator
     public function valid()
     {
         return $this->offsetExists(key($this->o_content));
-    }
-
-
-    // Private helper method
-
-    private function requireOffset($offset)
-    {
-        if (!$this->offsetExists($offset)) {
-            throw new \OutOfBoundsException("Array index '{$offset}' out of bounds");
-        }
     }
 }

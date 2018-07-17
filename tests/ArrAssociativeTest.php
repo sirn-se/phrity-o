@@ -1,5 +1,7 @@
 <?php
 
+namespace Phrity\O;
+
 use Phrity\O\Arr;
 
 class ArrAssociativeTest extends \PHPUnit_Framework_TestCase
@@ -50,6 +52,11 @@ class ArrAssociativeTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(20, $array['a']);
         $array[] = 20;
         $this->assertEquals(20, $array[1]);
+
+        $array->offsetUnset('a');
+        $this->assertFalse(isset($array['a']));
+        unset($array['b']);
+        $this->assertFalse(isset($array['b']));
     }
 
     /**
@@ -82,5 +89,4 @@ class ArrAssociativeTest extends \PHPUnit_Framework_TestCase
         $array = new Arr(['a' => 1, 'b' => 2, 'c' => 3]);
         $array->offsetGet('d');
     }
-
 }
