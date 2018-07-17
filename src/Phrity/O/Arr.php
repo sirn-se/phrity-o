@@ -6,9 +6,11 @@ class Arr implements \ArrayAccess, \Countable, \Iterator
 {
     protected $o_content = [];
 
-    public function __construct(array $input = [])
+    public function __construct(...$args)
     {
-        $this->o_content = $input;
+        if (is_array($args[0])) {
+          $this->o_content = array_shift($args);;
+        }
     }
 
 
@@ -21,7 +23,6 @@ class Arr implements \ArrayAccess, \Countable, \Iterator
 
     public function offsetGet($offset)
     {
-        $this->requireOffset($offset);
         return $this->o_content[$offset];
     }
 
@@ -30,14 +31,12 @@ class Arr implements \ArrayAccess, \Countable, \Iterator
         if (is_null($offset)) {
             $this->o_content[] = $value;
         } else {
-            $this->requireOffset($offset);
             $this->o_content[$offset] = $value;
         }
     }
 
     public function offsetUnset($offset)
     {
-        $this->requireOffset($offset);
         unset($this->o_content[$offset]);
     }
 
@@ -83,7 +82,7 @@ class Arr implements \ArrayAccess, \Countable, \Iterator
     private function requireOffset($offset)
     {
         if (!$this->offsetExists($offset)) {
-            throw new \OutOfBoundsException("Array index {$offset} out of bounds");
+            throw new \OutOfBoundsException("Array index '{$offset}' out of bounds");
         }
     }
 }

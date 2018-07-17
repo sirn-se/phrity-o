@@ -51,16 +51,6 @@ class ArrNumericTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test ArrayOutOfBoundsException in ArrayAccess implementation
-     * @expectedException \OutOfBoundsException
-     */
-    public function testArrayOutOfBoundsException()
-    {
-        $array = new Arr([1, 2, 3]);
-        $array->offsetGet(3);
-    }
-
-    /**
      * Test implementation of Iterator interface
      */
     public function testIteratorImplementation()
@@ -79,4 +69,15 @@ class ArrNumericTest extends \PHPUnit_Framework_TestCase
             $this->assertEquals($key + 1, $value);
         }
     }
+
+    /**
+     * Test get on undefined index; generates a notice
+     */
+    public function testUndefinedOffset()
+    {
+        error_reporting(E_ALL & ~E_NOTICE);
+        $array = new Arr([1, 2, 3]);
+        $array->offsetGet(4);
+    }
+
 }

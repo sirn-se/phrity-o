@@ -10,6 +10,7 @@ class ArrAssociativeTest extends \PHPUnit_Framework_TestCase
      */
     public function testCountableImplementation()
     {
+        error_reporting(-1);
         $array = new Arr(['a' => 1, 'b' => 2, 'c' => 3]);
         $this->assertEquals(3, $array->count());
     }
@@ -17,47 +18,38 @@ class ArrAssociativeTest extends \PHPUnit_Framework_TestCase
     /**
      * Test implementation of ArrayAccess interface
      */
-    public function xtestArrayAccessImplementation()
+    public function testArrayAccessImplementation()
     {
+        error_reporting(E_ALL);
         $array = new Arr(['a' => 1, 'b' => 2, 'c' => 3]);
 
-        $this->assertTrue($array->offsetExists(0));
-        $this->assertTrue($array->offsetExists(1));
-        $this->assertTrue($array->offsetExists(2));
-        $this->assertFalse($array->offsetExists(3));
+        $this->assertTrue($array->offsetExists('a'));
+        $this->assertTrue($array->offsetExists('b'));
+        $this->assertTrue($array->offsetExists('c'));
+        $this->assertFalse($array->offsetExists('d'));
 
-        $this->assertTrue(isset($array[0]));
-        $this->assertTrue(isset($array[1]));
-        $this->assertTrue(isset($array[2]));
-        $this->assertFalse(isset($array[3]));
+        $this->assertTrue(isset($array['a']));
+        $this->assertTrue(isset($array['b']));
+        $this->assertTrue(isset($array['c']));
+        $this->assertFalse(isset($array['d']));
 
-        $this->assertEquals(1, $array->offsetGet(0));
-        $this->assertEquals(2, $array->offsetGet(1));
-        $this->assertEquals(3, $array->offsetGet(2));
+        $this->assertEquals(1, $array->offsetGet('a'));
+        $this->assertEquals(2, $array->offsetGet('b'));
+        $this->assertEquals(3, $array->offsetGet('c'));
 
-        $this->assertEquals(1, $array[0]);
-        $this->assertEquals(2, $array[1]);
-        $this->assertEquals(3, $array[2]);
+        $this->assertEquals(1, $array['a']);
+        $this->assertEquals(2, $array['b']);
+        $this->assertEquals(3, $array['c']);
 
-        $array->offsetSet(0, 10);
-        $this->assertEquals(10, $array->offsetGet(0));
+        $array->offsetSet('e', 10);
+        $this->assertEquals(10, $array->offsetGet('e'));
         $array->offsetSet(null, 10);
-        $this->assertEquals(10, $array->offsetGet(3));
+        $this->assertEquals(10, $array->offsetGet(0));
 
-        $array[0] = 20;
-        $this->assertEquals(20, $array[0]);
+        $array['a'] = 20;
+        $this->assertEquals(20, $array['a']);
         $array[] = 20;
-        $this->assertEquals(20, $array[4]);
-    }
-
-    /**
-     * Test ArrayOutOfBoundsException in ArrayAccess implementation
-     * @expectedException \OutOfBoundsException
-     */
-    public function testArrayOutOfBoundsException()
-    {
-        $array = new Arr(['a' => 1, 'b' => 2, 'c' => 3]);
-        $array->offsetGet(3);
+        $this->assertEquals(20, $array[1]);
     }
 
     /**
@@ -65,6 +57,7 @@ class ArrAssociativeTest extends \PHPUnit_Framework_TestCase
      */
     public function testIteratorImplementation()
     {
+        error_reporting(E_ALL);
         $array = new Arr(['a' => 1, 'b' => 2, 'c' => 3]);
 
         $this->assertEquals(1, $array->current());
@@ -79,4 +72,15 @@ class ArrAssociativeTest extends \PHPUnit_Framework_TestCase
             $this->assertEquals($array[$key], $value);
         }
     }
+
+    /**
+     * Test get on undefined index; generates a notice
+     */
+    public function testUndefinedOffset()
+    {
+        error_reporting(E_ALL & ~E_NOTICE);
+        $array = new Arr(['a' => 1, 'b' => 2, 'c' => 3]);
+        $array->offsetGet('d');
+    }
+
 }
