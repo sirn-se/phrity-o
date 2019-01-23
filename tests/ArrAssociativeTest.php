@@ -7,12 +7,51 @@ use Phrity\O\Arr;
 class ArrAssociativeTest extends \PHPUnit_Framework_TestCase
 {
 
+    public function setUp()
+    {
+        error_reporting(-1);
+    }
+
+    /**
+     * Test constructor
+     */
+    public function testConstructor()
+    {
+        $array_1 = new Arr();
+        $this->assertEquals(0, $array_1->count());
+
+        $array_2 = new Arr(['a' => 1, 'b' => 2, 'c' => 3]);
+        $this->assertEquals(2, $array_2['b']);
+
+        $array_3 = new Arr($array_2);
+        $this->assertEquals(2, $array_3['b']);
+    }
+
+    /**
+     * Test constructor
+     * @expectedException InvalidArgumentException
+     * @expectedExceptionMessage Unsupported argument for O\Arr
+     */
+    public function testConstructorArgumentType()
+    {
+        $array = new Arr('unsupported');
+    }
+
+    /**
+     * Test constructor
+     * @expectedException InvalidArgumentException
+     * @expectedExceptionMessage Unsupported argument for O\Arr
+     */
+    public function testConstructorArgumentCount()
+    {
+        $array = new Arr([1, 2, 3], 'unsupported');
+    }
+
     /**
      * Test implementation of Countable interface
      */
     public function testCountableImplementation()
     {
-        error_reporting(-1);
         $array = new Arr(['a' => 1, 'b' => 2, 'c' => 3]);
         $this->assertEquals(3, $array->count());
     }
@@ -22,7 +61,6 @@ class ArrAssociativeTest extends \PHPUnit_Framework_TestCase
      */
     public function testArrayAccessImplementation()
     {
-        error_reporting(E_ALL);
         $array = new Arr(['a' => 1, 'b' => 2, 'c' => 3]);
 
         $this->assertTrue($array->offsetExists('a'));
@@ -64,7 +102,6 @@ class ArrAssociativeTest extends \PHPUnit_Framework_TestCase
      */
     public function testIteratorImplementation()
     {
-        error_reporting(E_ALL);
         $array = new Arr(['a' => 1, 'b' => 2, 'c' => 3]);
 
         $this->assertEquals(1, $array->current());
@@ -82,11 +119,21 @@ class ArrAssociativeTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test get on undefined index; generates a notice
+     * @expectedException PHPUnit_Framework_Error_Notice
+     * @expectedExceptionMessage Undefined index: d
      */
     public function testUndefinedOffset()
     {
-        error_reporting(E_ALL & ~E_NOTICE);
         $array = new Arr(['a' => 1, 'b' => 2, 'c' => 3]);
         $array->offsetGet('d');
+    }
+
+    public function testAdditionalIterators()
+    {
+        $array = new Arr(['a' => 1, 'b' => 2, 'c' => 3]);
+
+        $this->assertFalse($array->previous());
+        $this->assertEquals(3, $array->forward());
+        $this->assertEquals(2, $array->previous());
     }
 }

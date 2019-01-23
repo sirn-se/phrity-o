@@ -86,4 +86,17 @@ class Arr implements \ArrayAccess, \Countable, \Iterator
     {
         return $this->offsetExists(key($this->o_content));
     }
+
+
+    // Iterators (not in Iterator interface)
+
+    public function previous()
+    {
+        return prev($this->o_content);
+    }
+
+    public function forward()
+    {
+        return end($this->o_content);
+    }
 }

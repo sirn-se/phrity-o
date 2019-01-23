@@ -23,11 +23,8 @@ class ArrNumericTest extends \PHPUnit_Framework_TestCase
         $array_2 = new Arr([1, 2, 3]);
         $this->assertEquals(2, $array_2[1]);
 
-        $array_3 = new Arr(['a' => 1, 'b' => 2, 'c' => 3]);
-        $this->assertEquals(2, $array_3['b']);
-
-        $array_4 = new Arr($array_3);
-        $this->assertEquals(2, $array_4['b']);
+        $array_3 = new Arr($array_2);
+        $this->assertEquals(2, $array_3['1']);
     }
 
     /**
@@ -129,5 +126,14 @@ class ArrNumericTest extends \PHPUnit_Framework_TestCase
     {
         $array = new Arr([1, 2, 3]);
         $array->offsetGet(4);
+    }
+
+    public function testAdditionalIterators()
+    {
+        $array = new Arr([1, 2, 3]);
+
+        $this->assertFalse($array->previous());
+        $this->assertEquals(3, $array->forward());
+        $this->assertEquals(2, $array->previous());
     }
 }
