@@ -8,3 +8,7 @@ Consistent object representation of basic data types
 ## Arr
 
 An object implementation of array. Implements ArrayAccess, Countable and Iterator interfaces.
+
+```php
+$array = new O\Arr([1, 2, 3]);
+```

@@ -4,12 +4,23 @@ namespace Phrity\O;
 
 class Arr implements \ArrayAccess, \Countable, \Iterator
 {
-    protected $o_content = [];
+    protected $o_content;
 
     public function __construct(...$args)
     {
-        if (is_array($args[0])) {
-            $this->o_content = array_shift($args);
+        // Allow subclass to use additional input
+        $content = array_shift($args);
+        if (is_null($content)) {
+            $this->o_content = [];
+        } elseif (is_array($content)) {
+            $this->o_content = $content;
+        } elseif ($content instanceof self) {
+            $this->o_content = $content->o_content;
+        } else {
+            throw new \InvalidArgumentException('Unsupported argument for O\Arr');
+        }
+        if (!empty($args)) {
+            throw new \InvalidArgumentException('Unsupported argument for O\Arr');
         }
     }
 

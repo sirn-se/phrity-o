@@ -7,12 +7,54 @@ use Phrity\O\Arr;
 class ArrNumericTest extends \PHPUnit_Framework_TestCase
 {
 
+    public function setUp()
+    {
+        error_reporting(-1);
+    }
+
+    /**
+     * Test constructor
+     */
+    public function testConstructor()
+    {
+        $array_1 = new Arr();
+        $this->assertEquals(0, $array_1->count());
+
+        $array_2 = new Arr([1, 2, 3]);
+        $this->assertEquals(2, $array_2[1]);
+
+        $array_3 = new Arr(['a' => 1, 'b' => 2, 'c' => 3]);
+        $this->assertEquals(2, $array_3['b']);
+
+        $array_4 = new Arr($array_3);
+        $this->assertEquals(2, $array_4['b']);
+    }
+
+    /**
+     * Test constructor
+     * @expectedException InvalidArgumentException
+     * @expectedExceptionMessage Unsupported argument for O\Arr
+     */
+    public function testConstructorArgumentType()
+    {
+        $array = new Arr('unsupported');
+    }
+
+    /**
+     * Test constructor
+     * @expectedException InvalidArgumentException
+     * @expectedExceptionMessage Unsupported argument for O\Arr
+     */
+    public function testConstructorArgumentCount()
+    {
+        $array = new Arr([1, 2, 3], 'unsupported');
+    }
+
     /**
      * Test implementation of Countable interface
      */
     public function testCountableImplementation()
     {
-        error_reporting(-1);
         $array = new Arr([1, 2, 3]);
         $this->assertEquals(3, $array->count());
     }
@@ -22,7 +64,6 @@ class ArrNumericTest extends \PHPUnit_Framework_TestCase
      */
     public function testArrayAccessImplementation()
     {
-        error_reporting(-1);
         $array = new Arr([1, 2, 3]);
 
         $this->assertTrue($array->offsetExists(0));
@@ -64,7 +105,6 @@ class ArrNumericTest extends \PHPUnit_Framework_TestCase
      */
     public function testIteratorImplementation()
     {
-        error_reporting(-1);
         $array = new Arr([1, 2, 3]);
 
         $this->assertEquals(1, $array->current());
@@ -82,10 +122,11 @@ class ArrNumericTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test get on undefined index; generates a notice
+     * @expectedException PHPUnit_Framework_Error_Notice
+     * @expectedExceptionMessage Undefined offset: 4
      */
     public function testUndefinedOffset()
     {
-        error_reporting(E_ALL & ~E_NOTICE);
         $array = new Arr([1, 2, 3]);
         $array->offsetGet(4);
     }
