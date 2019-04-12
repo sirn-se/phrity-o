@@ -99,4 +99,12 @@ class Arr implements \ArrayAccess, \Countable, \Iterator
     {
         return end($this->o_content);
     }
+
+
+    // String representation methods
+
+    public function __toString()
+    {
+      return self::class;
+    }
 }
