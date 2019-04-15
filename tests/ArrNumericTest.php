@@ -1,12 +1,21 @@
 <?php
-
+/**
+ * File for numeric O\Arr tests.
+ * @package Phrity > Util > Numerics
+ */
 namespace Phrity\O;
 
 use Phrity\O\Arr;
 
+/**
+ * Numeric O\Arr tests.
+ */
 class ArrNumericTest extends \PHPUnit_Framework_TestCase
 {
 
+    /**
+     * Set up for all tests
+     */
     public function setUp()
     {
         error_reporting(-1);
@@ -24,7 +33,7 @@ class ArrNumericTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(2, $array_2[1]);
 
         $array_3 = new Arr($array_2);
-        $this->assertEquals(2, $array_3['1']);
+        $this->assertEquals(2, $array_3[1]);
     }
 
     /**
@@ -128,6 +137,9 @@ class ArrNumericTest extends \PHPUnit_Framework_TestCase
         $array->offsetGet(4);
     }
 
+    /**
+     * Test additional iterators
+     */
     public function testAdditionalIterators()
     {
         $array = new Arr([1, 2, 3]);

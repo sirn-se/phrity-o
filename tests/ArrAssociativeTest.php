@@ -1,12 +1,21 @@
 <?php
-
+/**
+ * File for associative O\Arr tests.
+ * @package Phrity > Util > Numerics
+ */
 namespace Phrity\O;
 
 use Phrity\O\Arr;
 
+/**
+ * Associative O\Arr tests.
+ */
 class ArrAssociativeTest extends \PHPUnit_Framework_TestCase
 {
 
+    /**
+     * Set up for all tests
+     */
     public function setUp()
     {
         error_reporting(-1);
@@ -25,6 +34,11 @@ class ArrAssociativeTest extends \PHPUnit_Framework_TestCase
 
         $array_3 = new Arr($array_2);
         $this->assertEquals(2, $array_3['b']);
+
+        $class = new \stdclass;
+        $class->c = 3;
+        $array_4 = new Arr($class);
+        $this->assertEquals(3, $array_3['c']);
     }
 
     /**
@@ -128,6 +142,9 @@ class ArrAssociativeTest extends \PHPUnit_Framework_TestCase
         $array->offsetGet('d');
     }
 
+    /**
+     * Test additional iterators
+     */
     public function testAdditionalIterators()
     {
         $array = new Arr(['a' => 1, 'b' => 2, 'c' => 3]);
