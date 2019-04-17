@@ -1,6 +1,7 @@
 {
   "name": "phrity/o",
-  "description": "Consistent object representation of basic data types",
+  "description": "Consistent object representation of basic data types. Inheritance friendly implementation. Currently provides Arr (array) and Obj (object) classes.",
+  "keywords": ["object", "array"],
   "authors": [
     {
       "name": "Sören Jensen",
@@ -21,6 +22,7 @@
     "php": ">=5.6"
   },
   "require-dev": {
+    "phpdocumentor/phpdocumentor": "2.*",
     "phpunit/phpunit": "5.*",
     "php-coveralls/php-coveralls": "2.*",
     "squizlabs/php_codesniffer": "3.*"
