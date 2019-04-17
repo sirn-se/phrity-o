@@ -100,10 +100,11 @@ class Obj
         if ($content instanceof self) {
             return $this->o_content = $content->o_content;
         }
-        if ($content instanceof stdclass) {
+        if ($content instanceof \stdclass) {
             return $this->o_content = $content;
         }
         if (is_object($content) || is_array($content)) {
+            // Converts to stdclass, only public properties if input is object
             return $this->o_content = json_decode(json_encode($content, JSON_FORCE_OBJECT));
         }
         throw new \InvalidArgumentException('Unsupported argument for O\Obj');
