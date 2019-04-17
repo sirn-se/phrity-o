@@ -3,7 +3,7 @@
 
 # ”O”
 
-Consistent object representation of basic data types
+Consistent object representation of basic data types. Inheritance friendly implementation. Currently provides `Arr` (array) and `Obj` (object) classes.
 
 ## Installation
 
@@ -22,6 +22,19 @@ $array = new O\Arr([1, 2, 3]); // Numeric array
 $array = new O\Arr(['a' => 1, 'b' => 2, 'c' => 3]); // Associative array
 $array = new O\Arr($myclass); // Public properties to array
 $array = new O\Arr(new O\Arr([1, 2, 3]); // Cloning
+
+// ArrayAccess support
+$array = new O\Arr([1, 2, 3]);
+$array[] = 7; // [1, 2, 3, 7]
+$array[0] = 5; // [5, 2, 3, 7]
+
+// Countable support
+$array = new O\Arr([1, 2, 3]);
+count($array) // -> 3
+
+// Iterator support
+$array = new O\Arr([1, 2, 3]);
+foreach ($array as $key => $value) {}
 ```
 
 ## Obj
@@ -29,9 +42,17 @@ $array = new O\Arr(new O\Arr([1, 2, 3]); // Cloning
 An object implementation of object.
 
 ```php
-$array = new O\Obj(); // Empty object
-$array = new O\Obj(['a' => 1, 'b' => 2, 'c' => 3]); // Object from array
-$array = new O\Obj($myclass); // Public properties to object
-$array = new O\Obj(new O\Obj(['a' => 1, 'b' => 2, 'c' => 3]); // Cloning
+$object = new O\Obj(); // Empty object
+$object = new O\Obj(['a' => 1, 'b' => 2, 'c' => 3]); // Object from array
+$object = new O\Obj($myclass); // Public properties to object
+$object = new O\Obj(new O\Obj(['a' => 1, 'b' => 2, 'c' => 3]); // Cloning
+
+// Property access
+$object = new O\Obj(['a' => 1, 'b' => 2]);
+$object->a; // 1
+$object->b = 5;
 ```
 
+## Versions
+
+* 1.0 - Arr (array) and Obj (object) classes.

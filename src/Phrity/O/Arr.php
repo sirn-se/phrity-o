@@ -22,7 +22,7 @@ class Arr implements \ArrayAccess, \Countable, \Iterator
     public function __construct(...$args)
     {
         // Allow subclass to use additional input
-        $content = \array_shift($args);
+        $content = array_shift($args);
         $this->bind($content);
 
         if (!empty($args)) {
@@ -40,7 +40,7 @@ class Arr implements \ArrayAccess, \Countable, \Iterator
      */
     public function offsetExists($offset)
     {
-        return \array_key_exists($offset, $this->o_content);
+        return array_key_exists($offset, $this->o_content);
     }
 
     /**
@@ -60,7 +60,7 @@ class Arr implements \ArrayAccess, \Countable, \Iterator
      */
     public function offsetSet($offset, $value)
     {
-        if (\is_null($offset)) {
+        if (is_null($offset)) {
             $this->o_content[] = $value;
         } else {
             $this->o_content[$offset] = $value;
@@ -85,7 +85,7 @@ class Arr implements \ArrayAccess, \Countable, \Iterator
      */
     public function count()
     {
-        return \count($this->o_content);
+        return count($this->o_content);
     }
 
 
@@ -97,7 +97,7 @@ class Arr implements \ArrayAccess, \Countable, \Iterator
      */
     public function current()
     {
-        return \current($this->o_content);
+        return current($this->o_content);
     }
 
     /**
@@ -106,7 +106,7 @@ class Arr implements \ArrayAccess, \Countable, \Iterator
      */
     public function key()
     {
-        return \key($this->o_content);
+        return key($this->o_content);
     }
 
     /**
@@ -115,7 +115,7 @@ class Arr implements \ArrayAccess, \Countable, \Iterator
      */
     public function next()
     {
-        return \next($this->o_content);
+        return next($this->o_content);
     }
 
     /**
@@ -124,7 +124,7 @@ class Arr implements \ArrayAccess, \Countable, \Iterator
      */
     public function rewind()
     {
-        return \reset($this->o_content);
+        return reset($this->o_content);
     }
 
     /**
@@ -133,7 +133,7 @@ class Arr implements \ArrayAccess, \Countable, \Iterator
      */
     public function valid()
     {
-        return $this->offsetExists(\key($this->o_content));
+        return $this->offsetExists(key($this->o_content));
     }
 
 
@@ -145,7 +145,7 @@ class Arr implements \ArrayAccess, \Countable, \Iterator
      */
     public function previous()
     {
-        return \prev($this->o_content);
+        return prev($this->o_content);
     }
 
     /**
@@ -154,7 +154,7 @@ class Arr implements \ArrayAccess, \Countable, \Iterator
      */
     public function forward()
     {
-        return \end($this->o_content);
+        return end($this->o_content);
     }
 
 

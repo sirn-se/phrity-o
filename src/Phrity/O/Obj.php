@@ -100,6 +100,9 @@ class Obj
         if ($content instanceof self) {
             return $this->o_content = $content->o_content;
         }
+        if ($content instanceof stdclass) {
+            return $this->o_content = $content;
+        }
         if (is_object($content) || is_array($content)) {
             return $this->o_content = json_decode(json_encode($content, JSON_FORCE_OBJECT));
         }

@@ -21,6 +21,9 @@ class ObjTest extends \PHPUnit_Framework_TestCase
         error_reporting(-1);
     }
 
+
+    // Test constructor
+
     /**
      * Test constructor
      */
@@ -43,6 +46,29 @@ class ObjTest extends \PHPUnit_Framework_TestCase
         $obj_5 = new Obj(['a', 'b', 'c']);
         $this->assertEquals('c', $obj_5->{2});
     }
+
+    /**
+     * Test constructor
+     * @expectedException InvalidArgumentException
+     * @expectedExceptionMessage Unsupported argument for O\Obj
+     */
+    public function testConstructorArgumentType()
+    {
+        $obj = new Obj('unsupported');
+    }
+
+    /**
+     * Test constructor
+     * @expectedException InvalidArgumentException
+     * @expectedExceptionMessage Unsupported argument for O\Obj
+     */
+    public function testConstructorArgumentCount()
+    {
+        $obj = new Obj(['a' => 1, 'b' => 2], 'unsupported');
+    }
+
+
+    // Test property access methods
 
     /**
      * Test property methods
@@ -71,6 +97,9 @@ class ObjTest extends \PHPUnit_Framework_TestCase
         unset($obj->a);
         $this->assertFalse(isset($obj->a));
     }
+
+
+    // Test representation methods
 
     /**
      * Test toString method
