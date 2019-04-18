@@ -1,7 +1,9 @@
 {
   "name": "phrity/o",
+  "type": "library",
   "description": "Consistent object representation of basic data types. Inheritance friendly implementation. Currently provides Arr (array) and Obj (object) classes.",
   "keywords": ["object", "array"],
+  "license": "MIT",
   "authors": [
     {
       "name": "Sören Jensen",

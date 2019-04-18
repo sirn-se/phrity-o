@@ -30,7 +30,7 @@ $array[0] = 5; // [5, 2, 3, 7]
 
 // Countable support
 $array = new O\Arr([1, 2, 3]);
-count($array) // -> 3
+count($array) // 3
 
 // Iterator support
 $array = new O\Arr([1, 2, 3]);
@@ -55,4 +55,4 @@ $object->b = 5;
 
 ## Versions
 
-* 1.0 - Arr (array) and Obj (object) classes.
+* `1.0` - Arr (array) and Obj (object) classes.
