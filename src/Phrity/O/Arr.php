@@ -189,8 +189,9 @@ class Arr implements \ArrayAccess, \Countable, \Iterator
             return $this->o_content = $content->o_content;
         }
         if (is_object($content)) {
+            // Converts to associative array, only public properties of input object
             return $this->o_content = json_decode(json_encode($content), true);
         }
-        throw new \InvalidArgumentException('Unsupported argument for O\Arr');
+        throw new \InvalidArgumentException('Unsupported input data for O\Arr');
     }
 }

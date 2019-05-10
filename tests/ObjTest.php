@@ -48,9 +48,9 @@ class ObjTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test constructor
+     * Test constructor w/ bad input data
      * @expectedException InvalidArgumentException
-     * @expectedExceptionMessage Unsupported argument for O\Obj
+     * @expectedExceptionMessage Unsupported input data for O\Obj
      */
     public function testConstructorArgumentType()
     {
@@ -58,7 +58,7 @@ class ObjTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test constructor
+     * Test constructor w/ bad argumenta
      * @expectedException InvalidArgumentException
      * @expectedExceptionMessage Unsupported argument for O\Obj
      */
