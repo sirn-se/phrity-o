@@ -14,13 +14,14 @@ composer require phrity/o
 
 ## Arr
 
-An object implementation of array. Implements ArrayAccess, Countable and Iterator interfaces.
+An object implementation of `array`. Implements `ArrayAccess`, `Countable` and `Iterator` interfaces.
 
 ```php
+// Constructor variants
 $array = new O\Arr(); // Empty array
 $array = new O\Arr([1, 2, 3]); // Numeric array
 $array = new O\Arr(['a' => 1, 'b' => 2, 'c' => 3]); // Associative array
-$array = new O\Arr($myclass); // Public properties to array
+$array = new O\Arr($myclass); // Public properties to associative array
 $array = new O\Arr(new O\Arr([1, 2, 3]); // Cloning
 
 // ArrayAccess support
@@ -39,9 +40,10 @@ foreach ($array as $key => $value) {}
 
 ## Obj
 
-An object implementation of object.
+An object implementation of `object`.
 
 ```php
+// Constructor variants
 $object = new O\Obj(); // Empty object
 $object = new O\Obj(['a' => 1, 'b' => 2, 'c' => 3]); // Object from array
 $object = new O\Obj($myclass); // Public properties to object
@@ -55,4 +57,4 @@ $object->b = 5;
 
 ## Versions
 
-* `1.0` - Arr (array) and Obj (object) classes.
+* `1.0` - `Arr` (array) and `Obj` (object) classes. PHP `5.6` and `7.*` support.

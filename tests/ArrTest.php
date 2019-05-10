@@ -60,9 +60,9 @@ class ArrTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test constructor
+     * Test constructor w/ bad input data
      * @expectedException InvalidArgumentException
-     * @expectedExceptionMessage Unsupported argument for O\Arr
+     * @expectedExceptionMessage Unsupported input data for O\Arr
      */
     public function testConstructorArgumentType()
     {
@@ -70,7 +70,7 @@ class ArrTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test constructor
+     * Test constructor w/ bad argument
      * @expectedException InvalidArgumentException
      * @expectedExceptionMessage Unsupported argument for O\Arr
      */
@@ -175,7 +175,7 @@ class ArrTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test implementation of Iterator interface
+     * Test magic access of Iterator interface
      */
     public function testIteratorMagic()
     {

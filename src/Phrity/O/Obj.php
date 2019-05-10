@@ -107,6 +107,6 @@ class Obj
             // Converts to stdclass, only public properties if input is object
             return $this->o_content = json_decode(json_encode($content, JSON_FORCE_OBJECT));
         }
-        throw new \InvalidArgumentException('Unsupported argument for O\Obj');
+        throw new \InvalidArgumentException('Unsupported input data for O\Obj');
     }
 }
