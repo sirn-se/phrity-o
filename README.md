@@ -40,6 +40,8 @@ class Phrity\O\Arr
 }
 ```
 
+###  Examples
+
 ```php
 // Constructor variants
 $array = new O\Arr(); // Empty array
@@ -80,6 +82,8 @@ class Phrity\O\Obj {
     public __toString() : string
 }
 ```
+
+###  Examples
 
 ```php
 // Constructor variants
