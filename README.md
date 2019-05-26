@@ -12,9 +12,35 @@ Install with [Composer](https://getcomposer.org/);
 composer require phrity/o
 ```
 
-## Arr
+## The Arr class
 
 An object implementation of `array`. Implements `ArrayAccess`, `Countable` and `Iterator` interfaces.
+
+###  Class synopsis
+
+```php
+class Phrity\O\Arr
+    implements ArrayAccess, Countable, Iterator {
+
+    /* Methods */
+    public __construct(mixed ...$args)
+    public offsetExists(mixed $offset) : bool
+    public offsetGet(mixed $offset) : mixed
+    public offsetSet(mixed $offset, mixed $value) : void
+    public offsetUnset(mixed $offset) : void
+    public count() : int
+    public current() : mixed
+    public key() : scalar
+    public next() : void
+    public rewind() : void
+    public valid() : bool
+    public previous() : void
+    public forward() : void
+    public __toString() : string
+}
+```
+
+###  Examples
 
 ```php
 // Constructor variants
@@ -38,9 +64,26 @@ $array = new O\Arr([1, 2, 3]);
 foreach ($array as $key => $value) {}
 ```
 
-## Obj
+## The Obj class
 
 An object implementation of `object`.
+
+###  Class synopsis
+
+```php
+class Phrity\O\Obj {
+
+    /* Methods */
+    public __construct(mixed ...$args)
+    public __get(string $key)
+    public __set(string $key, mixed $value)
+    public __isset(string $key)
+    public __unset(string $key)
+    public __toString() : string
+}
+```
+
+###  Examples
 
 ```php
 // Constructor variants
@@ -57,4 +100,4 @@ $object->b = 5;
 
 ## Versions
 
-* `1.0` - `Arr` (array) and `Obj` (object) classes. PHP `5.6` and `7.*` support.
+* `1.0` - `Arr` (array) and `Obj` (object) classes
