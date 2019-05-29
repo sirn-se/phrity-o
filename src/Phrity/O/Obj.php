@@ -8,8 +8,10 @@ namespace Phrity\O;
 /**
  * O\Obj class.
  */
-class Obj
+class Obj implements \Phrity\Comparison\Comparable
 {
+    use \Phrity\Comparison\ComparisonTrait;
+
     /**
      * Internal data structure
      */
@@ -82,6 +84,25 @@ class Obj
     public function __toString()
     {
         return self::class;
+    }
+
+
+    // Comparable interface implementation
+
+    /**
+     * Compare $this with provided instance of the same class
+     * @param  Obj $compare_with The object to compare with
+     * @return int               -1, 0 or +1 comparison result
+     */
+    public function compare($compare_with)
+    {
+        if (!$compare_with instanceof self) {
+            throw new \Phrity\Comparison\IncomparableException('Can only compare O\Obj');
+        }
+        if ($this->o_content == $compare_with->o_content) {
+            return 0;
+        }
+        return $this->o_content > $compare_with->o_content ? +1 : -1;
     }
 
 

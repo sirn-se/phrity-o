@@ -1,7 +1,7 @@
 <?php
 /**
  * File for O\Obj tests.
- * @package Phrity > Util > Numerics
+ * @package Phrity > O
  */
 namespace Phrity\O;
 
