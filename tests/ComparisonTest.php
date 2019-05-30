@@ -52,4 +52,26 @@ class ComparisonTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(-1, $obj_1->compare($obj_3));
         $this->assertEquals(1, $obj_3->compare($obj_2));
     }
+
+    /**
+     * Test Arr failed comparison
+     * @expectedException Phrity\Comparison\IncomparableException
+     * @expectedExceptionMessage Can only compare O\Arr
+     */
+    public function testArrIncomparable()
+    {
+        $arr = new Arr([1, 2, 3]);
+        $arr->compare('Not comparable with O\Arr');
+    }
+
+    /**
+     * Test Obj failed comparison
+     * @expectedException Phrity\Comparison\IncomparableException
+     * @expectedExceptionMessage Can only compare O\Obj
+     */
+    public function testObjIncomparable()
+    {
+        $obj = new Obj(['a' => 1, 'b' => 2, 'c' => 3]);
+        $obj->compare('Not comparable with O\Obj');
+    }
 }
