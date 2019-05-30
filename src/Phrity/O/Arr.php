@@ -8,8 +8,10 @@ namespace Phrity\O;
 /**
  * O\Arr class.
  */
-class Arr implements \ArrayAccess, \Countable, \Iterator
+class Arr implements \ArrayAccess, \Countable, \Iterator, \Phrity\Comparison\Comparable
 {
+    use \Phrity\Comparison\ComparisonTrait;
+
     /**
      * Internal data structure
      */
@@ -167,6 +169,25 @@ class Arr implements \ArrayAccess, \Countable, \Iterator
     public function __toString()
     {
         return self::class . "({$this->count()})";
+    }
+
+
+    // Comparable interface implementation
+
+    /**
+     * Compare $this with provided instance of the same class
+     * @param  Arr $compare_with The object to compare with
+     * @return int               -1, 0 or +1 comparison result
+     */
+    public function compare($compare_with)
+    {
+        if (!$compare_with instanceof self) {
+            throw new \Phrity\Comparison\IncomparableException('Can only compare O\Arr');
+        }
+        if ($this->o_content == $compare_with->o_content) {
+            return 0;
+        }
+        return $this->o_content > $compare_with->o_content ? +1 : -1;
     }
 
 

@@ -20,7 +20,7 @@ An object implementation of `array`. Implements `ArrayAccess`, `Countable` and `
 
 ```php
 class Phrity\O\Arr
-    implements ArrayAccess, Countable, Iterator {
+    implements ArrayAccess, Countable, Iterator, Phrity\Comparison\Comparable {
 
     /* Methods */
     public __construct(mixed ...$args)
@@ -37,6 +37,14 @@ class Phrity\O\Arr
     public previous() : void
     public forward() : void
     public __toString() : string
+    public compare(mixed $compare_with) : int
+
+    /* Inherited from ComparisonTrait */
+    public equals(mixed $compare_with) : bool
+    public greaterThan(mixed $compare_with) : bool
+    public greaterThanOrEqual(mixed $compare_with) : bool
+    public lessThan(mixed $compare_with) : bool
+    public lessThanOrEqual(mixed $compare_with) : bool
 }
 ```
 
@@ -62,6 +70,11 @@ count($array) // 3
 // Iterator support
 $array = new O\Arr([1, 2, 3]);
 foreach ($array as $key => $value) {}
+
+// Comparison support
+$array = new O\Arr([1, 2, 3]);
+$array->lessThan(new O\Arr([1, 2, 3, 4])); // true
+$array->equals(new O\Arr([2, 3, 4])); // false
 ```
 
 ## The Obj class
@@ -71,7 +84,8 @@ An object implementation of `object`.
 ###  Class synopsis
 
 ```php
-class Phrity\O\Obj {
+class Phrity\O\Obj
+    implements Phrity\Comparison\Comparable {
 
     /* Methods */
     public __construct(mixed ...$args)
@@ -80,6 +94,14 @@ class Phrity\O\Obj {
     public __isset(string $key)
     public __unset(string $key)
     public __toString() : string
+    public compare(mixed $compare_with) : int
+
+    /* Inherited from ComparisonTrait */
+    public equals(mixed $compare_with) : bool
+    public greaterThan(mixed $compare_with) : bool
+    public greaterThanOrEqual(mixed $compare_with) : bool
+    public lessThan(mixed $compare_with) : bool
+    public lessThanOrEqual(mixed $compare_with) : bool
 }
 ```
 
@@ -96,8 +118,14 @@ $object = new O\Obj(new O\Obj(['a' => 1, 'b' => 2, 'c' => 3]); // Cloning
 $object = new O\Obj(['a' => 1, 'b' => 2]);
 $object->a; // 1
 $object->b = 5;
+
+// Comparison support
+$object = new O\Obj(['a' => 1, 'b' => 2]);
+$object->lessThan(new O\Obj(['a' => 2, 'b' => 3])); // true
+$object->equals(new O\Obj(['c' => 1, 'd' => 2])); // false
 ```
 
 ## Versions
 
+* `1.1` - Comparison support
 * `1.0` - `Arr` (array) and `Obj` (object) classes
