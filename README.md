@@ -251,5 +251,6 @@ $bool(false); // Set false
 
 ## Versions
 
+* `1.2` - `Str` (string), `Number` (float), `Integer` (int) and `Boolean` (bool) classes
 * `1.1` - Comparison support
 * `1.0` - `Arr` (array) and `Obj` (object) classes
