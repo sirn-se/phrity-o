@@ -3,7 +3,7 @@
 
 # ”O”
 
-Consistent object representation of basic data types. Inheritance friendly implementation. Currently provides `Arr` (array) and `Obj` (object) classes.
+Consistent object representation of basic data types. Inheritance friendly implementation. Currently provides `Arr` (array), `Obj` (object), `Str` (string), `Number` (float), `Integer` (int) and `Boolean` (bool) classes.
 
 ## Installation
 
@@ -125,7 +125,132 @@ $object->lessThan(new O\Obj(['a' => 2, 'b' => 3])); // true
 $object->equals(new O\Obj(['c' => 1, 'd' => 2])); // false
 ```
 
+## The Str class
+
+An object implementation of `string`.
+
+###  Class synopsis
+
+```php
+class Phrity\O\Str {
+
+    /* Methods */
+    public __construct(mixed ...$args)
+    public __invoke(mixed $offset) : string
+    public __toString() : string
+}
+```
+
+###  Examples
+
+```php
+// Constructor variants
+$str = new O\Str(); // Empty string
+$str = new O\Str('hello world'); // String input
+$str = new O\Str(new O\Str('hello world'); // Cloning
+
+// Get and set
+$str = new O\Str('hello');
+$str(); // Get 'hello'
+$str('world'); // Set 'world'
+```
+
+## The Integer class
+
+An object implementation of `int`.
+
+###  Class synopsis
+
+```php
+class Phrity\O\Integer {
+
+    /* Methods */
+    public __construct(mixed ...$args)
+    public __invoke(mixed $offset) : int
+    public __toString() : string
+}
+```
+
+###  Examples
+
+```php
+// Constructor variants
+$int = new O\Integer(); // Empty is zero
+$int = new O\Integer(1234); // Integer input
+$int = new O\Integer('1234'); // Numeric string input
+$int = new O\Integer(new O\Integer(1234); // Cloning
+
+// Get and set
+$int = new O\Integer(1234);
+$int(); // Get 1234
+$int(5678); // Set 5678
+```
+
+## The Number class
+
+An object implementation of `float`.
+
+###  Class synopsis
+
+```php
+class Phrity\O\Number {
+
+    /* Methods */
+    public __construct(mixed ...$args)
+    public __invoke(mixed $offset) : float
+    public __toString() : string
+}
+```
+
+###  Examples
+
+```php
+// Constructor variants
+$num = new O\Number(); // Empty is zero
+$num = new O\Number(12.34); // Float input
+$num = new O\Number('12.34'); // Numeric string input
+$num = new O\Number(new O\Number(12.34); // Cloning
+
+// Get and set
+$num = new O\Number(12.34);
+$num(); // Get 12.34
+$num(56.78); // Set 56.78
+```
+
+## The Boolean class
+
+An object implementation of `bool`.
+
+###  Class synopsis
+
+```php
+class Phrity\O\Boolean {
+
+    /* Methods */
+    public __construct(mixed ...$args)
+    public __invoke(mixed $offset) : bool
+    public __toString() : string
+}
+```
+
+###  Examples
+
+```php
+// Constructor variants
+$bool = new O\Boolean(); // Empty is false
+$bool = new O\Boolean(true); // Bool input
+$bool = new O\Boolean('1'); // Numeric string input
+$bool = new O\Boolean(new O\Boolean(true); // Cloning
+
+// Get and set
+$bool = new O\Boolean(true);
+$bool(); // Get true
+$bool(false); // Set false
+```
+
+
 ## Versions
 
+* `1.2` - `Str` (string), `Number` (float), `Integer` (int) and `Boolean` (bool) classes
 * `1.1` - Comparison support
 * `1.0` - `Arr` (array) and `Obj` (object) classes
