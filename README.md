@@ -3,7 +3,7 @@
 
 # ”O”
 
-Consistent object representation of basic data types. Inheritance friendly implementation. Currently provides `Arr` (array) and `Obj` (object) classes.
+Consistent object representation of basic data types. Inheritance friendly implementation. Currently provides `Arr` (array), `Obj` (object), `Str` (string), `Number` (float), `Integer` (int) and `Boolean` (bool) classes.
 
 ## Installation
 

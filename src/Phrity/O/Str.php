@@ -8,8 +8,10 @@ namespace Phrity\O;
 /**
  * O\Str class.
  */
-class Str
+class Str implements \Phrity\Comparison\Comparable
 {
+    use \Phrity\Comparison\ComparisonTrait;
+
     /**
      * Internal data structure
      */
@@ -55,6 +57,25 @@ class Str
     public function __toString()
     {
         return $this();
+    }
+
+
+    // Comparable interface implementation
+
+    /**
+     * Compare $this with provided instance of the same class
+     * @param  Arr $compare_with The object to compare with
+     * @return int               -1, 0 or +1 comparison result
+     */
+    public function compare($compare_with)
+    {
+        if (!$compare_with instanceof self) {
+            throw new \Phrity\Comparison\IncomparableException('Can only compare O\Str');
+        }
+        if ($this->o_content == $compare_with->o_content) {
+            return 0;
+        }
+        return $this->o_content > $compare_with->o_content ? +1 : -1;
     }
 
 
