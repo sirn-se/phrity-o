@@ -71,9 +71,19 @@ class IntegerTest extends \PHPUnit_Framework_TestCase
      * @expectedException InvalidArgumentException
      * @expectedExceptionMessage Unsupported input data for O\Integer
      */
-    public function testConstructorException()
+    public function testConstructorArgumentType()
     {
         $int = new Integer(new \stdClass);
+    }
+
+    /**
+     * Test constructor w/ bad argument
+     * @expectedException InvalidArgumentException
+     * @expectedExceptionMessage Unsupported argument for O\Integer
+     */
+    public function testConstructorArgumentCount()
+    {
+        $int = new Integer(56, 'unsupported');
     }
 
     /**

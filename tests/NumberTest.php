@@ -82,9 +82,19 @@ class NumberTest extends \PHPUnit_Framework_TestCase
      * @expectedException InvalidArgumentException
      * @expectedExceptionMessage Unsupported input data for O\Number
      */
-    public function testConstructorException()
+    public function testConstructorArgumentType()
     {
         $num = new Number(new \stdClass);
+    }
+
+    /**
+     * Test constructor w/ bad argument
+     * @expectedException InvalidArgumentException
+     * @expectedExceptionMessage Unsupported argument for O\Number
+     */
+    public function testConstructorArgumentCount()
+    {
+        $num = new Number(5.6, 'unsupported');
     }
 
     /**

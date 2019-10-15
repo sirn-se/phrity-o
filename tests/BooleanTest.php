@@ -114,9 +114,19 @@ class BooleanTest extends \PHPUnit_Framework_TestCase
      * @expectedException InvalidArgumentException
      * @expectedExceptionMessage Unsupported input data for O\Boolean
      */
-    public function testConstructorException()
+    public function testConstructorArgumentType()
     {
         $bool = new Boolean(new \stdClass);
+    }
+
+    /**
+     * Test constructor w/ bad argument
+     * @expectedException InvalidArgumentException
+     * @expectedExceptionMessage Unsupported argument for O\Boolean
+     */
+    public function testConstructorArgumentCount()
+    {
+        $bool = new Boolean(true, 'unsupported');
     }
 
     /**

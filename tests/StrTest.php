@@ -82,9 +82,19 @@ class StrTest extends \PHPUnit_Framework_TestCase
      * @expectedException InvalidArgumentException
      * @expectedExceptionMessage Unsupported input data for O\Str
      */
-    public function testConstructorException()
+    public function testConstructorArgumentType()
     {
         $str = new Str(new \stdClass);
+    }
+
+    /**
+     * Test constructor w/ bad argument
+     * @expectedException InvalidArgumentException
+     * @expectedExceptionMessage Unsupported argument for O\Str
+     */
+    public function testConstructorArgumentCount()
+    {
+        $str = new Str('aaa', 'unsupported');
     }
 
     /**
