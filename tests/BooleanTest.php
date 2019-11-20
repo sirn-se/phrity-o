@@ -14,13 +14,13 @@ use Phrity\O\Boolean;
 /**
  * Generic O\Boolean tests.
  */
-class BooleanTest extends \PHPUnit_Framework_TestCase
+class BooleanTest extends \PHPUnit\Framework\TestCase
 {
 
     /**
      * Set up for all tests
      */
-    public function setUp()
+    public function setUp(): void
     {
         error_reporting(-1);
     }
@@ -28,7 +28,7 @@ class BooleanTest extends \PHPUnit_Framework_TestCase
     /**
      * Test false input
      */
-    public function testFalseInput()
+    public function testFalseInput(): void
     {
         $bool = new Boolean(false);
         $this->assertSame(false, $bool());
@@ -39,7 +39,7 @@ class BooleanTest extends \PHPUnit_Framework_TestCase
     /**
      * Test true input
      */
-    public function testTrueInput()
+    public function testTrueInput(): void
     {
         $bool = new Boolean(true);
         $this->assertSame(true, $bool());
@@ -50,7 +50,7 @@ class BooleanTest extends \PHPUnit_Framework_TestCase
     /**
      * Test null input
      */
-    public function testNullInput()
+    public function testNullInput(): void
     {
         $bool = new Boolean();
         $this->assertSame(false, $bool());
@@ -61,7 +61,7 @@ class BooleanTest extends \PHPUnit_Framework_TestCase
     /**
      * Test integer input
      */
-    public function testIntegerFalseInput()
+    public function testIntegerFalseInput(): void
     {
         $bool = new Boolean(0);
         $this->assertSame(false, $bool());
@@ -72,7 +72,7 @@ class BooleanTest extends \PHPUnit_Framework_TestCase
     /**
      * Test integer input
      */
-    public function testIntegerTrueInput()
+    public function testIntegerTrueInput(): void
     {
         $bool = new Boolean(1);
         $this->assertSame(true, $bool());
@@ -83,7 +83,7 @@ class BooleanTest extends \PHPUnit_Framework_TestCase
     /**
      * Test string input
      */
-    public function testStringFalseInput()
+    public function testStringFalseInput(): void
     {
         $bool = new Boolean('');
         $this->assertSame(false, $bool());
@@ -94,7 +94,7 @@ class BooleanTest extends \PHPUnit_Framework_TestCase
     /**
      * Test string input
      */
-    public function testStringTrueInput()
+    public function testStringTrueInput(): void
     {
         $bool = new Boolean('1');
         $this->assertSame(true, $bool());
@@ -105,7 +105,7 @@ class BooleanTest extends \PHPUnit_Framework_TestCase
     /**
      * Test O\Boolean instance input
      */
-    public function testBooleanClassInput()
+    public function testBooleanClassInput(): void
     {
         $bool_1 = new Boolean(true);
         $bool_2 = new Boolean($bool_1);
@@ -115,32 +115,32 @@ class BooleanTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test constructor w/ bad input data
-     * @expectedException InvalidArgumentException
-     * @expectedExceptionMessage Unsupported input data for O\Boolean
      */
-    public function testConstructorArgumentType()
+    public function testConstructorArgumentType(): void
     {
+        $this->expectException('InvalidArgumentException');
+        $this->expectExceptionMessage('Unsupported input data for O\Boolean');
         $bool = new Boolean(new \stdClass());
     }
 
     /**
      * Test constructor w/ bad argument
-     * @expectedException InvalidArgumentException
-     * @expectedExceptionMessage Unsupported argument for O\Boolean
      */
-    public function testConstructorArgumentCount()
+    public function testConstructorArgumentCount(): void
     {
+        $this->expectException('InvalidArgumentException');
+        $this->expectExceptionMessage('Unsupported argument for O\Boolean');
         $bool = new Boolean(true, 'unsupported');
     }
 
     /**
      * Test setter w/ bad input data
-     * @expectedException InvalidArgumentException
-     * @expectedExceptionMessage Unsupported input data for O\Boolean
      */
-    public function testSetterException()
+    public function testSetterException(): void
     {
         $bool = new Boolean();
+        $this->expectException('InvalidArgumentException');
+        $this->expectExceptionMessage('Unsupported input data for O\Boolean');
         $bool(new \stdClass());
     }
 }

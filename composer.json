@@ -1,7 +1,7 @@
 {
   "name": "phrity/o",
   "type": "library",
-  "description": "Consistent object representation of basic data types. Inheritance friendly implementation. Currently provides Arr (array) and Obj (object) classes.",
+  "description": "Consistent object representation of basic data types. Inheritance friendly implementation. Currently provides Arr (array), Obj (object), Str (string), Number (float), Integer (int) and Boolean (bool) classes.",
   "homepage": "https://phrity.sirn.se/o",
   "keywords": ["object", "array"],
   "license": "MIT",
@@ -23,15 +23,12 @@
     }
   },
   "require": {
-    "php": ">=5.6",
-    "phrity/comparison": "1.0|1.1"
+    "php": "^7.1",
+    "phrity/comparison": "1.2"
   },
   "require-dev": {
-    "phpdocumentor/phpdocumentor": "2.*",
-    "phpunit/phpunit": "5.*",
+    "phpunit/phpunit": "^7.0|^8.0",
     "php-coveralls/php-coveralls": "2.*",
-    "squizlabs/php_codesniffer": "3.*",
-    "jms/metadata": "1.*",
-    "jms/serializer": "1.*"
+    "squizlabs/php_codesniffer": "3.*"
   }
 }
