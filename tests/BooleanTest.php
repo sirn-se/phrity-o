@@ -1,8 +1,12 @@
 <?php
+
 /**
  * File for generic O\Boolean tests.
  * @package Phrity > O
  */
+
+declare(strict_types=1);
+
 namespace Phrity\O;
 
 use Phrity\O\Boolean;
@@ -116,7 +120,7 @@ class BooleanTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorArgumentType()
     {
-        $bool = new Boolean(new \stdClass);
+        $bool = new Boolean(new \stdClass());
     }
 
     /**
@@ -137,6 +141,6 @@ class BooleanTest extends \PHPUnit_Framework_TestCase
     public function testSetterException()
     {
         $bool = new Boolean();
-        $bool(new \stdClass);
+        $bool(new \stdClass());
     }
 }

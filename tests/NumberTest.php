@@ -1,8 +1,12 @@
 <?php
+
 /**
  * File for generic O\Number tests.
  * @package Phrity > O
  */
+
+declare(strict_types=1);
+
 namespace Phrity\O;
 
 use Phrity\O\Number;
@@ -84,7 +88,7 @@ class NumberTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorArgumentType()
     {
-        $num = new Number(new \stdClass);
+        $num = new Number(new \stdClass());
     }
 
     /**
@@ -105,6 +109,6 @@ class NumberTest extends \PHPUnit_Framework_TestCase
     public function testSetterException()
     {
         $num = new Number();
-        $num(new \stdClass);
+        $num(new \stdClass());
     }
 }

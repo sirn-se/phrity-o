@@ -1,8 +1,12 @@
 <?php
+
 /**
  * File for generic O\Arr tests.
  * @package Phrity > O
  */
+
+declare(strict_types=1);
+
 namespace Phrity\O;
 
 use Phrity\O\Arr;
@@ -38,7 +42,7 @@ class ArrTest extends \PHPUnit_Framework_TestCase
         $array_3 = new Arr($array_2);
         $this->assertEquals(2, $array_3['b']);
 
-        $class = new \stdclass;
+        $class = new \stdclass();
         $class->c = 3;
         $array_4 = new Arr($class);
         $this->assertEquals(3, $array_3['c']);

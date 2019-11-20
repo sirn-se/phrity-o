@@ -1,8 +1,12 @@
 <?php
+
 /**
  * File for O comparison tests.
  * @package Phrity > Util > Numerics
  */
+
+declare(strict_types=1);
+
 namespace Phrity\O;
 
 use Phrity\O\Arr;
@@ -143,7 +147,7 @@ class ComparisonTest extends \PHPUnit_Framework_TestCase
     public function testStrIncomparable()
     {
         $str = new Str('aaa');
-        $str->compare(new \stdClass);
+        $str->compare(new \stdClass());
     }
 
     /**

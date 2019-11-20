@@ -1,8 +1,12 @@
 <?php
+
 /**
  * File for O\Obj tests.
  * @package Phrity > O
  */
+
+declare(strict_types=1);
+
 namespace Phrity\O;
 
 use Phrity\O\Obj;
@@ -38,7 +42,7 @@ class ObjTest extends \PHPUnit_Framework_TestCase
         $obj_3 = new Obj($obj_2);
         $this->assertEquals(2, $obj_2->b);
 
-        $class = new \stdclass;
+        $class = new \stdclass();
         $class->c = 3;
         $obj_4 = new Obj($class);
         $this->assertEquals(3, $obj_4->c);
