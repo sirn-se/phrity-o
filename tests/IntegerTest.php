@@ -14,13 +14,13 @@ use Phrity\O\Integer;
 /**
  * Generic O\Integer tests.
  */
-class IntegerTest extends \PHPUnit_Framework_TestCase
+class IntegerTest extends \PHPUnit\Framework\TestCase
 {
 
     /**
      * Set up for all tests
      */
-    public function setUp()
+    public function setUp(): void
     {
         error_reporting(-1);
     }
@@ -29,7 +29,7 @@ class IntegerTest extends \PHPUnit_Framework_TestCase
     /**
      * Test null input
      */
-    public function testNullInput()
+    public function testNullInput(): void
     {
         $int = new Integer();
         $this->assertSame(0, $int());
@@ -40,7 +40,7 @@ class IntegerTest extends \PHPUnit_Framework_TestCase
     /**
      * Test integer input
      */
-    public function testIntegerInput()
+    public function testIntegerInput(): void
     {
         $int = new Integer(1234);
         $this->assertSame(1234, $int());
@@ -51,7 +51,7 @@ class IntegerTest extends \PHPUnit_Framework_TestCase
     /**
      * Test numeric string input
      */
-    public function testNumericStringInput()
+    public function testNumericStringInput(): void
     {
         $int = new Integer('1234');
         $this->assertSame(1234, $int());
@@ -62,7 +62,7 @@ class IntegerTest extends \PHPUnit_Framework_TestCase
     /**
      * Test O\Integer instance input
      */
-    public function testIntegerClassInput()
+    public function testIntegerClassInput(): void
     {
         $int_1 = new Integer(1234);
         $int_2 = new Integer($int_1);
@@ -72,42 +72,42 @@ class IntegerTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test constructor w/ bad input data
-     * @expectedException InvalidArgumentException
-     * @expectedExceptionMessage Unsupported input data for O\Integer
      */
-    public function testConstructorArgumentType()
+    public function testConstructorArgumentType(): void
     {
+        $this->expectException('InvalidArgumentException');
+        $this->expectExceptionMessage('Unsupported input data for O\Integer');
         $int = new Integer(new \stdClass());
     }
 
     /**
      * Test constructor w/ bad argument
-     * @expectedException InvalidArgumentException
-     * @expectedExceptionMessage Unsupported argument for O\Integer
      */
-    public function testConstructorArgumentCount()
+    public function testConstructorArgumentCount(): void
     {
+        $this->expectException('InvalidArgumentException');
+        $this->expectExceptionMessage('Unsupported argument for O\Integer');
         $int = new Integer(56, 'unsupported');
     }
 
     /**
      * Test constructor w/ bad input data
-     * @expectedException InvalidArgumentException
-     * @expectedExceptionMessage Unsupported input data for O\Integer
      */
-    public function testFloatException()
+    public function testFloatException(): void
     {
+        $this->expectException('InvalidArgumentException');
+        $this->expectExceptionMessage('Unsupported input data for O\Integer');
         $int = new Integer('12.34');
     }
 
     /**
      * Test setter w/ bad input data
-     * @expectedException InvalidArgumentException
-     * @expectedExceptionMessage Unsupported input data for O\Integer
      */
-    public function testSetterException()
+    public function testSetterException(): void
     {
         $int = new Integer();
+        $this->expectException('InvalidArgumentException');
+        $this->expectExceptionMessage('Unsupported input data for O\Integer');
         $int(new \stdClass());
     }
 }

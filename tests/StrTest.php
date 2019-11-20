@@ -14,13 +14,13 @@ use Phrity\O\Str;
 /**
  * Generic O\Str tests.
  */
-class StrTest extends \PHPUnit_Framework_TestCase
+class StrTest extends \PHPUnit\Framework\TestCase
 {
 
     /**
      * Set up for all tests
      */
-    public function setUp()
+    public function setUp(): void
     {
         error_reporting(-1);
     }
@@ -29,7 +29,7 @@ class StrTest extends \PHPUnit_Framework_TestCase
     /**
      * Test null input
      */
-    public function testNullInput()
+    public function testNullInput(): void
     {
         $str = new Str();
         $this->assertSame('', $str());
@@ -40,7 +40,7 @@ class StrTest extends \PHPUnit_Framework_TestCase
     /**
      * Test string input
      */
-    public function testStringInput()
+    public function testStringInput(): void
     {
         $str = new Str('initial content');
         $this->assertSame('initial content', $str());
@@ -51,7 +51,7 @@ class StrTest extends \PHPUnit_Framework_TestCase
     /**
      * Test numeric input
      */
-    public function testNumericInput()
+    public function testNumericInput(): void
     {
         $str = new Str(1234);
         $this->assertSame('1234', $str());
@@ -62,7 +62,7 @@ class StrTest extends \PHPUnit_Framework_TestCase
     /**
      * Test O\Str instance input
      */
-    public function testStrClassInput()
+    public function testStrClassInput(): void
     {
         $str_1 = new Str('initial content');
         $str_2 = new Str($str_1);
@@ -73,7 +73,7 @@ class StrTest extends \PHPUnit_Framework_TestCase
     /**
      * Test object input
      */
-    public function testObjectInput()
+    public function testObjectInput(): void
     {
         $arr = new \Phrity\O\Arr();
         $str = new Str($arr);
@@ -83,32 +83,32 @@ class StrTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test constructor w/ bad input data
-     * @expectedException InvalidArgumentException
-     * @expectedExceptionMessage Unsupported input data for O\Str
      */
-    public function testConstructorArgumentType()
+    public function testConstructorArgumentType(): void
     {
+        $this->expectException('InvalidArgumentException');
+        $this->expectExceptionMessage('Unsupported input data for O\Str');
         $str = new Str(new \stdClass());
     }
 
     /**
      * Test constructor w/ bad argument
-     * @expectedException InvalidArgumentException
-     * @expectedExceptionMessage Unsupported argument for O\Str
      */
-    public function testConstructorArgumentCount()
+    public function testConstructorArgumentCount(): void
     {
+        $this->expectException('InvalidArgumentException');
+        $this->expectExceptionMessage('Unsupported argument for O\Str');
         $str = new Str('aaa', 'unsupported');
     }
 
     /**
      * Test setter w/ bad input data
-     * @expectedException InvalidArgumentException
-     * @expectedExceptionMessage Unsupported input data for O\Str
      */
-    public function testSetterException()
+    public function testSetterException(): void
     {
         $str = new Str();
+        $this->expectException('InvalidArgumentException');
+        $this->expectExceptionMessage('Unsupported input data for O\Str');
         $str(new \stdClass());
     }
 }

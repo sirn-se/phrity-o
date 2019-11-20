@@ -14,13 +14,13 @@ use Phrity\O\Obj;
 /**
  * O\Obj tests.
  */
-class ObjTest extends \PHPUnit_Framework_TestCase
+class ObjTest extends \PHPUnit\Framework\TestCase
 {
 
     /**
      * Set up for all tests
      */
-    public function setUp()
+    public function setUp(): void
     {
         error_reporting(-1);
     }
@@ -31,7 +31,7 @@ class ObjTest extends \PHPUnit_Framework_TestCase
     /**
      * Test constructor
      */
-    public function testConstructor()
+    public function testConstructor(): void
     {
         $obj_1 = new Obj();
         $this->assertFalse(isset($obj_1->a));
@@ -53,21 +53,21 @@ class ObjTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test constructor w/ bad input data
-     * @expectedException InvalidArgumentException
-     * @expectedExceptionMessage Unsupported input data for O\Obj
      */
-    public function testConstructorArgumentType()
+    public function testConstructorArgumentType(): void
     {
+        $this->expectException('InvalidArgumentException');
+        $this->expectExceptionMessage('Unsupported input data for O\Obj');
         $obj = new Obj('unsupported');
     }
 
     /**
      * Test constructor w/ bad argumenta
-     * @expectedException InvalidArgumentException
-     * @expectedExceptionMessage Unsupported argument for O\Obj
      */
-    public function testConstructorArgumentCount()
+    public function testConstructorArgumentCount(): void
     {
+        $this->expectException('InvalidArgumentException');
+        $this->expectExceptionMessage('Unsupported argument for O\Obj');
         $obj = new Obj(['a' => 1, 'b' => 2], 'unsupported');
     }
 
@@ -77,7 +77,7 @@ class ObjTest extends \PHPUnit_Framework_TestCase
     /**
      * Test property methods
      */
-    public function testPropertyMethods()
+    public function testPropertyMethods(): void
     {
         $obj = new Obj(['a' => 1, 'b' => 2, 'c' => null, 'd' => []]);
         $this->assertEquals(1, $obj->__get('a'));
@@ -91,7 +91,7 @@ class ObjTest extends \PHPUnit_Framework_TestCase
     /**
      * Test magic methods
      */
-    public function testMagicMethods()
+    public function testMagicMethods(): void
     {
         $obj = new Obj(['a' => 1, 'b' => 2, 'c' => null, 'd' => []]);
         $this->assertEquals(1, $obj->a);
@@ -108,7 +108,7 @@ class ObjTest extends \PHPUnit_Framework_TestCase
     /**
      * Test toString method
      */
-    public function testToString()
+    public function testToString(): void
     {
         $obj = new Obj(['a' => 1, 'b' => 2, 'c' => null, 'd' => []]);
         $this->assertEquals('Phrity\O\Obj', "{$obj}");

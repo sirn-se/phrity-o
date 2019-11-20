@@ -56,7 +56,7 @@ class Number implements \Phrity\Comparison\Comparable
      * Return string representation
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return (string)$this();
     }
@@ -69,7 +69,7 @@ class Number implements \Phrity\Comparison\Comparable
      * @param  Arr $compare_with The object to compare with
      * @return int               -1, 0 or +1 comparison result
      */
-    public function compare($compare_with)
+    public function compare($compare_with): int
     {
         if (!$compare_with instanceof self) {
             throw new \Phrity\Comparison\IncomparableException('Can only compare O\Number');

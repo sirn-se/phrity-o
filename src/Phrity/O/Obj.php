@@ -52,7 +52,7 @@ class Obj implements \Phrity\Comparison\Comparable
      * @param mixed $key    The property to assign the value to
      * @param mixed $value  The value to set
      */
-    public function __set($key, $value)
+    public function __set($key, $value): void
     {
         $this->o_content->$key = $value;
     }
@@ -62,7 +62,7 @@ class Obj implements \Phrity\Comparison\Comparable
      * @param  mixed $key A property to check for
      * @return            True if property exist
      */
-    public function __isset($key)
+    public function __isset($key): bool
     {
         return isset($this->o_content->$key);
     }
@@ -71,7 +71,7 @@ class Obj implements \Phrity\Comparison\Comparable
      * Unsets a property
      * @param mixed $key The property to unset
      */
-    public function __unset($key)
+    public function __unset($key): void
     {
         unset($this->o_content->$key);
     }
@@ -83,7 +83,7 @@ class Obj implements \Phrity\Comparison\Comparable
      * Return string representation
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return self::class;
     }
@@ -96,7 +96,7 @@ class Obj implements \Phrity\Comparison\Comparable
      * @param  Obj $compare_with The object to compare with
      * @return int               -1, 0 or +1 comparison result
      */
-    public function compare($compare_with)
+    public function compare($compare_with): int
     {
         if (!$compare_with instanceof self) {
             throw new \Phrity\Comparison\IncomparableException('Can only compare O\Obj');

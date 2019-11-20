@@ -19,13 +19,13 @@ use Phrity\O\Boolean;
 /**
  * Generic O\Arr tests.
  */
-class ComparisonTest extends \PHPUnit_Framework_TestCase
+class ComparisonTest extends \PHPUnit\Framework\TestCase
 {
 
     /**
      * Set up for all tests
      */
-    public function setUp()
+    public function setUp(): void
     {
         error_reporting(-1);
     }
@@ -36,7 +36,7 @@ class ComparisonTest extends \PHPUnit_Framework_TestCase
     /**
      * Test Arr compare
      */
-    public function testArrCompare()
+    public function testArrCompare(): void
     {
         $arr_1 = new Arr([1, 2, 3]);
         $arr_2 = new Arr([1, 2, 3]);
@@ -50,7 +50,7 @@ class ComparisonTest extends \PHPUnit_Framework_TestCase
     /**
      * Test Obj compare
      */
-    public function testObjCompare()
+    public function testObjCompare(): void
     {
         $obj_1 = new Obj(['a' => 1, 'b' => 2, 'c' => 3]);
         $obj_2 = new Obj(['a' => 1, 'b' => 2, 'c' => 3]);
@@ -64,7 +64,7 @@ class ComparisonTest extends \PHPUnit_Framework_TestCase
     /**
      * Test Str compare
      */
-    public function testStrCompare()
+    public function testStrCompare(): void
     {
         $str_1 = new Str('aaa');
         $str_2 = new Str('aaa');
@@ -78,7 +78,7 @@ class ComparisonTest extends \PHPUnit_Framework_TestCase
     /**
      * Test Number compare
      */
-    public function testNumberCompare()
+    public function testNumberCompare(): void
     {
         $num_1 = new Number(5.6);
         $num_2 = new Number(5.6);
@@ -92,7 +92,7 @@ class ComparisonTest extends \PHPUnit_Framework_TestCase
     /**
      * Test Integer compare
      */
-    public function testIntegerCompare()
+    public function testIntegerCompare(): void
     {
         $int_1 = new Integer(56);
         $int_2 = new Integer(56);
@@ -106,7 +106,7 @@ class ComparisonTest extends \PHPUnit_Framework_TestCase
     /**
      * Test Boolean compare
      */
-    public function testBooleanCompare()
+    public function testBooleanCompare(): void
     {
         $bool_1 = new Boolean(false);
         $bool_2 = new Boolean(false);
@@ -119,67 +119,67 @@ class ComparisonTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test Arr failed comparison
-     * @expectedException Phrity\Comparison\IncomparableException
-     * @expectedExceptionMessage Can only compare O\Arr
      */
-    public function testArrIncomparable()
+    public function testArrIncomparable(): void
     {
         $arr = new Arr([1, 2, 3]);
+        $this->expectException('Phrity\Comparison\IncomparableException');
+        $this->expectExceptionMessage('Can only compare O\Arr');
         $arr->compare('Not comparable with O\Arr');
     }
 
     /**
      * Test Obj failed comparison
-     * @expectedException Phrity\Comparison\IncomparableException
-     * @expectedExceptionMessage Can only compare O\Obj
      */
-    public function testObjIncomparable()
+    public function testObjIncomparable(): void
     {
         $obj = new Obj(['a' => 1, 'b' => 2, 'c' => 3]);
+        $this->expectException('Phrity\Comparison\IncomparableException');
+        $this->expectExceptionMessage('Can only compare O\Obj');
         $obj->compare('Not comparable with O\Obj');
     }
 
     /**
      * Test Str failed comparison
-     * @expectedException Phrity\Comparison\IncomparableException
-     * @expectedExceptionMessage Can only compare O\Str
      */
-    public function testStrIncomparable()
+    public function testStrIncomparable(): void
     {
         $str = new Str('aaa');
+        $this->expectException('Phrity\Comparison\IncomparableException');
+        $this->expectExceptionMessage('Can only compare O\Str');
         $str->compare(new \stdClass());
     }
 
     /**
      * Test Number failed comparison
-     * @expectedException Phrity\Comparison\IncomparableException
-     * @expectedExceptionMessage Can only compare O\Number
      */
-    public function testNumberIncomparable()
+    public function testNumberIncomparable(): void
     {
         $obj = new Number(5.6);
+        $this->expectException('Phrity\Comparison\IncomparableException');
+        $this->expectExceptionMessage('Can only compare O\Number');
         $obj->compare('Not comparable with O\Number');
     }
 
     /**
      * Test Integer failed comparison
-     * @expectedException Phrity\Comparison\IncomparableException
-     * @expectedExceptionMessage Can only compare O\Integer
      */
-    public function testIntegerIncomparable()
+    public function testIntegerIncomparable(): void
     {
         $obj = new Integer(56);
+        $this->expectException('Phrity\Comparison\IncomparableException');
+        $this->expectExceptionMessage('Can only compare O\Integer');
         $obj->compare('Not comparable with O\Integer');
     }
 
     /**
      * Test Boolean failed comparison
-     * @expectedException Phrity\Comparison\IncomparableException
-     * @expectedExceptionMessage Can only compare O\Boolean
      */
-    public function testBooleanIncomparable()
+    public function testBooleanIncomparable(): void
     {
         $obj = new Boolean(true);
+        $this->expectException('Phrity\Comparison\IncomparableException');
+        $this->expectExceptionMessage('Can only compare O\Boolean');
         $obj->compare('Not comparable with O\Boolean');
     }
 }

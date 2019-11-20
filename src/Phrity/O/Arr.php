@@ -42,7 +42,7 @@ class Arr implements \ArrayAccess, \Countable, \Iterator, \Phrity\Comparison\Com
      * @param  mixed $offset An offset to check for
      * @return               True if offset exist
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return array_key_exists($offset, $this->o_content);
     }
@@ -62,7 +62,7 @@ class Arr implements \ArrayAccess, \Countable, \Iterator, \Phrity\Comparison\Com
      * @param mixed $offset The offset to assign the value to
      * @param mixed $value  The value to set
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->o_content[] = $value;
@@ -75,7 +75,7 @@ class Arr implements \ArrayAccess, \Countable, \Iterator, \Phrity\Comparison\Com
      * Unsets an offset
      * @param mixed $offset The offset to unset
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->o_content[$offset]);
     }
@@ -87,7 +87,7 @@ class Arr implements \ArrayAccess, \Countable, \Iterator, \Phrity\Comparison\Com
      * Count elements of an object
      * @return int Number of elements
      */
-    public function count()
+    public function count(): int
     {
         return count($this->o_content);
     }
@@ -135,7 +135,7 @@ class Arr implements \ArrayAccess, \Countable, \Iterator, \Phrity\Comparison\Com
      * Checks if current position is valid
      * @return bool True if valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return $this->offsetExists(key($this->o_content));
     }
@@ -168,7 +168,7 @@ class Arr implements \ArrayAccess, \Countable, \Iterator, \Phrity\Comparison\Com
      * Return string representation
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return self::class . "({$this->count()})";
     }
@@ -181,7 +181,7 @@ class Arr implements \ArrayAccess, \Countable, \Iterator, \Phrity\Comparison\Com
      * @param  Arr $compare_with The object to compare with
      * @return int               -1, 0 or +1 comparison result
      */
-    public function compare($compare_with)
+    public function compare($compare_with): int
     {
         if (!$compare_with instanceof self) {
             throw new \Phrity\Comparison\IncomparableException('Can only compare O\Arr');

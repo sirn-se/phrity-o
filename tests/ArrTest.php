@@ -14,13 +14,13 @@ use Phrity\O\Arr;
 /**
  * Generic O\Arr tests.
  */
-class ArrTest extends \PHPUnit_Framework_TestCase
+class ArrTest extends \PHPUnit\Framework\TestCase
 {
 
     /**
      * Set up for all tests
      */
-    public function setUp()
+    public function setUp(): void
     {
         error_reporting(-1);
     }
@@ -31,7 +31,7 @@ class ArrTest extends \PHPUnit_Framework_TestCase
     /**
      * Test constructor w/ associative arrays
      */
-    public function testAssociativeConstructor()
+    public function testAssociativeConstructor(): void
     {
         $array_1 = new Arr();
         $this->assertEquals(0, $array_1->count());
@@ -51,7 +51,7 @@ class ArrTest extends \PHPUnit_Framework_TestCase
     /**
      * Test constructor w/ numeric arrays
      */
-    public function testNumericConstructor()
+    public function testNumericConstructor(): void
     {
         $array_1 = new Arr();
         $this->assertEquals(0, $array_1->count());
@@ -65,21 +65,21 @@ class ArrTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test constructor w/ bad input data
-     * @expectedException InvalidArgumentException
-     * @expectedExceptionMessage Unsupported input data for O\Arr
      */
-    public function testConstructorArgumentType()
+    public function testConstructorArgumentType(): void
     {
+        $this->expectException('InvalidArgumentException');
+        $this->expectExceptionMessage('Unsupported input data for O\Arr');
         $array = new Arr('unsupported');
     }
 
     /**
      * Test constructor w/ bad argument
-     * @expectedException InvalidArgumentException
-     * @expectedExceptionMessage Unsupported argument for O\Arr
      */
-    public function testConstructorArgumentCount()
+    public function testConstructorArgumentCount(): void
     {
+        $this->expectException('InvalidArgumentException');
+        $this->expectExceptionMessage('Unsupported argument for O\Arr');
         $array = new Arr([1, 2, 3], 'unsupported');
     }
 
@@ -89,7 +89,7 @@ class ArrTest extends \PHPUnit_Framework_TestCase
     /**
      * Test implementation of Countable interface
      */
-    public function testCountableImplementation()
+    public function testCountableImplementation(): void
     {
         $array = new Arr([1, 2, 3]);
         $this->assertEquals(3, $array->count());
@@ -101,7 +101,7 @@ class ArrTest extends \PHPUnit_Framework_TestCase
     /**
      * Test implementation of ArrayAccess interface
      */
-    public function testArrayAccessImplementation()
+    public function testArrayAccessImplementation(): void
     {
         $array = new Arr([1, 2, 3]);
 
@@ -126,7 +126,7 @@ class ArrTest extends \PHPUnit_Framework_TestCase
     /**
      * Test magic access of ArrayAccess interface
      */
-    public function testArrayAccessMagic()
+    public function testArrayAccessMagic(): void
     {
         $array = new Arr([1, 2, 3]);
 
@@ -150,12 +150,12 @@ class ArrTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test get on undefined index; generates a notice
-     * @expectedException PHPUnit_Framework_Error_Notice
-     * @expectedExceptionMessage Undefined offset: 4
      */
-    public function testUndefinedOffset()
+    public function testUndefinedOffset(): void
     {
         $array = new Arr([1, 2, 3]);
+        $this->expectException('PHPUnit\Framework\Error\Notice');
+        $this->expectExceptionMessage('Undefined offset: 4');
         $array->offsetGet(4);
     }
 
@@ -165,7 +165,7 @@ class ArrTest extends \PHPUnit_Framework_TestCase
     /**
      * Test implementation of Iterator interface
      */
-    public function testIteratorImplementation()
+    public function testIteratorImplementation(): void
     {
         $array = new Arr([1, 2, 3]);
 
@@ -181,7 +181,7 @@ class ArrTest extends \PHPUnit_Framework_TestCase
     /**
      * Test magic access of Iterator interface
      */
-    public function testIteratorMagic()
+    public function testIteratorMagic(): void
     {
         $array = new Arr([1, 2, 3]);
 
@@ -193,7 +193,7 @@ class ArrTest extends \PHPUnit_Framework_TestCase
     /**
      * Test additional iterators
      */
-    public function testAdditionalIterators()
+    public function testAdditionalIterators(): void
     {
         $array = new Arr([1, 2, 3]);
 
@@ -208,7 +208,7 @@ class ArrTest extends \PHPUnit_Framework_TestCase
     /**
      * Test toString method
      */
-    public function testToString()
+    public function testToString(): void
     {
         $obj = new Arr([1, 2, null, []]);
         $this->assertEquals('Phrity\O\Arr(4)', "{$obj}");
