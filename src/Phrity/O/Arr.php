@@ -1,8 +1,10 @@
 <?php
+
 /**
  * File for O\Arr class.
  * @package Phrity > O
  */
+
 namespace Phrity\O;
 
 /**

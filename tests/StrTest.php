@@ -1,8 +1,12 @@
 <?php
+
 /**
  * File for generic O\Str tests.
  * @package Phrity > O
  */
+
+declare(strict_types=1);
+
 namespace Phrity\O;
 
 use Phrity\O\Str;
@@ -84,7 +88,7 @@ class StrTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorArgumentType()
     {
-        $str = new Str(new \stdClass);
+        $str = new Str(new \stdClass());
     }
 
     /**
@@ -105,6 +109,6 @@ class StrTest extends \PHPUnit_Framework_TestCase
     public function testSetterException()
     {
         $str = new Str();
-        $str(new \stdClass);
+        $str(new \stdClass());
     }
 }

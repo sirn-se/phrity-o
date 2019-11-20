@@ -1,8 +1,12 @@
 <?php
+
 /**
  * File for generic O\Integer tests.
  * @package Phrity > O
  */
+
+declare(strict_types=1);
+
 namespace Phrity\O;
 
 use Phrity\O\Integer;
@@ -73,7 +77,7 @@ class IntegerTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorArgumentType()
     {
-        $int = new Integer(new \stdClass);
+        $int = new Integer(new \stdClass());
     }
 
     /**
@@ -104,6 +108,6 @@ class IntegerTest extends \PHPUnit_Framework_TestCase
     public function testSetterException()
     {
         $int = new Integer();
-        $int(new \stdClass);
+        $int(new \stdClass());
     }
 }

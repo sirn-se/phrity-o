@@ -24,7 +24,7 @@
   },
   "require": {
     "php": ">=5.6",
-    "phrity/comparison": "1.*"
+    "phrity/comparison": "1.0|1.1"
   },
   "require-dev": {
     "phpdocumentor/phpdocumentor": "2.*",

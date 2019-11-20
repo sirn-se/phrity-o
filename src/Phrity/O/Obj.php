@@ -1,8 +1,10 @@
 <?php
+
 /**
  * File for O\Obj class.
  * @package Phrity > O
  */
+
 namespace Phrity\O;
 
 /**
@@ -116,7 +118,7 @@ class Obj implements \Phrity\Comparison\Comparable
     protected function bind($content)
     {
         if (is_null($content)) {
-            return $this->o_content = new \stdclass;
+            return $this->o_content = new \stdclass();
         }
         if ($content instanceof self) {
             return $this->o_content = $content->o_content;
