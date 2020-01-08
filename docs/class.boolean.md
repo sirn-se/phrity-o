@@ -6,6 +6,11 @@
 
 An object implementation of `bool`.
 
+### Implements
+
+* [Comparable](https://github.com/sirn-se/phrity-comparison)
+* [Equalable](https://github.com/sirn-se/phrity-comparison)
+
 ###  Class synopsis
 
 ```php

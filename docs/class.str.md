@@ -11,7 +11,6 @@ An object implementation of `string`.
 * [Comparable](https://github.com/sirn-se/phrity-comparison)
 * [Equalable](https://github.com/sirn-se/phrity-comparison)
 
-
 ###  Class synopsis
 
 ```php
