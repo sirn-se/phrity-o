@@ -1,4 +1,6 @@
-Arr | [Obj](class.obj.md)
+# ”O” > Arr
+
+Arr | [Obj](class.obj.md) | [Str](class.str.md) | [Integer](class.integer.md) | [Number](class.number.md) | [Boolean](class.boolean.md)
 
 ## The Arr class
 
@@ -7,9 +9,11 @@ An object implementation of `array`.
 ### Implements
 
 * [ArrayAccess](https://www.php.net/manual/en/class.arrayaccess.php)
-* [Comparable](https://github.com/sirn-se/phrity-comparison)
 * [Countable](https://www.php.net/manual/en/class.countable.php)
 * [Iterator](https://www.php.net/manual/en/class.iterator.php)
+* [Traversable](https://www.php.net/manual/en/class.traversable.php)
+* [Comparable](https://github.com/sirn-se/phrity-comparison)
+* [Equalable](https://github.com/sirn-se/phrity-comparison)
 
 ###  Class synopsis
 
