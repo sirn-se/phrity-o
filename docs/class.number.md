@@ -1,4 +1,4 @@
-# ”O” > Number
+# O / Number
 
 [Arr](class.arr.md) | [Obj](class.obj.md) | [Str](class.str.md) | [Integer](class.integer.md) | Number | [Boolean](class.boolean.md)
 

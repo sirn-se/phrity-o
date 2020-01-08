@@ -1,4 +1,4 @@
-# ”O”
+# O
 
 Consistent object representation of basic data types.
 Inheritance friendly implementation.

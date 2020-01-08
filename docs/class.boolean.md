@@ -1,4 +1,4 @@
-# ”O” > Boolean
+# O / Boolean
 
 [Arr](class.arr.md) | [Obj](class.obj.md) | [Str](class.str.md) | [Integer](class.integer.md) | [Number](class.number.md) | Boolean
 
