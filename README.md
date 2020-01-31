@@ -14,16 +14,22 @@ Install with [Composer](https://getcomposer.org/);
 composer require phrity/o
 ```
 
+## Documentation
+
+[Full documentation.](https://phrity.sirn.se/o)
+
 ## Classes
 
-| Class | Reflects | Implements | Documentation |
-| --- | --- | --- | --- |
-| Arr | `array` | [ArrayAccess](https://www.php.net/manual/en/class.arrayaccess.php) [Countable](https://www.php.net/manual/en/class.countable.php) [Iterator](https://www.php.net/manual/en/class.iterator.php) [Traversable](https://www.php.net/manual/en/class.traversable.php) [Comparable](https://github.com/sirn-se/phrity-comparison) [Equalable](https://github.com/sirn-se/phrity-comparison) | [Documentation](docs/class.arr.md)
-| Obj | `object` | [Comparable](https://github.com/sirn-se/phrity-comparison) [Equalable](https://github.com/sirn-se/phrity-comparison) | [Documentation](docs/class.obj.md)
-| Str | `string` | [Comparable](https://github.com/sirn-se/phrity-comparison) [Equalable](https://github.com/sirn-se/phrity-comparison) | [Documentation](docs/class.str.md)
-| Integer | `int` | [Comparable](https://github.com/sirn-se/phrity-comparison) [Equalable](https://github.com/sirn-se/phrity-comparison) | [Documentation](docs/class.integer.md)
-| Number | `float` | [Comparable](https://github.com/sirn-se/phrity-comparison) [Equalable](https://github.com/sirn-se/phrity-comparison) | [Documentation](docs/class.number.md)
-| Boolean | `bool` | [Comparable](https://github.com/sirn-se/phrity-comparison) [Equalable](https://github.com/sirn-se/phrity-comparison) | [Documentation](docs/class.boolean.md)
+The package contain the following classes:
+
+| Class | Reflects | Implements |
+| --- | --- | --- |
+| Arr | `array` | [ArrayAccess](https://www.php.net/manual/en/class.arrayaccess.php) [Countable](https://www.php.net/manual/en/class.countable.php) [Iterator](https://www.php.net/manual/en/class.iterator.php) [Traversable](https://www.php.net/manual/en/class.traversable.php) [Comparable](https://github.com/sirn-se/phrity-comparison) [Equalable](https://github.com/sirn-se/phrity-comparison)
+| Obj | `object` | [Comparable](https://github.com/sirn-se/phrity-comparison) [Equalable](https://github.com/sirn-se/phrity-comparison)
+| Str | `string` | [Comparable](https://github.com/sirn-se/phrity-comparison) [Equalable](https://github.com/sirn-se/phrity-comparison)
+| Integer | `int` | [Comparable](https://github.com/sirn-se/phrity-comparison) [Equalable](https://github.com/sirn-se/phrity-comparison)
+| Number | `float` | [Comparable](https://github.com/sirn-se/phrity-comparison) [Equalable](https://github.com/sirn-se/phrity-comparison)
+| Boolean | `bool` | [Comparable](https://github.com/sirn-se/phrity-comparison) [Equalable](https://github.com/sirn-se/phrity-comparison)
 
 
 ## Versions
