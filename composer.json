@@ -1,7 +1,7 @@
 {
   "name": "phrity/o",
   "type": "library",
-  "description": "Consistent object representation of data types. Inheritance friendly implementation. Currently provides Arr (array), Obj (object), Str (string), Number (float), Integer (int), Boolean (bool), Queue and Stack classes.",
+  "description": "Consistent object representation of data types. Inheritance friendly implementation. Provides wrapper classes for array, object, string, float, int and bool, plus Queue and Stack collections.",
   "homepage": "https://phrity.sirn.se/o",
   "keywords": ["object", "array", "queue", "stack"],
   "license": "MIT",
