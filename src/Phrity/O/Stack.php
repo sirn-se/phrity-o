@@ -1,16 +1,16 @@
 <?php
 
 /**
- * File for O\Queue class.
+ * File for O\Stack class.
  * @package Phrity > O
  */
 
 namespace Phrity\O;
 
 /**
- * O\Queue class.
+ * O\Stack class.
  */
-class Queue implements \Countable, \Iterator, \Phrity\Comparison\Comparable
+class Stack implements \Countable, \Iterator, \Phrity\Comparison\Comparable
 {
     use \Phrity\Comparison\ComparisonTrait;
 
@@ -20,7 +20,7 @@ class Queue implements \Countable, \Iterator, \Phrity\Comparison\Comparable
     protected $o_content;
 
     /**
-     * Constructor for O\Queue
+     * Constructor for O\Stack
      * @param mixed $args Input data
      */
     public function __construct(...$args)
@@ -30,24 +30,24 @@ class Queue implements \Countable, \Iterator, \Phrity\Comparison\Comparable
         $this->bind($content);
 
         if (!empty($args)) {
-            throw new \InvalidArgumentException('Unsupported argument for O\Queue');
+            throw new \InvalidArgumentException('Unsupported argument for O\Stack');
         }
     }
 
     /**
      * Add item to the queue
      */
-    public function enqueue($item)
+    public function push($item)
     {
         $this->o_content[] = $item;
     }
 
     /**
-     * Get item to the queue
+     * Get item from the queue
      */
-    public function dequeue()
+    public function pop()
     {
-        return array_shift($this->o_content);
+        return array_pop($this->o_content);
     }
 
 
@@ -71,7 +71,7 @@ class Queue implements \Countable, \Iterator, \Phrity\Comparison\Comparable
      */
     public function current()
     {
-        return array_shift($this->o_content);
+        return $this->pop($this->o_content);
     }
 
     /**
@@ -96,7 +96,7 @@ class Queue implements \Countable, \Iterator, \Phrity\Comparison\Comparable
      */
     public function rewind()
     {
-        reset($this->o_content);
+        end($this->o_content);
     }
 
     /**
@@ -131,7 +131,7 @@ class Queue implements \Countable, \Iterator, \Phrity\Comparison\Comparable
     public function compare($compare_with): int
     {
         if (!$compare_with instanceof self) {
-            throw new \Phrity\Comparison\IncomparableException('Can only compare O\Queue');
+            throw new \Phrity\Comparison\IncomparableException('Can only compare O\Stack');
         }
         if ($this->o_content == $compare_with->o_content) {
             return 0;
@@ -158,6 +158,6 @@ class Queue implements \Countable, \Iterator, \Phrity\Comparison\Comparable
         if ($content instanceof self) {
             return $this->o_content = $content->o_content;
         }
-        throw new \InvalidArgumentException('Unsupported input data for O\Queue');
+        throw new \InvalidArgumentException('Unsupported input data for O\Stack');
     }
 }

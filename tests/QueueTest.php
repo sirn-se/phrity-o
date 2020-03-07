@@ -79,7 +79,7 @@ class QueueTest extends \PHPUnit\Framework\TestCase
     }
 
 
-    // Test enqueue/dequeue operations
+    // Test queue operations
 
     /**
      * Test enqueue/dequeue operations
@@ -135,9 +135,8 @@ class QueueTest extends \PHPUnit\Framework\TestCase
     {
         $queue = new Queue([1, 2, 3]);
         $i = 1;
-        foreach ($queue as $key => $value) {
+        foreach ($queue as $value) {
             $this->assertEquals($i, $value);
-            $this->assertEquals(0, $key);
             $i++;
         }
         $this->assertNull($queue->key());
