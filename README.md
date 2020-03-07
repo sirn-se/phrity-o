@@ -31,7 +31,7 @@ The package contain the following classes:
 
 ## Examples
 
-Brief examples below. The [full documentation.](https://phrity.sirn.se/o) contains more example.
+Brief examples below. The [full documentation.](https://phrity.sirn.se/o) contains more examples.
 
 ### Scalar types
 
