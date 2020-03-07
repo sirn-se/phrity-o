@@ -35,7 +35,7 @@ Brief examples below. The [full documentation.](https://phrity.sirn.se/o) contai
 
 ### Scalar types
 
-´´´php
+```php
 $str = new Str('hello world');
 $str(); // Getter
 $str('world'); // Setter
@@ -51,11 +51,11 @@ $num(56.78); // Setter
 $bool = new Boolean(true);
 $bool(); // Getter
 $bool(false); // Setter
-´´´
+```
 
 ### Complex types
 
-´´´php
+```php
 $array = new Arr([1, 2, 3]);
 $array[] = 7; // ArrayAccess support
 count($array); // Countable support
@@ -65,21 +65,25 @@ $array->equals(new Arr([2, 3, 4])); // Comparison support
 $object = new Obj(['a' => 1, 'b' => 2, 'c' => 3]);
 $object->b = 5; // Property access
 $object->equals(new Obj(['c' => 1, 'd' => 2])); // Comparison support
-´´´
+```
 
 ### Collection types
 
-´´´php
+```php
 $queue = new Queue([1, 2, 3]);
+$queue->enqueue(4);
+$queue->dequeue();
 count($queue); // Countable support
 foreach ($queue as $item) {} // Consuming iterator support
 $queue->equals(new Queue([2, 3, 4])); // Comparison support
 
 $stack = new Stack([1, 2, 3]);
+$stack->push(4);
+$stack->pop();
 count($stack); // Countable support
 foreach ($stack as $item) {} // Consuming iterator support
 $stack->equals(new Stack([2, 3, 4])); // Comparison support
-´´´
+```
 
 ## Versions
 
