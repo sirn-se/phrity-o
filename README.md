@@ -3,7 +3,7 @@
 
 # O
 
-Consistent object representation of basic data types.
+Consistent object representation of data types.
 Inheritance friendly implementation.
 Provides wrapper classes for array, object, string, float, int and bool, plus Queue and Stack collections.
 
