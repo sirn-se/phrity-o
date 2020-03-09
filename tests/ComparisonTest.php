@@ -118,6 +118,34 @@ class ComparisonTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
+     * Test Queue compare
+     */
+    public function testQueueCompare(): void
+    {
+        $queue_1 = new Queue([1, 2, 3]);
+        $queue_2 = new Queue([1, 2, 3]);
+        $queue_3 = new Queue([1, 2, 3, 4]);
+
+        $this->assertEquals(0, $queue_1->compare($queue_2));
+        $this->assertEquals(-1, $queue_1->compare($queue_3));
+        $this->assertEquals(1, $queue_3->compare($queue_2));
+    }
+
+    /**
+     * Test Stack compare
+     */
+    public function testStackCompare(): void
+    {
+        $stack_1 = new Stack([1, 2, 3]);
+        $stack_2 = new Stack([1, 2, 3]);
+        $stack_3 = new Stack([1, 2, 3, 4]);
+
+        $this->assertEquals(0, $stack_1->compare($stack_2));
+        $this->assertEquals(-1, $stack_1->compare($stack_3));
+        $this->assertEquals(1, $stack_3->compare($stack_2));
+    }
+
+    /**
      * Test Arr failed comparison
      */
     public function testArrIncomparable(): void
@@ -181,5 +209,27 @@ class ComparisonTest extends \PHPUnit\Framework\TestCase
         $this->expectException('Phrity\Comparison\IncomparableException');
         $this->expectExceptionMessage('Can only compare O\Boolean');
         $obj->compare('Not comparable with O\Boolean');
+    }
+
+    /**
+     * Test Queue failed comparison
+     */
+    public function testQueueIncomparable(): void
+    {
+        $queue = new Queue([1, 2, 3]);
+        $this->expectException('Phrity\Comparison\IncomparableException');
+        $this->expectExceptionMessage('Can only compare O\Queue');
+        $queue->compare('Not comparable with O\Queue');
+    }
+
+    /**
+     * Test Stack failed comparison
+     */
+    public function testStackIncomparable(): void
+    {
+        $stack = new Stack([1, 2, 3]);
+        $this->expectException('Phrity\Comparison\IncomparableException');
+        $this->expectExceptionMessage('Can only compare O\Stack');
+        $stack->compare('Not comparable with O\Stack');
     }
 }
