@@ -10,7 +10,7 @@ namespace Phrity\O;
 /**
  * O\Stack class.
  */
-class Stack implements \Countable, \Iterator, \Phrity\Comparison\Comparable
+class Stack implements \Countable, \IteratorAggregate, \Phrity\Comparison\Comparable
 {
     use \Phrity\Comparison\ComparisonTrait;
 
@@ -39,7 +39,7 @@ class Stack implements \Countable, \Iterator, \Phrity\Comparison\Comparable
      */
     public function push($item)
     {
-        $this->o_content[] = $item;
+        array_unshift($this->o_content, $item);
     }
 
     /**
@@ -47,7 +47,7 @@ class Stack implements \Countable, \Iterator, \Phrity\Comparison\Comparable
      */
     public function pop()
     {
-        return array_pop($this->o_content);
+        return array_shift($this->o_content);
     }
 
 
@@ -63,49 +63,21 @@ class Stack implements \Countable, \Iterator, \Phrity\Comparison\Comparable
     }
 
 
-    // Iterator interface implementation
+    // IteratorAggregate interface implementation
 
     /**
-     * Consume and return the current element
+     * Consume and return the current key/value pair
      * @return mixed Current element
      */
-    public function current()
+    public function getIterator(): \Traversable
     {
-        return $this->pop($this->o_content);
-    }
-
-    /**
-     * Return the key of the current element
-     * @return scalar|null Current key
-     */
-    public function key()
-    {
-        return empty($this->o_content) ? null : 0;
-    }
-
-    /**
-     * Not applicable
-     */
-    public function next()
-    {
-        return;
-    }
-
-    /**
-     * Rewind the Iterator to the first element
-     */
-    public function rewind()
-    {
-        end($this->o_content);
-    }
-
-    /**
-     * Checks if current position is valid
-     * @return bool True if valid
-     */
-    public function valid(): bool
-    {
-        return !empty($this->o_content);
+        return (function () {
+            while (!empty($this->o_content)) {
+                $key = key($this->o_content);
+                $val = $this->pop();
+                yield $key => $val;
+            }
+        })();
     }
 
 
@@ -153,10 +125,10 @@ class Stack implements \Countable, \Iterator, \Phrity\Comparison\Comparable
             return $this->o_content = [];
         }
         if (is_array($content)) {
-            return $this->o_content = $content;
+            return $this->o_content = array_reverse($content);
         }
         if ($content instanceof self) {
-            return $this->o_content = $content->o_content;
+            return $this->o_content = array_reverse($content->o_content);
         }
         throw new \InvalidArgumentException('Unsupported input data for O\Stack');
     }

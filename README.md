@@ -26,8 +26,8 @@ The package contain the following classes:
 | Integer | `int` | [Comparable](https://github.com/sirn-se/phrity-comparison) [Equalable](https://github.com/sirn-se/phrity-comparison)
 | Number | `float` | [Comparable](https://github.com/sirn-se/phrity-comparison) [Equalable](https://github.com/sirn-se/phrity-comparison)
 | Boolean | `bool` | [Comparable](https://github.com/sirn-se/phrity-comparison) [Equalable](https://github.com/sirn-se/phrity-comparison)
-| Queue |  | [Countable](https://www.php.net/manual/en/class.countable.php) [Iterator](https://www.php.net/manual/en/class.iterator.php) [Traversable](https://www.php.net/manual/en/class.traversable.php) [Comparable](https://github.com/sirn-se/phrity-comparison) [Equalable](https://github.com/sirn-se/phrity-comparison)
-| Stack |  | [Countable](https://www.php.net/manual/en/class.countable.php) [Iterator](https://www.php.net/manual/en/class.iterator.php) [Traversable](https://www.php.net/manual/en/class.traversable.php) [Comparable](https://github.com/sirn-se/phrity-comparison) [Equalable](https://github.com/sirn-se/phrity-comparison)
+| Queue |  | [Countable](https://www.php.net/manual/en/class.countable.php) [IteratorAggregate](https://www.php.net/manual/en/class.iteratoraggregate) [Traversable](https://www.php.net/manual/en/class.traversable.php) [Comparable](https://github.com/sirn-se/phrity-comparison) [Equalable](https://github.com/sirn-se/phrity-comparison)
+| Stack |  | [Countable](https://www.php.net/manual/en/class.countable.php) [IteratorAggregate](https://www.php.net/manual/en/class.iteratoraggregate) [Traversable](https://www.php.net/manual/en/class.traversable.php) [Comparable](https://github.com/sirn-se/phrity-comparison) [Equalable](https://github.com/sirn-se/phrity-comparison)
 
 ## Examples
 
@@ -74,14 +74,14 @@ $queue = new Queue([1, 2, 3]);
 $queue->enqueue(4);
 $queue->dequeue();
 count($queue); // Countable support
-foreach ($queue as $item) {} // Consuming iterator support
+foreach ($queue as $key => $item) {} // Consuming iterator support
 $queue->equals(new Queue([2, 3, 4])); // Comparison support
 
 $stack = new Stack([1, 2, 3]);
 $stack->push(4);
 $stack->pop();
 count($stack); // Countable support
-foreach ($stack as $item) {} // Consuming iterator support
+foreach ($stack as $key => $item) {} // Consuming iterator support
 $stack->equals(new Stack([2, 3, 4])); // Comparison support
 ```
 
