@@ -10,7 +10,7 @@ namespace Phrity\O;
 /**
  * O\Queue class.
  */
-class Queue implements \Countable, \Iterator, \Phrity\Comparison\Comparable
+class Queue implements \Countable, \IteratorAggregate, \Phrity\Comparison\Comparable
 {
     use \Phrity\Comparison\ComparisonTrait;
 
@@ -63,49 +63,21 @@ class Queue implements \Countable, \Iterator, \Phrity\Comparison\Comparable
     }
 
 
-    // Iterator interface implementation
+    // IteratorAggregate interface implementation
 
     /**
-     * Consume and return the current element
+     * Consume and return the current key/value pair
      * @return mixed Current element
      */
-    public function current()
+    public function getIterator(): \Traversable
     {
-        return array_shift($this->o_content);
-    }
-
-    /**
-     * Return the key of the current element
-     * @return scalar|null Current key
-     */
-    public function key()
-    {
-        return empty($this->o_content) ? null : 0;
-    }
-
-    /**
-     * Not applicable
-     */
-    public function next()
-    {
-        return;
-    }
-
-    /**
-     * Rewind the Iterator to the first element
-     */
-    public function rewind()
-    {
-        reset($this->o_content);
-    }
-
-    /**
-     * Checks if current position is valid
-     * @return bool True if valid
-     */
-    public function valid(): bool
-    {
-        return !empty($this->o_content);
+        return (function () {
+            while (!empty($this->o_content)) {
+                $key = key($this->o_content);
+                $val = $this->dequeue();
+                yield $key => $val;
+            }
+        })();
     }
 
 

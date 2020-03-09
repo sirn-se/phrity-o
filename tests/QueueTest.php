@@ -110,39 +110,40 @@ class QueueTest extends \PHPUnit\Framework\TestCase
     }
 
 
-    // Test Iterator interface
+    // Test IteratorAggregate interface
 
     /**
-     * Test implementation of Iterator interface
+     * Test IteratorAggregate with numeric keys
      */
-    public function testIteratorImplementation(): void
+    public function testNumericIteratorAggregate(): void
     {
         $queue = new Queue([1, 2, 3]);
-
-        $this->assertEquals(1, $queue->current());
-        $this->assertEquals(0, $queue->key());
-        $this->assertTrue($queue->valid());
-        $this->assertEquals(2, $queue->count());
-        $queue->next();
-        $this->assertEquals(0, $queue->key());
-        $queue->rewind();
-    }
-
-    /**
-     * Test magic access of Iterator interface
-     */
-    public function testIteratorMagic(): void
-    {
-        $queue = new Queue([1, 2, 3]);
-        $i = 1;
-        foreach ($queue as $value) {
-            $this->assertEquals($i, $value);
+        $this->assertInstanceOf('Generator', $queue->getIterator());
+        $i = 0;
+        foreach ($queue as $key => $value) {
+            $this->assertEquals(0, $key);
+            $this->assertEquals($i + 1, $value);
             $i++;
         }
-        $this->assertNull($queue->key());
-        $this->assertFalse($queue->valid());
+        $this->assertCount(0, $queue);
     }
 
+    /**
+     * Test IteratorAggregate with non-numeric keys
+     */
+    public function testAssocIteratorAggregate(): void
+    {
+        $queue = new Queue(['a' => 1, 'b' => 2, 'c' => 3]);
+        $this->assertInstanceOf('Generator', $queue->getIterator());
+        $i = 0;
+        $a = ord('a');
+        foreach ($queue as $key => $value) {
+            $this->assertEquals(chr($a + $i), $key);
+            $this->assertEquals($i + 1, $value);
+            $i++;
+        }
+        $this->assertCount(0, $queue);
+    }
 
     // Test representation methods
 
