@@ -154,7 +154,7 @@ class ArrTest extends \PHPUnit\Framework\TestCase
     public function testUndefinedOffset(): void
     {
         $array = new Arr([1, 2, 3]);
-        $this->expectException('PHPUnit\Framework\Error\Notice');
+        $this->expectException('PHPUnit\Framework\Error\Error');
         $this->expectExceptionMessage('Undefined offset: 4');
         $array->offsetGet(4);
     }
