@@ -89,7 +89,7 @@ $stack->equals(new Stack([2, 3, 4])); // Comparison support
 
 | Version | PHP | |
 | --- | --- | --- |
-| `1.4` | `^7.1|^8.0` |  |
+| `1.4` | `^7.1\|^8.0` |  |
 | `1.3` | `^7.1` | `Queue` and  `Stack` collection classes |
 | `1.2` | `^7.1` | `Str` (string), `Number` (float), `Integer` (int) and `Boolean` (bool) classes |
 | `1.1` | `>=5.6` | Comparison support |
