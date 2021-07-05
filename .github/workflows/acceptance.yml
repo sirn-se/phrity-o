@@ -3,9 +3,8 @@ name: Acceptance
 on: [push, pull_request]
 
 jobs:
-  test-7-2:
+  test-7-1:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout
       uses: actions/checkout@v1
@@ -17,10 +16,41 @@ jobs:
       run: make deps-install
     - name: Test
       run: make test
+
+  test-7-2:
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
     - name: Set up PHP 7.2
       uses: shivammathur/setup-php@v2
       with:
         php-version: '7.2'
+    - name: Composer
+      run: make deps-install
+    - name: Test
+      run: make test
+
+  test-7-3:
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Set up PHP 7.3
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '7.3'
+    - name: Composer
+      run: make deps-install
+    - name: Test
+      run: make test
+
+  test-7-4:
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Set up PHP 7.4
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '7.4'
     - name: Composer
       run: make deps-install
     - name: Test
