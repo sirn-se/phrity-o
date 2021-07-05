@@ -1,0 +1,19 @@
+name: Acceptance
+
+on: [push, pull_request]
+
+jobs:
+  test-7.2:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '7.2'
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Composer
+      run: make install
+    - name: Test
+      run: make test
