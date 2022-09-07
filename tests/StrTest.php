@@ -16,7 +16,6 @@ use Phrity\O\Str;
  */
 class StrTest extends \PHPUnit\Framework\TestCase
 {
-
     /**
      * Set up for all tests
      */

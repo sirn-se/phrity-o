@@ -16,7 +16,6 @@ use Phrity\O\Stack;
  */
 class StackTest extends \PHPUnit\Framework\TestCase
 {
-
     /**
      * Set up for all tests
      */

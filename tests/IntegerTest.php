@@ -16,7 +16,6 @@ use Phrity\O\Integer;
  */
 class IntegerTest extends \PHPUnit\Framework\TestCase
 {
-
     /**
      * Set up for all tests
      */

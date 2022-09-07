@@ -16,7 +16,6 @@ use Phrity\O\Queue;
  */
 class QueueTest extends \PHPUnit\Framework\TestCase
 {
-
     /**
      * Set up for all tests
      */

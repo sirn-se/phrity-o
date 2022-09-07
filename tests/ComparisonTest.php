@@ -21,7 +21,6 @@ use Phrity\O\Boolean;
  */
 class ComparisonTest extends \PHPUnit\Framework\TestCase
 {
-
     /**
      * Set up for all tests
      */
