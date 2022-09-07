@@ -16,7 +16,6 @@ use Phrity\O\Obj;
  */
 class ObjTest extends \PHPUnit\Framework\TestCase
 {
-
     /**
      * Set up for all tests
      */

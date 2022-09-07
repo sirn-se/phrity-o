@@ -16,7 +16,6 @@ use Phrity\O\Boolean;
  */
 class BooleanTest extends \PHPUnit\Framework\TestCase
 {
-
     /**
      * Set up for all tests
      */

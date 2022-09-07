@@ -16,7 +16,6 @@ use Phrity\O\Arr;
  */
 class ArrTest extends \PHPUnit\Framework\TestCase
 {
-
     /**
      * Set up for all tests
      */
