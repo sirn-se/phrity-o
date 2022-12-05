@@ -10,7 +10,7 @@ namespace Phrity\O;
 /**
  * O\Queue class.
  */
-class Queue implements \Countable, \IteratorAggregate, \Phrity\Comparison\Comparable
+class Queue implements \Countable, \IteratorAggregate, \Phrity\Comparison\Comparable, \Stringable
 {
     use \Phrity\Comparison\ComparisonTrait;
 
@@ -23,7 +23,7 @@ class Queue implements \Countable, \IteratorAggregate, \Phrity\Comparison\Compar
      * Constructor for O\Queue
      * @param mixed $args Input data
      */
-    public function __construct(...$args)
+    public function __construct(mixed ...$args)
     {
         // Allow subclass to use additional input
         $content = array_shift($args);
@@ -37,7 +37,7 @@ class Queue implements \Countable, \IteratorAggregate, \Phrity\Comparison\Compar
     /**
      * Add item to the queue
      */
-    public function enqueue($item)
+    public function enqueue(mixed $item): void
     {
         $this->o_content[] = $item;
     }
@@ -45,7 +45,7 @@ class Queue implements \Countable, \IteratorAggregate, \Phrity\Comparison\Compar
     /**
      * Get item to the queue
      */
-    public function dequeue()
+    public function dequeue(): mixed
     {
         return array_shift($this->o_content);
     }
@@ -100,7 +100,7 @@ class Queue implements \Countable, \IteratorAggregate, \Phrity\Comparison\Compar
      * @param  Queue $compare_with The object to compare with
      * @return int                 -1, 0 or +1 comparison result
      */
-    public function compare($compare_with): int
+    public function compare(mixed $compare_with): int
     {
         if (!$compare_with instanceof self) {
             throw new \Phrity\Comparison\IncomparableException('Can only compare O\Queue');
@@ -119,7 +119,7 @@ class Queue implements \Countable, \IteratorAggregate, \Phrity\Comparison\Compar
      * @param  mixed $content Input data
      * @return array          The internal structure
      */
-    protected function bind($content)
+    protected function bind(mixed $content): array
     {
         if (is_null($content)) {
             return $this->o_content = [];

@@ -10,7 +10,7 @@ namespace Phrity\O;
 /**
  * O\Obj class.
  */
-class Obj implements \Phrity\Comparison\Comparable
+class Obj implements \Phrity\Comparison\Comparable, \Stringable
 {
     use \Phrity\Comparison\ComparisonTrait;
 
@@ -23,7 +23,7 @@ class Obj implements \Phrity\Comparison\Comparable
      * Constructor for O\Obj
      * @param mixed $args Input data
      */
-    public function __construct(...$args)
+    public function __construct(mixed ...$args)
     {
         // Allow subclass to use additional input
         $content = array_shift($args);
@@ -42,7 +42,7 @@ class Obj implements \Phrity\Comparison\Comparable
      * @param  mixed $key The property to retrieve
      * @return mixed      Value for property
      */
-    public function __get($key)
+    public function __get(mixed $key): mixed
     {
         return $this->o_content->$key;
     }
@@ -52,7 +52,7 @@ class Obj implements \Phrity\Comparison\Comparable
      * @param mixed $key    The property to assign the value to
      * @param mixed $value  The value to set
      */
-    public function __set($key, $value): void
+    public function __set(mixed $key, mixed $value): void
     {
         $this->o_content->$key = $value;
     }
@@ -62,7 +62,7 @@ class Obj implements \Phrity\Comparison\Comparable
      * @param  mixed $key A property to check for
      * @return            True if property exist
      */
-    public function __isset($key): bool
+    public function __isset(mixed $key): bool
     {
         return isset($this->o_content->$key);
     }
@@ -71,7 +71,7 @@ class Obj implements \Phrity\Comparison\Comparable
      * Unsets a property
      * @param mixed $key The property to unset
      */
-    public function __unset($key): void
+    public function __unset(mixed $key): void
     {
         unset($this->o_content->$key);
     }
@@ -96,7 +96,7 @@ class Obj implements \Phrity\Comparison\Comparable
      * @param  Obj $compare_with The object to compare with
      * @return int               -1, 0 or +1 comparison result
      */
-    public function compare($compare_with): int
+    public function compare(mixed $compare_with): int
     {
         if (!$compare_with instanceof self) {
             throw new \Phrity\Comparison\IncomparableException('Can only compare O\Obj');
@@ -115,7 +115,7 @@ class Obj implements \Phrity\Comparison\Comparable
      * @param  mixed $content Input data
      * @return object         The internal structure
      */
-    protected function bind($content)
+    protected function bind(mixed $content): object
     {
         if (is_null($content)) {
             return $this->o_content = new \stdclass();
