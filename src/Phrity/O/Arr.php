@@ -52,7 +52,7 @@ class Arr implements \ArrayAccess, \Countable, \Iterator, \Phrity\Comparison\Com
      * @param  mixed $offset The offset to retrieve
      * @return mixed         Value for offset
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->o_content[$offset];
     }
@@ -99,7 +99,7 @@ class Arr implements \ArrayAccess, \Countable, \Iterator, \Phrity\Comparison\Com
      * Return the current element
      * @return mixed Current element
      */
-    public function current()
+    public function current(): mixed
     {
         return current($this->o_content);
     }
@@ -108,27 +108,25 @@ class Arr implements \ArrayAccess, \Countable, \Iterator, \Phrity\Comparison\Com
      * Return the key of the current element
      * @return scalar|null Current key
      */
-    public function key()
+    public function key(): mixed
     {
         return key($this->o_content);
     }
 
     /**
      * Move forward to next element
-     * @return mixed Returns the value in the next position
      */
-    public function next()
+    public function next(): void
     {
-        return next($this->o_content);
+        next($this->o_content);
     }
 
     /**
      * Rewind the Iterator to the first element
-     * @return mixed Returns the value of the first element
      */
-    public function rewind()
+    public function rewind(): void
     {
-        return reset($this->o_content);
+        reset($this->o_content);
     }
 
     /**
@@ -147,7 +145,7 @@ class Arr implements \ArrayAccess, \Countable, \Iterator, \Phrity\Comparison\Com
      * Move backward to previous element
      * @return mixed Returns the value in the previous position
      */
-    public function previous()
+    public function previous(): mixed
     {
         return prev($this->o_content);
     }
@@ -156,7 +154,7 @@ class Arr implements \ArrayAccess, \Countable, \Iterator, \Phrity\Comparison\Com
      * Advance the Iterator to the last element
      * @return mixed Returns the value of the last element
      */
-    public function forward()
+    public function forward(): mixed
     {
         return end($this->o_content);
     }
@@ -200,7 +198,7 @@ class Arr implements \ArrayAccess, \Countable, \Iterator, \Phrity\Comparison\Com
      * @param  mixed $content Input data
      * @return array          The internal structure
      */
-    protected function bind($content)
+    protected function bind($content): array
     {
         if (is_null($content)) {
             return $this->o_content = [];
