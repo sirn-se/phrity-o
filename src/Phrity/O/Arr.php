@@ -10,7 +10,7 @@ namespace Phrity\O;
 /**
  * O\Arr class.
  */
-class Arr implements \ArrayAccess, \Countable, \Iterator, \Phrity\Comparison\Comparable
+class Arr implements \ArrayAccess, \Countable, \Iterator, \Phrity\Comparison\Comparable, \Stringable
 {
     use \Phrity\Comparison\ComparisonTrait;
 
@@ -23,7 +23,7 @@ class Arr implements \ArrayAccess, \Countable, \Iterator, \Phrity\Comparison\Com
      * Constructor for O\Arr
      * @param mixed $args Input data
      */
-    public function __construct(...$args)
+    public function __construct(mixed ...$args)
     {
         // Allow subclass to use additional input
         $content = array_shift($args);
@@ -42,7 +42,7 @@ class Arr implements \ArrayAccess, \Countable, \Iterator, \Phrity\Comparison\Com
      * @param  mixed $offset An offset to check for
      * @return               True if offset exist
      */
-    public function offsetExists($offset): bool
+    public function offsetExists(mixed $offset): bool
     {
         return array_key_exists($offset, $this->o_content);
     }
@@ -52,7 +52,7 @@ class Arr implements \ArrayAccess, \Countable, \Iterator, \Phrity\Comparison\Com
      * @param  mixed $offset The offset to retrieve
      * @return mixed         Value for offset
      */
-    public function offsetGet($offset)
+    public function offsetGet(mixed $offset): mixed
     {
         return $this->o_content[$offset];
     }
@@ -62,7 +62,7 @@ class Arr implements \ArrayAccess, \Countable, \Iterator, \Phrity\Comparison\Com
      * @param mixed $offset The offset to assign the value to
      * @param mixed $value  The value to set
      */
-    public function offsetSet($offset, $value): void
+    public function offsetSet(mixed $offset, mixed $value): void
     {
         if (is_null($offset)) {
             $this->o_content[] = $value;
@@ -75,7 +75,7 @@ class Arr implements \ArrayAccess, \Countable, \Iterator, \Phrity\Comparison\Com
      * Unsets an offset
      * @param mixed $offset The offset to unset
      */
-    public function offsetUnset($offset): void
+    public function offsetUnset(mixed $offset): void
     {
         unset($this->o_content[$offset]);
     }
@@ -99,7 +99,7 @@ class Arr implements \ArrayAccess, \Countable, \Iterator, \Phrity\Comparison\Com
      * Return the current element
      * @return mixed Current element
      */
-    public function current()
+    public function current(): mixed
     {
         return current($this->o_content);
     }
@@ -108,27 +108,25 @@ class Arr implements \ArrayAccess, \Countable, \Iterator, \Phrity\Comparison\Com
      * Return the key of the current element
      * @return scalar|null Current key
      */
-    public function key()
+    public function key(): mixed
     {
         return key($this->o_content);
     }
 
     /**
      * Move forward to next element
-     * @return mixed Returns the value in the next position
      */
-    public function next()
+    public function next(): void
     {
-        return next($this->o_content);
+        next($this->o_content);
     }
 
     /**
      * Rewind the Iterator to the first element
-     * @return mixed Returns the value of the first element
      */
-    public function rewind()
+    public function rewind(): void
     {
-        return reset($this->o_content);
+        reset($this->o_content);
     }
 
     /**
@@ -147,7 +145,7 @@ class Arr implements \ArrayAccess, \Countable, \Iterator, \Phrity\Comparison\Com
      * Move backward to previous element
      * @return mixed Returns the value in the previous position
      */
-    public function previous()
+    public function previous(): mixed
     {
         return prev($this->o_content);
     }
@@ -156,7 +154,7 @@ class Arr implements \ArrayAccess, \Countable, \Iterator, \Phrity\Comparison\Com
      * Advance the Iterator to the last element
      * @return mixed Returns the value of the last element
      */
-    public function forward()
+    public function forward(): mixed
     {
         return end($this->o_content);
     }
@@ -181,7 +179,7 @@ class Arr implements \ArrayAccess, \Countable, \Iterator, \Phrity\Comparison\Com
      * @param  Arr $compare_with The object to compare with
      * @return int               -1, 0 or +1 comparison result
      */
-    public function compare($compare_with): int
+    public function compare(mixed $compare_with): int
     {
         if (!$compare_with instanceof self) {
             throw new \Phrity\Comparison\IncomparableException('Can only compare O\Arr');
@@ -200,7 +198,7 @@ class Arr implements \ArrayAccess, \Countable, \Iterator, \Phrity\Comparison\Com
      * @param  mixed $content Input data
      * @return array          The internal structure
      */
-    protected function bind($content)
+    protected function bind(mixed $content): array
     {
         if (is_null($content)) {
             return $this->o_content = [];

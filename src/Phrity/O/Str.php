@@ -10,7 +10,7 @@ namespace Phrity\O;
 /**
  * O\Str class.
  */
-class Str implements \Phrity\Comparison\Comparable
+class Str implements \Phrity\Comparison\Comparable, \Stringable
 {
     use \Phrity\Comparison\ComparisonTrait;
 
@@ -23,7 +23,7 @@ class Str implements \Phrity\Comparison\Comparable
      * Constructor for O\Str
      * @param mixed $args Input data
      */
-    public function __construct(...$args)
+    public function __construct(mixed ...$args)
     {
         // Allow subclass to use additional input
         $content = array_shift($args);
@@ -39,7 +39,7 @@ class Str implements \Phrity\Comparison\Comparable
      * @param  mixed $args Input data
      * @return string      Current value
      */
-    public function __invoke(...$args)
+    public function __invoke(mixed ...$args): string
     {
         // Get call
         if (empty($args)) {
@@ -69,7 +69,7 @@ class Str implements \Phrity\Comparison\Comparable
      * @param  Arr $compare_with The object to compare with
      * @return int               -1, 0 or +1 comparison result
      */
-    public function compare($compare_with): int
+    public function compare(mixed $compare_with): int
     {
         if (!$compare_with instanceof self) {
             throw new \Phrity\Comparison\IncomparableException('Can only compare O\Str');
@@ -88,7 +88,7 @@ class Str implements \Phrity\Comparison\Comparable
      * @param  mixed $content Input data
      * @return array          The internal structure
      */
-    protected function bind($content)
+    protected function bind(mixed $content): string
     {
         if (is_scalar($content)) {
             return $this->o_content = (string)$content;
