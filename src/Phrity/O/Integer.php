@@ -10,7 +10,7 @@ namespace Phrity\O;
 /**
  * O\Integer class.
  */
-class Integer implements \Phrity\Comparison\Comparable
+class Integer implements \Phrity\Comparison\Comparable, \Stringable
 {
     use \Phrity\Comparison\ComparisonTrait;
 
@@ -23,7 +23,7 @@ class Integer implements \Phrity\Comparison\Comparable
      * Constructor for O\Integer
      * @param mixed $args Input data
      */
-    public function __construct(...$args)
+    public function __construct(mixed ...$args)
     {
         // Allow subclass to use additional input
         $content = array_shift($args);
@@ -37,9 +37,9 @@ class Integer implements \Phrity\Comparison\Comparable
     /**
      * Getter/setter implementation
      * @param  mixed $args Input data
-     * @return string      Current value
+     * @return int         Current value
      */
-    public function __invoke(...$args)
+    public function __invoke(mixed ...$args): int
     {
         // Get call
         if (empty($args)) {
@@ -69,7 +69,7 @@ class Integer implements \Phrity\Comparison\Comparable
      * @param  Arr $compare_with The object to compare with
      * @return int               -1, 0 or +1 comparison result
      */
-    public function compare($compare_with): int
+    public function compare(mixed $compare_with): int
     {
         if (!$compare_with instanceof self) {
             throw new \Phrity\Comparison\IncomparableException('Can only compare O\Integer');
@@ -86,9 +86,9 @@ class Integer implements \Phrity\Comparison\Comparable
     /**
      * Bind provided data to internal structure
      * @param  mixed $content Input data
-     * @return array          The internal structure
+     * @return int            The internal structure
      */
-    protected function bind($content)
+    protected function bind(mixed $content): int
     {
         if (is_int($content)) {
             return $this->o_content = $content;
