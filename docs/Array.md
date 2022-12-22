@@ -4,14 +4,14 @@ The following traits are available for array source type.
 
 | Trait | Implements | Example |
 | --- | --- | --- |
-| ArrayAccessTrait | [ArrayAccess](https://www.php.net/manual/en/class.arrayaccess.php) | ```php $value = $class[1] ``` |
-| ComparableTrait | [Comparable](https://github.com/sirn-se/phrity-comparison), [Equalable](https://github.com/sirn-se/phrity-comparison) |  ```php $class->compare($other_class) ``` |
-| CountableTrait | [Countable](https://www.php.net/manual/en/class.countable.php) |  ```php coun($class) ``` |
-| IteratorAggregateTrait | [IteratorAggregate](https://www.php.net/manual/en/class.iteratoraggregate), [Traversable](https://www.php.net/manual/en/class.traversable.php) |  ```php foreach ($class as $key => $val) ``` |
-| IteratorTrait | [Iterator](https://www.php.net/manual/en/class.iterator.php), [Traversable](https://www.php.net/manual/en/class.traversable.php) |  ```php foreach ($class as $key => $val) ``` |
-| QueueIteratorTrait | [IteratorAggregate](https://www.php.net/manual/en/class.iteratoraggregate), [Traversable](https://www.php.net/manual/en/class.traversable.php) |  ```php foreach ($class as $key => $val) ``` |
-| StackIteratorTrait | [IteratorAggregate](https://www.php.net/manual/en/class.iteratoraggregate), [Traversable](https://www.php.net/manual/en/class.traversable.php) |  ```php foreach ($class as $key => $val) ``` |
-| StringableTrait | [Stringable](https://www.php.net/manual/en/class.stringable) | ```php echo $class ``` |
+| ArrayAccessTrait | [ArrayAccess](https://www.php.net/manual/en/class.arrayaccess.php) | `$value = $class[1]` |
+| ComparableTrait | [Comparable](https://github.com/sirn-se/phrity-comparison), [Equalable](https://github.com/sirn-se/phrity-comparison) |  `$class->compare($other_class)` |
+| CountableTrait | [Countable](https://www.php.net/manual/en/class.countable.php) |  `count($class)` |
+| IteratorAggregateTrait | [IteratorAggregate](https://www.php.net/manual/en/class.iteratoraggregate), [Traversable](https://www.php.net/manual/en/class.traversable.php) |  `foreach ($class as $key => $val)` |
+| IteratorTrait | [Iterator](https://www.php.net/manual/en/class.iterator.php), [Traversable](https://www.php.net/manual/en/class.traversable.php) |  `foreach ($class as $key => $val)` |
+| QueueIteratorTrait | [IteratorAggregate](https://www.php.net/manual/en/class.iteratoraggregate), [Traversable](https://www.php.net/manual/en/class.traversable.php) |  `foreach ($class as $key => $val)` |
+| StackIteratorTrait | [IteratorAggregate](https://www.php.net/manual/en/class.iteratoraggregate), [Traversable](https://www.php.net/manual/en/class.traversable.php) |  `foreach ($class as $key => $val)` |
+| StringableTrait | [Stringable](https://www.php.net/manual/en/class.stringable) | `echo $class` |
 
 
 ## Defining data source
@@ -61,9 +61,8 @@ $class[] = 5;
 
 ### ComparableTrait
 
-Trait that provides `compare()` method, that may implement the [Comparable](https://github.com/sirn-se/phrity-comparison) and
+Trait that implements the [Comparable](https://github.com/sirn-se/phrity-comparison) and
 [Equalable](https://github.com/sirn-se/phrity-comparison) interfaces.
-By also including the [ComparisonTrait](https://github.com/sirn-se/phrity-comparison) trait, all comparison methods will be available.
 
 #### Synopsis
 ```php
@@ -78,7 +77,6 @@ trait Phrity\O\Array\ComparableTrait
 class MyClass implements Phrity\Comparison\Comparable, Phrity\Comparison\Equalable
 {
     use Phrity\O\Array\ComparableTrait;
-    use Phrity\Comparison\ComparisonTrait;
 }
 
 $class_a = new MyClass(['a' => 1, 'b' => 2, 'c' => 3]);

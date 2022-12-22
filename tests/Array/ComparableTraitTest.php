@@ -40,6 +40,31 @@ class ComparableTraitTest extends TestCase
     }
 
     /**
+     * Test compare wrapper methods
+     */
+    public function testComparisonMethods(): void
+    {
+        $arr_1 = new ComparableTraitClass([1, 2, 3]);
+        $arr_2 = new ComparableTraitClass([1, 2, 3]);
+        $arr_3 = new ComparableTraitClass([1, 2, 3, 4]);
+
+        $this->assertTrue($arr_1->equals($arr_2));
+        $this->assertFalse($arr_1->equals($arr_3));
+
+        $this->assertFalse($arr_1->greaterThan($arr_2));
+        $this->assertFalse($arr_1->greaterThan($arr_3));
+
+        $this->assertTrue($arr_1->greaterThanOrEqual($arr_2));
+        $this->assertFalse($arr_1->greaterThanOrEqual($arr_3));
+
+        $this->assertFalse($arr_1->lessThan($arr_2));
+        $this->assertTrue($arr_1->lessThan($arr_3));
+
+        $this->assertTrue($arr_1->lessThanOrEqual($arr_2));
+        $this->assertTrue($arr_1->lessThanOrEqual($arr_3));
+    }
+
+    /**
      * Test failed comparison
      */
     public function testArrIncomparable(): void

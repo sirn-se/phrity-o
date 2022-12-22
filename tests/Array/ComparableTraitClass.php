@@ -13,8 +13,7 @@ use Stringable;
 use Phrity\O\Array\ComparableTrait;
 use Phrity\Comparison\{
     Comparable,
-    Equalable,
-    ComparisonTrait
+    Equalable
 };
 
 /**
@@ -23,7 +22,6 @@ use Phrity\Comparison\{
 class ComparableTraitClass implements Comparable, Equalable
 {
     use ComparableTrait;
-    use ComparisonTrait;
 
     public function __construct(array $data)
     {

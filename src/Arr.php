@@ -13,8 +13,7 @@ use Iterator;
 use Stringable;
 use InvalidArgumentException;
 use Phrity\Comparison\{
-    Comparable,
-    ComparisonTrait
+    Comparable
 };
 use Phrity\O\Array\{
     ArrayAccessTrait,
@@ -29,7 +28,6 @@ use Phrity\O\Array\{
  */
 class Arr implements ArrayAccess, Countable, Iterator, Stringable, Comparable
 {
-    use ComparisonTrait;
     use ArrayAccessTrait;
     use ComparableTrait;
     use CountableTrait;

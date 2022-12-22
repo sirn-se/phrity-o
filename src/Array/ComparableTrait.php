@@ -7,13 +7,17 @@
 
 namespace Phrity\O\Array;
 
-use Phrity\Comparison\IncomparableException;
-
+use Phrity\Comparison\{
+    ComparisonTrait,
+    IncomparableException
+};
 /**
  * O\Array\ComparableTrait trait.
  */
 trait ComparableTrait
 {
+    use ComparisonTrait;
+
     protected array $o_array_source = [];
     protected string $o_source_ref = 'o_array_source';
 
