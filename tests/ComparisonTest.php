@@ -32,19 +32,7 @@ class ComparisonTest extends \PHPUnit\Framework\TestCase
 
     // Test comparision
 
-    /**
-     * Test Arr compare
-     */
-    public function testArrCompare(): void
-    {
-        $arr_1 = new Arr([1, 2, 3]);
-        $arr_2 = new Arr([1, 2, 3]);
-        $arr_3 = new Arr([1, 2, 3, 4]);
 
-        $this->assertEquals(0, $arr_1->compare($arr_2));
-        $this->assertEquals(-1, $arr_1->compare($arr_3));
-        $this->assertEquals(1, $arr_3->compare($arr_2));
-    }
 
     /**
      * Test Obj compare
@@ -144,16 +132,7 @@ class ComparisonTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(1, $stack_3->compare($stack_2));
     }
 
-    /**
-     * Test Arr failed comparison
-     */
-    public function testArrIncomparable(): void
-    {
-        $arr = new Arr([1, 2, 3]);
-        $this->expectException('Phrity\Comparison\IncomparableException');
-        $this->expectExceptionMessage('Can only compare O\Arr');
-        $arr->compare('Not comparable with O\Arr');
-    }
+
 
     /**
      * Test Obj failed comparison

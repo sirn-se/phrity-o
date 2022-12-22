@@ -76,8 +76,8 @@ class StrTest extends \PHPUnit\Framework\TestCase
     {
         $arr = new \Phrity\O\Arr();
         $str = new Str($arr);
-        $this->assertSame('Phrity\O\Arr(0)', $str());
-        $this->assertSame('Phrity\O\Arr(0)', "{$str}");
+        $this->assertSame('Arr(0)', $str());
+        $this->assertSame('Arr(0)', "{$str}");
     }
 
     /**
