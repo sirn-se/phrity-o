@@ -114,7 +114,7 @@ class StackTest extends \PHPUnit\Framework\TestCase
     /**
      * Test IteratorAggregate with numeric keys
      */
-    public function xxtestNumericIteratorAggregate(): void
+    public function testNumericIteratorAggregate(): void
     {
         $stack = new Stack([1, 2, 3]);
         $this->assertInstanceOf('Generator', $stack->getIterator());
@@ -153,6 +153,34 @@ class StackTest extends \PHPUnit\Framework\TestCase
     public function testToString(): void
     {
         $obj = new Stack([1, 2, null, []]);
-        $this->assertEquals('Phrity\O\Stack(4)', "{$obj}");
+        $this->assertEquals('Stack(4)', "{$obj}");
+    }
+
+
+    // Test comparison methods
+
+    /**
+     * Test Stack compare
+     */
+    public function testStackCompare(): void
+    {
+        $stack_1 = new Stack([1, 2, 3]);
+        $stack_2 = new Stack([1, 2, 3]);
+        $stack_3 = new Stack([1, 2, 3, 4]);
+
+        $this->assertEquals(0, $stack_1->compare($stack_2));
+        $this->assertEquals(-1, $stack_1->compare($stack_3));
+        $this->assertEquals(1, $stack_3->compare($stack_2));
+    }
+
+    /**
+     * Test Stack failed comparison
+     */
+    public function testStackIncomparable(): void
+    {
+        $stack = new Stack([1, 2, 3]);
+        $this->expectException('Phrity\Comparison\IncomparableException');
+        $this->expectExceptionMessage('Can only compare Phrity\O\Stack');
+        $stack->compare('Not comparable with O\Stack');
     }
 }

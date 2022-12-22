@@ -152,6 +152,34 @@ class QueueTest extends \PHPUnit\Framework\TestCase
     public function testToString(): void
     {
         $obj = new Queue([1, 2, null, []]);
-        $this->assertEquals('Phrity\O\Queue(4)', "{$obj}");
+        $this->assertEquals('Queue(4)', "{$obj}");
+    }
+
+
+    // Test comparison methods
+
+    /**
+     * Test Queue compare
+     */
+    public function testQueueCompare(): void
+    {
+        $queue_1 = new Queue([1, 2, 3]);
+        $queue_2 = new Queue([1, 2, 3]);
+        $queue_3 = new Queue([1, 2, 3, 4]);
+
+        $this->assertEquals(0, $queue_1->compare($queue_2));
+        $this->assertEquals(-1, $queue_1->compare($queue_3));
+        $this->assertEquals(1, $queue_3->compare($queue_2));
+    }
+
+    /**
+     * Test Queue failed comparison
+     */
+    public function testQueueIncomparable(): void
+    {
+        $queue = new Queue([1, 2, 3]);
+        $this->expectException('Phrity\Comparison\IncomparableException');
+        $this->expectExceptionMessage('Can only compare Phrity\O\Queue');
+        $queue->compare('Not comparable with O\Queue');
     }
 }

@@ -9,12 +9,14 @@ declare(strict_types=1);
 
 namespace Phrity\O;
 
+use PHPUnit\Framework\TestCase;
 use Phrity\O\Arr;
+use stdClass;
 
 /**
  * Generic O\Arr tests.
  */
-class ArrTest extends \PHPUnit\Framework\TestCase
+class ArrTest extends TestCase
 {
     /**
      * Set up for all tests
@@ -41,7 +43,7 @@ class ArrTest extends \PHPUnit\Framework\TestCase
         $array_3 = new Arr($array_2);
         $this->assertEquals(2, $array_3['b']);
 
-        $class = new \stdclass();
+        $class = new stdClass();
         $class->c = 3;
         $array_4 = new Arr($class);
         $this->assertEquals(3, $array_3['c']);
@@ -80,5 +82,136 @@ class ArrTest extends \PHPUnit\Framework\TestCase
         $this->expectException('InvalidArgumentException');
         $this->expectExceptionMessage('Unsupported argument for O\Arr');
         $array = new Arr([1, 2, 3], 'unsupported');
+    }
+
+
+    // Test Countable interface
+
+    /**
+     * Test implementation of Countable interface
+     */
+    public function testCountableImplementation(): void
+    {
+        $array = new Arr([1, 2, 3]);
+        $this->assertEquals(3, $array->count());
+    }
+
+
+    // Test ArrayAccess interface
+
+    /**
+     * Test implementation of ArrayAccess interface
+     */
+    public function testArrayAccessImplementation(): void
+    {
+        $array = new Arr([1, 2, 3]);
+
+        $this->assertTrue($array->offsetExists(0));
+        $this->assertTrue($array->offsetExists(1));
+        $this->assertTrue($array->offsetExists(2));
+        $this->assertFalse($array->offsetExists(3));
+
+        $this->assertEquals(1, $array->offsetGet(0));
+        $this->assertEquals(2, $array->offsetGet(1));
+        $this->assertEquals(3, $array->offsetGet(2));
+
+        $array->offsetSet(0, 10);
+        $this->assertEquals(10, $array->offsetGet(0));
+        $array->offsetSet(null, 10);
+        $this->assertEquals(10, $array->offsetGet(3));
+
+        $array->offsetUnset(0);
+        $this->assertFalse($array->offsetExists(0));
+    }
+
+    /**
+     * Test magic access of ArrayAccess interface
+     */
+    public function testArrayAccessMagic(): void
+    {
+        $array = new Arr([1, 2, 3]);
+
+        $this->assertTrue(isset($array[0]));
+        $this->assertTrue(isset($array[1]));
+        $this->assertTrue(isset($array[2]));
+        $this->assertFalse(isset($array[3]));
+
+        $this->assertEquals(1, $array[0]);
+        $this->assertEquals(2, $array[1]);
+        $this->assertEquals(3, $array[2]);
+
+        $array[0] = 20;
+        $this->assertEquals(20, $array[0]);
+        $array[] = 20;
+        $this->assertEquals(20, $array[3]);
+
+        unset($array[1]);
+        $this->assertFalse(isset($array[1]));
+    }
+
+    /**
+     * Test get on undefined index; generates a notice
+     */
+    public function testUndefinedOffset(): void
+    {
+        $array = new Arr([1, 2, 3]);
+        $this->expectError('PHPUnit\Framework\Error\Error');
+        $this->expectErrorMessage('Undefined');
+        $array->offsetGet(4);
+    }
+
+
+    // Test Iterator interface
+
+    /**
+     * Test implementation of Iterator interface
+     */
+    public function testIteratorImplementation(): void
+    {
+        $array = new Arr([1, 2, 3]);
+
+        $this->assertEquals(1, $array->current());
+        $this->assertEquals(0, $array->key());
+        $this->assertTrue($array->valid());
+        $array->next();
+        $this->assertEquals(1, $array->key());
+        $array->rewind();
+        $this->assertEquals(0, $array->key());
+    }
+
+    /**
+     * Test magic access of Iterator interface
+     */
+    public function testIteratorMagic(): void
+    {
+        $array = new Arr([1, 2, 3]);
+
+        foreach ($array as $key => $value) {
+            $this->assertEquals($key + 1, $value);
+        }
+    }
+
+    /**
+     * Test additional iterators
+     */
+    public function testAdditionalIterators(): void
+    {
+        $array = new Arr([1, 2, 3]);
+
+        $this->assertFalse($array->previous());
+        $this->assertEquals(3, $array->forward());
+        $this->assertEquals(2, $array->previous());
+    }
+
+
+    // Test representation methods
+
+    /**
+     * Test toString method
+     */
+    public function testToString(): void
+    {
+        $obj = new Arr([1, 2, null, []]);
+        $this->assertEquals('Arr(4)', "{$obj}");
     }
 }

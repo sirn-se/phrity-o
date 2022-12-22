@@ -7,17 +7,32 @@
 
 namespace Phrity\O;
 
+use Countable;
+use InvalidArgumentException;
+use IteratorAggregate;
+use Stringable;
+use Phrity\Comparison\{
+    Comparable,
+    ComparisonTrait
+};
+use Phrity\O\Array\{
+    ArrayAccessTrait,
+    ComparableTrait,
+    CountableTrait,
+    StackIteratorTrait,
+    StringableTrait
+};
+
 /**
  * O\Stack class.
  */
-class Stack implements \Countable, \IteratorAggregate, \Phrity\Comparison\Comparable, \Stringable
+class Stack implements Countable, IteratorAggregate, Comparable, Stringable
 {
-    use \Phrity\Comparison\ComparisonTrait;
-
-    /**
-     * Internal data structure
-     */
-    protected $o_content;
+    use ComparisonTrait;
+    use ComparableTrait;
+    use CountableTrait;
+    use StackIteratorTrait;
+    use StringableTrait;
 
     /**
      * Constructor for O\Stack
@@ -30,7 +45,7 @@ class Stack implements \Countable, \IteratorAggregate, \Phrity\Comparison\Compar
         $this->bind($content);
 
         if (!empty($args)) {
-            throw new \InvalidArgumentException('Unsupported argument for O\Stack');
+            throw new InvalidArgumentException('Unsupported argument for O\Stack');
         }
     }
 
@@ -39,7 +54,7 @@ class Stack implements \Countable, \IteratorAggregate, \Phrity\Comparison\Compar
      */
     public function push(mixed $item): void
     {
-        array_unshift($this->o_content, $item);
+        array_unshift($this->o_array_source, $item);
     }
 
     /**
@@ -47,68 +62,7 @@ class Stack implements \Countable, \IteratorAggregate, \Phrity\Comparison\Compar
      */
     public function pop(): mixed
     {
-        return array_shift($this->o_content);
-    }
-
-
-    // Countable interface implementation
-
-    /**
-     * Count elements of an object
-     * @return int Number of elements
-     */
-    public function count(): int
-    {
-        return count($this->o_content);
-    }
-
-
-    // IteratorAggregate interface implementation
-
-    /**
-     * Consume and return the current key/value pair
-     * @return mixed Current element
-     */
-    public function getIterator(): \Traversable
-    {
-        return (function () {
-            while (!empty($this->o_content)) {
-                $key = key($this->o_content);
-                $val = $this->pop();
-                yield $key => $val;
-            }
-        })();
-    }
-
-
-    // String representation methods
-
-    /**
-     * Return string representation
-     * @return string
-     */
-    public function __toString(): string
-    {
-        return self::class . "({$this->count()})";
-    }
-
-
-    // Comparable interface implementation
-
-    /**
-     * Compare $this with provided instance of the same class
-     * @param  Queue $compare_with The object to compare with
-     * @return int                 -1, 0 or +1 comparison result
-     */
-    public function compare(mixed $compare_with): int
-    {
-        if (!$compare_with instanceof self) {
-            throw new \Phrity\Comparison\IncomparableException('Can only compare O\Stack');
-        }
-        if ($this->o_content == $compare_with->o_content) {
-            return 0;
-        }
-        return $this->o_content > $compare_with->o_content ? +1 : -1;
+        return array_shift($this->o_array_source);
     }
 
 
@@ -122,14 +76,14 @@ class Stack implements \Countable, \IteratorAggregate, \Phrity\Comparison\Compar
     protected function bind(mixed $content): array
     {
         if (is_null($content)) {
-            return $this->o_content = [];
+            return $this->o_array_source = [];
         }
         if (is_array($content)) {
-            return $this->o_content = array_reverse($content);
+            return $this->o_array_source = array_reverse($content);
         }
         if ($content instanceof self) {
-            return $this->o_content = array_reverse($content->o_content);
+            return $this->o_array_source = array_reverse($content->o_array_source);
         }
-        throw new \InvalidArgumentException('Unsupported input data for O\Stack');
+        throw new InvalidArgumentException('Unsupported input data for O\Stack');
     }
 }
