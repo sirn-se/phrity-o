@@ -11,6 +11,7 @@ use Phrity\Comparison\{
     ComparisonTrait,
     IncomparableException
 };
+
 /**
  * O\Array\ComparableTrait trait.
  */

@@ -20,6 +20,7 @@ use Phrity\O\Array\{
     ComparableTrait,
     CountableTrait,
     StackIteratorTrait,
+    StackTrait,
     StringableTrait
 };
 
@@ -32,6 +33,7 @@ class Stack implements Countable, IteratorAggregate, Comparable, Stringable
     use ComparableTrait;
     use CountableTrait;
     use StackIteratorTrait;
+    use StackTrait;
     use StringableTrait;
 
     /**
@@ -48,23 +50,6 @@ class Stack implements Countable, IteratorAggregate, Comparable, Stringable
             throw new InvalidArgumentException('Unsupported argument for O\Stack');
         }
     }
-
-    /**
-     * Add item to the queue
-     */
-    public function push(mixed $item): void
-    {
-        array_unshift($this->o_array_source, $item);
-    }
-
-    /**
-     * Get item from the queue
-     */
-    public function pop(): mixed
-    {
-        return array_shift($this->o_array_source);
-    }
-
 
     // Protected internal methods
 

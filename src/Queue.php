@@ -20,6 +20,7 @@ use Phrity\O\Array\{
     ComparableTrait,
     CountableTrait,
     QueueIteratorTrait,
+    QueueTrait,
     StringableTrait
 };
 
@@ -32,6 +33,7 @@ class Queue implements Countable, IteratorAggregate, Comparable, Stringable
     use ComparableTrait;
     use CountableTrait;
     use QueueIteratorTrait;
+    use QueueTrait;
     use StringableTrait;
 
     /**
@@ -48,23 +50,6 @@ class Queue implements Countable, IteratorAggregate, Comparable, Stringable
             throw new InvalidArgumentException('Unsupported argument for O\Queue');
         }
     }
-
-    /**
-     * Add item to the queue
-     */
-    public function enqueue(mixed $item): void
-    {
-        $this->o_array_source[] = $item;
-    }
-
-    /**
-     * Get item to the queue
-     */
-    public function dequeue(): mixed
-    {
-        return array_shift($this->o_array_source);
-    }
-
 
     // Protected internal methods
 
