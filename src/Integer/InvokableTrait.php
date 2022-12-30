@@ -12,8 +12,7 @@ namespace Phrity\O\Integer;
  */
 trait InvokableTrait
 {
-    protected int $o_integer_source = 0;
-    protected string $o_source_ref = 'o_integer_source';
+    use TypeTrait;
 
     /**
      * Getter/setter implementation.

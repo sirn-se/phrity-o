@@ -74,9 +74,9 @@ class IntegerTest extends \PHPUnit\Framework\TestCase
      */
     public function testConstructorArgumentType(): void
     {
-        $this->expectException('InvalidArgumentException');
-        $this->expectExceptionMessage('Unsupported input data for O\Integer');
-        $int = new Integer(new \stdClass());
+        $this->expectException('TypeError');
+        $this->expectExceptionMessage('Input must be usable as type int.');
+        $int = new Integer('not a number');
     }
 
     /**
@@ -84,8 +84,8 @@ class IntegerTest extends \PHPUnit\Framework\TestCase
      */
     public function testConstructorArgumentCount(): void
     {
-        $this->expectException('InvalidArgumentException');
-        $this->expectExceptionMessage('Unsupported argument for O\Integer');
+        $this->expectException('ArgumentCountError');
+        $this->expectExceptionMessage('Unsupported argument for Phrity\O\Integer.');
         $int = new Integer(56, 'unsupported');
     }
 
@@ -94,9 +94,9 @@ class IntegerTest extends \PHPUnit\Framework\TestCase
      */
     public function testFloatException(): void
     {
-        $this->expectException('InvalidArgumentException');
-        $this->expectExceptionMessage('Unsupported input data for O\Integer');
-        $int = new Integer('12.34');
+        $this->expectException('TypeError');
+        $this->expectExceptionMessage('Input must be usable as type int.');
+        $int = new Integer(12.34);
     }
 
     /**

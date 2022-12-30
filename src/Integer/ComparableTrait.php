@@ -18,9 +18,7 @@ use Phrity\Comparison\{
 trait ComparableTrait
 {
     use ComparisonTrait;
-
-    protected int $o_integer_source = 0;
-    protected string $o_source_ref = 'o_integer_source';
+    use TypeTrait;
 
     /**
      * Compare $this with provided instance of the same class

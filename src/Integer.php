@@ -1,69 +1,51 @@
 <?php
 
 /**
- * File for O\Integer class.
- * @package Phrity > O
+ * File for Phrity\O\Integer class.
+ * @package Phrity > O.
  */
 
 namespace Phrity\O;
 
-use InvalidArgumentException;
-use Stringable;
+use ArgumentCountError;
 use Phrity\Comparison\Comparable;
 use Phrity\O\Integer\{
+    CoercionTrait,
     ComparableTrait,
     InvokableTrait,
-    StringableTrait
+    StringableTrait,
+    TypeTrait
 };
+use Stringable;
 
 /**
- * O\Integer class.
+ * Phrity\O\Integer class.
  */
 class Integer implements Comparable, Stringable
 {
+    use CoercionTrait;
     use ComparableTrait;
     use InvokableTrait;
     use StringableTrait;
+    use TypeTrait;
 
     /**
-     * Constructor for O\Integer
-     * @param mixed $args Input data
+     * Constructor for Phrity\O\Integer.
+     * @param mixed ...$args Input data.
+     * @throws ArgumentCountError If non-expected arguments provided.
      */
     public function __construct(mixed ...$args)
     {
-        // Allow subclass to use additional input
+        // Setup - use coersion.
+        $this->o_option_coerce = true;
+
+        // Allow subclass to use additional input.
         $content = array_shift($args);
-        $this->bind($content);
+        $this->initialize($this->coerce($content));
 
         if (!empty($args)) {
-            throw new InvalidArgumentException('Unsupported argument for O\Integer');
+            $class = self::class;
+            throw new ArgumentCountError("Unsupported argument for {$class}.");
         }
-    }
-
-    // Protected internal methods
-
-    /**
-     * Bind provided data to internal structure
-     * @param  mixed $content Input data
-     * @return int            The internal structure
-     */
-    protected function bind(mixed $content): int
-    {
-        if (is_int($content)) {
-            return $this->o_integer_source = $content;
-        }
-        if (is_null($content)) {
-            return $this->o_integer_source = 0;
-        }
-        if (is_numeric($content)) {
-            $int_content = (int)$content;
-            if ($int_content == $content) {
-                return $this->o_integer_source = $int_content;
-            }
-        }
-        if ($content instanceof self) {
-            return $this->o_integer_source = $content->o_integer_source;
-        }
-        throw new InvalidArgumentException('Unsupported input data for O\Integer');
     }
 }
