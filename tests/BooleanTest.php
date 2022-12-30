@@ -9,12 +9,14 @@ declare(strict_types=1);
 
 namespace Phrity\O;
 
+use PHPUnit\Framework\TestCase;
 use Phrity\O\Boolean;
+use stdClass;
 
 /**
  * Generic O\Boolean tests.
  */
-class BooleanTest extends \PHPUnit\Framework\TestCase
+class BooleanTest extends TestCase
 {
     /**
      * Set up for all tests
@@ -32,7 +34,7 @@ class BooleanTest extends \PHPUnit\Framework\TestCase
         $bool = new Boolean(false);
         $this->assertSame(false, $bool());
         $this->assertSame(false, $bool(false));
-        $this->assertSame('', "{$bool}");
+        $this->assertSame('false', "{$bool}");
     }
 
     /**
@@ -43,73 +45,7 @@ class BooleanTest extends \PHPUnit\Framework\TestCase
         $bool = new Boolean(true);
         $this->assertSame(true, $bool());
         $this->assertSame(true, $bool(true));
-        $this->assertSame('1', "{$bool}");
-    }
-
-    /**
-     * Test null input
-     */
-    public function testNullInput(): void
-    {
-        $bool = new Boolean();
-        $this->assertSame(false, $bool());
-        $this->assertSame(false, $bool(null));
-        $this->assertSame('', "{$bool}");
-    }
-
-    /**
-     * Test integer input
-     */
-    public function testIntegerFalseInput(): void
-    {
-        $bool = new Boolean(0);
-        $this->assertSame(false, $bool());
-        $this->assertSame(false, $bool(-1));
-        $this->assertSame('', "{$bool}");
-    }
-
-    /**
-     * Test integer input
-     */
-    public function testIntegerTrueInput(): void
-    {
-        $bool = new Boolean(1);
-        $this->assertSame(true, $bool());
-        $this->assertSame(true, $bool(1));
-        $this->assertSame('1', "{$bool}");
-    }
-
-    /**
-     * Test string input
-     */
-    public function testStringFalseInput(): void
-    {
-        $bool = new Boolean('');
-        $this->assertSame(false, $bool());
-        $this->assertSame(false, $bool('0'));
-        $this->assertSame('', "{$bool}");
-    }
-
-    /**
-     * Test string input
-     */
-    public function testStringTrueInput(): void
-    {
-        $bool = new Boolean('1');
-        $this->assertSame(true, $bool());
-        $this->assertSame(true, $bool('1'));
-        $this->assertSame('1', "{$bool}");
-    }
-
-    /**
-     * Test O\Boolean instance input
-     */
-    public function testBooleanClassInput(): void
-    {
-        $bool_1 = new Boolean(true);
-        $bool_2 = new Boolean($bool_1);
-        $this->assertSame(true, $bool_2());
-        $this->assertSame('1', "{$bool_2}");
+        $this->assertSame('true', "{$bool}");
     }
 
     /**
@@ -119,7 +55,7 @@ class BooleanTest extends \PHPUnit\Framework\TestCase
     {
         $this->expectException('InvalidArgumentException');
         $this->expectExceptionMessage('Unsupported input data for O\Boolean');
-        $bool = new Boolean(new \stdClass());
+        $bool = new Boolean(new stdClass());
     }
 
     /**
@@ -138,8 +74,8 @@ class BooleanTest extends \PHPUnit\Framework\TestCase
     public function testSetterException(): void
     {
         $bool = new Boolean();
-        $this->expectException('InvalidArgumentException');
-        $this->expectExceptionMessage('Unsupported input data for O\Boolean');
-        $bool(new \stdClass());
+        $this->expectException('TypeError');
+        $this->expectExceptionMessage('Phrity\O\Boolean::__invoke()');
+        $bool(new stdClass());
     }
 }

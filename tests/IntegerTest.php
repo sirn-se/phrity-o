@@ -28,11 +28,11 @@ class IntegerTest extends \PHPUnit\Framework\TestCase
     /**
      * Test null input
      */
-    public function testNullInput(): void
+    public function testZeroInput(): void
     {
         $int = new Integer();
         $this->assertSame(0, $int());
-        $this->assertSame(0, $int(null));
+        $this->assertSame(0, $int(0));
         $this->assertSame('0', "{$int}");
     }
 
@@ -54,7 +54,7 @@ class IntegerTest extends \PHPUnit\Framework\TestCase
     {
         $int = new Integer('1234');
         $this->assertSame(1234, $int());
-        $this->assertSame(5678, $int('5678'));
+        $this->assertSame(5678, $int(5678));
         $this->assertSame('5678', "{$int}");
     }
 
@@ -105,8 +105,8 @@ class IntegerTest extends \PHPUnit\Framework\TestCase
     public function testSetterException(): void
     {
         $int = new Integer();
-        $this->expectException('InvalidArgumentException');
-        $this->expectExceptionMessage('Unsupported input data for O\Integer');
-        $int(new \stdClass());
+        $this->expectException('TypeError');
+        $this->expectExceptionMessage('Phrity\O\Integer::__invoke():');
+        $int('not an integer');
     }
 }

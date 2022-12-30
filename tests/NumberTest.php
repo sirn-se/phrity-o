@@ -28,11 +28,11 @@ class NumberTest extends \PHPUnit\Framework\TestCase
     /**
      * Test null input
      */
-    public function testNullInput(): void
+    public function testZeroInput(): void
     {
         $num = new Number();
         $this->assertSame(0.0, $num());
-        $this->assertSame(0.0, $num(null));
+        $this->assertSame(0.0, $num(0.0));
         $this->assertSame('0', "{$num}");
     }
 
@@ -65,8 +65,7 @@ class NumberTest extends \PHPUnit\Framework\TestCase
     {
         $num = new Number('12.34');
         $this->assertSame(12.34, $num());
-        $this->assertSame(56.78, $num('56.78'));
-        $this->assertSame('56.78', "{$num}");
+        $this->assertSame('12.34', "{$num}");
     }
 
     /**
@@ -76,7 +75,6 @@ class NumberTest extends \PHPUnit\Framework\TestCase
     {
         $num_1 = new Number(12.34);
         $num_2 = new Number($num_1);
-        $this->assertSame(12.34, $num_2());
         $this->assertSame('12.34', "{$num_2}");
     }
 
@@ -106,8 +104,8 @@ class NumberTest extends \PHPUnit\Framework\TestCase
     public function testSetterException(): void
     {
         $num = new Number();
-        $this->expectException('InvalidArgumentException');
-        $this->expectExceptionMessage('Unsupported input data for O\Number');
-        $num(new \stdClass());
+        $this->expectException('TypeError');
+        $this->expectExceptionMessage('Phrity\O\Number::__invoke():');
+        $num('not a float');
     }
 }

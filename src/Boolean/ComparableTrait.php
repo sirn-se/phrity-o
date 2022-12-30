@@ -1,11 +1,11 @@
 <?php
 
 /**
- * File for O\Array\ComparableTrait trait.
+ * File for O\Boolean\ComparableTrait trait.
  * @package Phrity > O
  */
 
-namespace Phrity\O\Array;
+namespace Phrity\O\Boolean;
 
 use Phrity\Comparison\{
     ComparisonTrait,
@@ -13,14 +13,14 @@ use Phrity\Comparison\{
 };
 
 /**
- * O\Array\ComparableTrait trait.
+ * O\Boolean\ComparableTrait trait.
  */
 trait ComparableTrait
 {
     use ComparisonTrait;
 
-    protected array $o_array_source = [];
-    protected string $o_source_ref = 'o_array_source';
+    protected bool $o_boolean_source = false;
+    protected string $o_source_ref = 'o_boolean_source';
 
     /**
      * Compare $this with provided instance of the same class

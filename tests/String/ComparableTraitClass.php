@@ -1,28 +1,28 @@
 <?php
 
 /**
- * File for O\Array\ComparableTrait tests.
+ * File for O\String\ComparableTrait tests.
  * @package Phrity > O
  */
 
 declare(strict_types=1);
 
-namespace Phrity\O\Test\Array;
+namespace Phrity\O\Test\String;
 
-use Phrity\O\Array\ComparableTrait;
+use Phrity\O\String\ComparableTrait;
 use Phrity\Comparison\{
     Comparable,
     Equalable
 };
 
 /**
- * Generic O\Array\ComparableTrait tests.
+ * O\String\ComparableTrait tests.
  */
 class ComparableTraitClass implements Comparable, Equalable
 {
     use ComparableTrait;
 
-    public function __construct(array $data)
+    public function __construct(string $data)
     {
         $this->{$this->o_source_ref} = $data;
     }

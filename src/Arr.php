@@ -12,9 +12,7 @@ use Countable;
 use Iterator;
 use Stringable;
 use InvalidArgumentException;
-use Phrity\Comparison\{
-    Comparable
-};
+use Phrity\Comparison\Comparable;
 use Phrity\O\Array\{
     ArrayAccessTrait,
     ComparableTrait,

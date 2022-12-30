@@ -76,13 +76,13 @@ class ArrayAccessTraitTest extends TestCase
     }
 
     /**
-     * Test get on undefined index; generates a notice
+     * Test get on undefined index; throws Error.
      */
     public function testUndefinedOffset(): void
     {
         $array = new ArrayAccessTraitClass([1, 2, 3]);
         $this->expectError('PHPUnit\Framework\Error\Error');
-        $this->expectErrorMessage('Undefined');
+        $this->expectErrorMessage('Undefined array key 4');
         $array->offsetGet(4);
     }
 }

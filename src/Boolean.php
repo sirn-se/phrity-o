@@ -7,17 +7,23 @@
 
 namespace Phrity\O;
 
+use InvalidArgumentException;
+use Stringable;
+use Phrity\Comparison\Comparable;
+use Phrity\O\Boolean\{
+    ComparableTrait,
+    InvokableTrait,
+    StringableTrait
+};
+
 /**
  * O\Boolean class.
  */
-class Boolean implements \Phrity\Comparison\Comparable, \Stringable
+class Boolean implements Comparable, Stringable
 {
-    use \Phrity\Comparison\ComparisonTrait;
-
-    /**
-     * Internal data structure
-     */
-    protected $o_content;
+    use ComparableTrait;
+    use InvokableTrait;
+    use StringableTrait;
 
     /**
      * Constructor for O\Boolean
@@ -30,56 +36,9 @@ class Boolean implements \Phrity\Comparison\Comparable, \Stringable
         $this->bind($content);
 
         if (!empty($args)) {
-            throw new \InvalidArgumentException('Unsupported argument for O\Boolean');
+            throw new InvalidArgumentException('Unsupported argument for O\Boolean');
         }
     }
-
-    /**
-     * Getter/setter implementation
-     * @param  mixed $args Input data
-     * @return bool        Current value
-     */
-    public function __invoke(mixed ...$args): bool
-    {
-        // Get call
-        if (empty($args)) {
-            return $this->o_content;
-        }
-        // Set call
-        return $this->bind($args[0]);
-    }
-
-
-    // String representation methods
-
-    /**
-     * Return string representation
-     * @return string
-     */
-    public function __toString(): string
-    {
-        return (string)$this();
-    }
-
-
-    // Comparable interface implementation
-
-    /**
-     * Compare $this with provided instance of the same class
-     * @param  Arr $compare_with The object to compare with
-     * @return int               -1, 0 or +1 comparison result
-     */
-    public function compare(mixed $compare_with): int
-    {
-        if (!$compare_with instanceof self) {
-            throw new \Phrity\Comparison\IncomparableException('Can only compare O\Boolean');
-        }
-        if ($this->o_content == $compare_with->o_content) {
-            return 0;
-        }
-        return $this->o_content > $compare_with->o_content ? +1 : -1;
-    }
-
 
     // Protected internal methods
 
@@ -91,14 +50,14 @@ class Boolean implements \Phrity\Comparison\Comparable, \Stringable
     protected function bind(mixed $content): bool
     {
         if (is_bool($content)) {
-            return $this->o_content = $content;
+            return $this->o_boolean_source = $content;
         }
         if ($content instanceof self) {
-            return $this->o_content = $content->o_content;
+            return $this->o_boolean_source = $content->o_boolean_source;
         }
         if (is_scalar($content) || is_null($content)) {
-            return $this->o_content = $content == 1;
+            return $this->o_boolean_source = $content == 1;
         }
-        throw new \InvalidArgumentException('Unsupported input data for O\Boolean');
+        throw new InvalidArgumentException('Unsupported input data for O\Boolean');
     }
 }

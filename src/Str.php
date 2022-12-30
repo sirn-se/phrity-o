@@ -7,17 +7,23 @@
 
 namespace Phrity\O;
 
+use InvalidArgumentException;
+use Stringable;
+use Phrity\Comparison\Comparable;
+use Phrity\O\String\{
+    ComparableTrait,
+    InvokableTrait,
+    StringableTrait
+};
+
 /**
  * O\Str class.
  */
-class Str implements \Phrity\Comparison\Comparable, \Stringable
+class Str implements Comparable, Stringable
 {
-    use \Phrity\Comparison\ComparisonTrait;
-
-    /**
-     * Internal data structure
-     */
-    protected $o_content;
+    use ComparableTrait;
+    use InvokableTrait;
+    use StringableTrait;
 
     /**
      * Constructor for O\Str
@@ -30,54 +36,8 @@ class Str implements \Phrity\Comparison\Comparable, \Stringable
         $this->bind($content);
 
         if (!empty($args)) {
-            throw new \InvalidArgumentException('Unsupported argument for O\Str');
+            throw new InvalidArgumentException('Unsupported argument for O\Str');
         }
-    }
-
-    /**
-     * Getter/setter implementation
-     * @param  mixed $args Input data
-     * @return string      Current value
-     */
-    public function __invoke(mixed ...$args): string
-    {
-        // Get call
-        if (empty($args)) {
-            return $this->o_content;
-        }
-        // Set call
-        return $this->bind($args[0]);
-    }
-
-
-    // String representation methods
-
-    /**
-     * Return string representation
-     * @return string
-     */
-    public function __toString(): string
-    {
-        return $this();
-    }
-
-
-    // Comparable interface implementation
-
-    /**
-     * Compare $this with provided instance of the same class
-     * @param  Arr $compare_with The object to compare with
-     * @return int               -1, 0 or +1 comparison result
-     */
-    public function compare(mixed $compare_with): int
-    {
-        if (!$compare_with instanceof self) {
-            throw new \Phrity\Comparison\IncomparableException('Can only compare O\Str');
-        }
-        if ($this->o_content == $compare_with->o_content) {
-            return 0;
-        }
-        return $this->o_content > $compare_with->o_content ? +1 : -1;
     }
 
 
@@ -91,17 +51,17 @@ class Str implements \Phrity\Comparison\Comparable, \Stringable
     protected function bind(mixed $content): string
     {
         if (is_scalar($content)) {
-            return $this->o_content = (string)$content;
+            return $this->o_string_source = (string)$content;
         }
         if (is_null($content)) {
-            return $this->o_content = '';
+            return $this->o_string_source = '';
         }
         if ($content instanceof self) {
-            return $this->o_content = $content->o_content;
+            return $this->o_string_source = $content->o_string_source;
         }
         if (is_object($content) && method_exists($content, '__toString')) {
-            return $this->o_content = "{$content}";
+            return $this->o_string_source = "{$content}";
         }
-        throw new \InvalidArgumentException('Unsupported input data for O\Str');
+        throw new InvalidArgumentException('Unsupported input data for O\Str');
     }
 }

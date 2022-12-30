@@ -7,17 +7,23 @@
 
 namespace Phrity\O;
 
+use InvalidArgumentException;
+use Stringable;
+use Phrity\Comparison\Comparable;
+use Phrity\O\Integer\{
+    ComparableTrait,
+    InvokableTrait,
+    StringableTrait
+};
+
 /**
  * O\Integer class.
  */
-class Integer implements \Phrity\Comparison\Comparable, \Stringable
+class Integer implements Comparable, Stringable
 {
-    use \Phrity\Comparison\ComparisonTrait;
-
-    /**
-     * Internal data structure
-     */
-    protected $o_content;
+    use ComparableTrait;
+    use InvokableTrait;
+    use StringableTrait;
 
     /**
      * Constructor for O\Integer
@@ -30,56 +36,9 @@ class Integer implements \Phrity\Comparison\Comparable, \Stringable
         $this->bind($content);
 
         if (!empty($args)) {
-            throw new \InvalidArgumentException('Unsupported argument for O\Integer');
+            throw new InvalidArgumentException('Unsupported argument for O\Integer');
         }
     }
-
-    /**
-     * Getter/setter implementation
-     * @param  mixed $args Input data
-     * @return int         Current value
-     */
-    public function __invoke(mixed ...$args): int
-    {
-        // Get call
-        if (empty($args)) {
-            return $this->o_content;
-        }
-        // Set call
-        return $this->bind($args[0]);
-    }
-
-
-    // String representation methods
-
-    /**
-     * Return string representation
-     * @return string
-     */
-    public function __toString(): string
-    {
-        return (string)$this();
-    }
-
-
-    // Comparable interface implementation
-
-    /**
-     * Compare $this with provided instance of the same class
-     * @param  Arr $compare_with The object to compare with
-     * @return int               -1, 0 or +1 comparison result
-     */
-    public function compare(mixed $compare_with): int
-    {
-        if (!$compare_with instanceof self) {
-            throw new \Phrity\Comparison\IncomparableException('Can only compare O\Integer');
-        }
-        if ($this->o_content == $compare_with->o_content) {
-            return 0;
-        }
-        return $this->o_content > $compare_with->o_content ? +1 : -1;
-    }
-
 
     // Protected internal methods
 
@@ -91,20 +50,20 @@ class Integer implements \Phrity\Comparison\Comparable, \Stringable
     protected function bind(mixed $content): int
     {
         if (is_int($content)) {
-            return $this->o_content = $content;
+            return $this->o_integer_source = $content;
         }
         if (is_null($content)) {
-            return $this->o_content = 0;
+            return $this->o_integer_source = 0;
         }
         if (is_numeric($content)) {
             $int_content = (int)$content;
             if ($int_content == $content) {
-                return $this->o_content = $int_content;
+                return $this->o_integer_source = $int_content;
             }
         }
         if ($content instanceof self) {
-            return $this->o_content = $content->o_content;
+            return $this->o_integer_source = $content->o_integer_source;
         }
-        throw new \InvalidArgumentException('Unsupported input data for O\Integer');
+        throw new InvalidArgumentException('Unsupported input data for O\Integer');
     }
 }

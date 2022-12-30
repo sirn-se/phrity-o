@@ -1,11 +1,11 @@
 <?php
 
 /**
- * File for O\Array\ComparableTrait trait.
- * @package Phrity > O
+ * File for O\String\ComparableTrait trait.
+ * @package Phrity > O.
  */
 
-namespace Phrity\O\Array;
+namespace Phrity\O\String;
 
 use Phrity\Comparison\{
     ComparisonTrait,
@@ -13,19 +13,19 @@ use Phrity\Comparison\{
 };
 
 /**
- * O\Array\ComparableTrait trait.
+ * O\String\ComparableTrait trait.
  */
 trait ComparableTrait
 {
     use ComparisonTrait;
 
-    protected array $o_array_source = [];
-    protected string $o_source_ref = 'o_array_source';
+    protected string $o_string_source = '';
+    protected string $o_source_ref = 'o_string_source';
 
     /**
-     * Compare $this with provided instance of the same class
-     * @param  mixed $compare_with The object to compare with
-     * @return int -1, 0 or +1 comparison result
+     * Compare $this with provided instance of the same class.
+     * @param  mixed $compare_with The object to compare with.
+     * @return int -1, 0 or +1 comparison result.
      */
     public function compare(mixed $compare_with): int
     {
@@ -33,6 +33,8 @@ trait ComparableTrait
             $class = self::class;
             throw new IncomparableException("Can only compare {$class}");
         }
+        return strcmp($this->{$this->o_source_ref}, $compare_with->{$this->o_source_ref});
+
         if ($this->{$this->o_source_ref} == $compare_with->{$this->o_source_ref}) {
             return 0;
         }

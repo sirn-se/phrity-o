@@ -8,7 +8,7 @@
 namespace Phrity\O\Array;
 
 /**
- * O\Array\IteratorTrait trait.
+ * O\Array\StringableTrait trait.
  */
 trait StringableTrait
 {

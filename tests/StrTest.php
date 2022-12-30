@@ -28,11 +28,11 @@ class StrTest extends \PHPUnit\Framework\TestCase
     /**
      * Test null input
      */
-    public function testNullInput(): void
+    public function testEmptyInput(): void
     {
         $str = new Str();
         $this->assertSame('', $str());
-        $this->assertSame('', $str(null));
+        $this->assertSame('', $str(''));
         $this->assertSame('', "{$str}");
     }
 
@@ -54,7 +54,7 @@ class StrTest extends \PHPUnit\Framework\TestCase
     {
         $str = new Str(1234);
         $this->assertSame('1234', $str());
-        $this->assertSame('56.789', $str(56.789));
+        $this->assertSame('56.789', $str('56.789'));
         $this->assertSame('56.789', "{$str}");
     }
 
@@ -106,8 +106,8 @@ class StrTest extends \PHPUnit\Framework\TestCase
     public function testSetterException(): void
     {
         $str = new Str();
-        $this->expectException('InvalidArgumentException');
-        $this->expectExceptionMessage('Unsupported input data for O\Str');
-        $str(new \stdClass());
+        $this->expectException('TypeError');
+        $this->expectExceptionMessage('Phrity\O\Str::__invoke()');
+        $str(1);
     }
 }
