@@ -1,10 +1,5 @@
 <?php
 
-/**
- * File for Phrity\O\Integer class.
- * @package Phrity > O.
- */
-
 namespace Phrity\O;
 
 use ArgumentCountError;
@@ -32,7 +27,7 @@ class Integer implements Comparable, Stringable
     /**
      * Constructor for Phrity\O\Integer.
      * @param mixed ...$args Input data.
-     * @throws ArgumentCountError If non-expected arguments provided.
+     * @throws ArgumentCountError If too many arguments provided.
      */
     public function __construct(mixed ...$args)
     {

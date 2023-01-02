@@ -1,26 +1,19 @@
 <?php
 
-/**
- * File for O\String\StringableTrait trait.
- * @package Phrity > O.
- */
-
 namespace Phrity\O\String;
 
 /**
- * O\String\StringableTrait trait.
+ * Phrity\O\String\StringableTrait trait.
  */
 trait StringableTrait
 {
-    protected string $o_string_source = '';
-    protected string $o_source_ref = 'o_string_source';
+    use TypeTrait;
 
-
-    // Stringable interface implementation
+    // Stringable interface implementation.
 
     /**
      * Return string representation.
-     * @return string.
+     * @return string String representation.
      */
     public function __toString(): string
     {

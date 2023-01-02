@@ -1,63 +1,46 @@
 <?php
 
-/**
- * File for O\Number class.
- * @package Phrity > O
- */
-
 namespace Phrity\O;
 
-use InvalidArgumentException;
-use Stringable;
+use ArgumentCountError;
 use Phrity\Comparison\Comparable;
 use Phrity\O\Number\{
+    CoercionTrait,
     ComparableTrait,
     InvokableTrait,
-    StringableTrait
+    StringableTrait,
+    TypeTrait
 };
+use Stringable;
 
 /**
- * O\Number class.
+ * Phrity\O\Number class.
  */
 class Number implements Comparable, Stringable
 {
+    use CoercionTrait;
     use ComparableTrait;
     use InvokableTrait;
     use StringableTrait;
+    use TypeTrait;
 
     /**
      * Constructor for O\Number
      * @param mixed $args Input data
+     * @throws ArgumentCountError If too many arguments provided.
      */
     public function __construct(mixed ...$args)
     {
-        // Allow subclass to use additional input
+        // Setup - use coersion.
+        $this->o_option_coerce = true;
+
+        // Allow subclass to use additional input.
         $content = array_shift($args);
-        $this->bind($content);
+        $this->initialize($this->coerce($content));
 
         if (!empty($args)) {
-            throw new InvalidArgumentException('Unsupported argument for O\Number');
+            $class = self::class;
+            throw new ArgumentCountError("Unsupported argument for {$class}.");
         }
-    }
-
-    // Protected internal methods
-
-    /**
-     * Bind provided data to internal structure
-     * @param  mixed $content Input data
-     * @return float          The internal structure
-     */
-    protected function bind(mixed $content): float
-    {
-        if (is_numeric($content)) {
-            return $this->o_number_source = (float)$content;
-        }
-        if (is_null($content)) {
-            return $this->o_number_source = 0.0;
-        }
-        if ($content instanceof self) {
-            return $this->o_number_source = $content->o_number_source;
-        }
-        throw new InvalidArgumentException('Unsupported input data for O\Number');
     }
 }

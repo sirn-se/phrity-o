@@ -1,26 +1,19 @@
 <?php
 
-/**
- * File for O\Boolean\StringableTrait trait.
- * @package Phrity > O
- */
-
 namespace Phrity\O\Boolean;
 
 /**
- * O\Boolean\StringableTrait trait.
+ * Phrity\O\Boolean\StringableTrait trait.
  */
 trait StringableTrait
 {
-    protected bool $o_boolean_source = false;
-    protected string $o_source_ref = 'o_boolean_source';
+    use TypeTrait;
 
-
-    // Stringable interface implementation
+    // Stringable interface implementation.
 
     /**
-     * Return string representation
-     * @return string
+     * Return string representation.
+     * @return string String representation.
      */
     public function __toString(): string
     {

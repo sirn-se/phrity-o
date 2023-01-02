@@ -1,10 +1,5 @@
 <?php
 
-/**
- * File for O\Object\StringableTrait trait.
- * @package Phrity > O.
- */
-
 namespace Phrity\O\Object;
 
 /**
@@ -12,15 +7,13 @@ namespace Phrity\O\Object;
  */
 trait StringableTrait
 {
-    protected object $o_object_source;
-    protected string $o_source_ref = 'o_object_source';
+    use TypeTrait;
 
-
-    // Stringable interface implementation
+    // Stringable interface implementation.
 
     /**
      * Return string representation.
-     * @return string.
+     * @return string String representation.
      */
     public function __toString(): string
     {

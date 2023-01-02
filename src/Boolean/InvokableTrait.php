@@ -1,19 +1,15 @@
 <?php
 
-/**
- * File for O\Boolean\InvokableTrait trait.
- * @package Phrity > O
- */
-
 namespace Phrity\O\Boolean;
 
+use ArgumentCountError;
+
 /**
- * O\Boolean\InvokableTrait trait.
+ * Phrity\O\Boolean\InvokableTrait trait.
  */
 trait InvokableTrait
 {
-    protected bool $o_boolean_source = false;
-    protected string $o_source_ref = 'o_boolean_source';
+    use TypeTrait;
 
     /**
      * Getter/setter implementation.
@@ -22,11 +18,15 @@ trait InvokableTrait
      */
     public function __invoke(bool ...$args): bool
     {
-        // Get call
-        if (empty($args)) {
-            return $this->{$this->o_source_ref};
+        switch (count($args)) {
+            case 0:
+                // Get call.
+                return $this->{$this->o_source_ref};
+            case 1:
+                // Set call.
+                return $this->{$this->o_source_ref} = array_shift($args);
+            default:
+                throw new ArgumentCountError('Too many arguments.');
         }
-        // Set call
-        return $this->{$this->o_source_ref} = array_shift($args);
     }
 }

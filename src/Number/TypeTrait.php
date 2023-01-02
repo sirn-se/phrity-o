@@ -1,21 +1,21 @@
 <?php
 
-namespace Phrity\O\Integer;
+namespace Phrity\O\Number;
 
 /**
- * Phrity\O\Integer\TypeTrait trait.
+ * Phrity\O\Number\TypeTrait trait.
  */
 trait TypeTrait
 {
-    protected int $o_integer_source;
-    protected string $o_source_ref = 'o_integer_source';
+    protected float $o_float_source;
+    protected string $o_source_ref = 'o_float_source';
     protected bool $o_option_coerce = false;
 
     /**
      * Initializer, typically called in constructor.
-     * @param int $value Initial value.
+     * @param float $value Initial value.
      */
-    protected function initialize(int $value = 0): void
+    protected function initialize(float $value = 0.0): void
     {
         if (!isset($this->{$this->o_source_ref})) {
             $this->{$this->o_source_ref} = $value;

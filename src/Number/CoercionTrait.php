@@ -1,11 +1,11 @@
 <?php
 
-namespace Phrity\O\Integer;
+namespace Phrity\O\Number;
 
 use TypeError;
 
 /**
- * Phrity\O\Integer\CoercionTrait trait.
+ * Phrity\O\Number\CoercionTrait trait.
  */
 trait CoercionTrait
 {
@@ -14,29 +14,29 @@ trait CoercionTrait
     /**
      * Internal coercion method.
      * @param mixed $value Value to coerce.
-     * @return int Resulting value.
+     * @return float Resulting value.
      * @throws TypeError If invalid value provided.
      */
-    protected function coerce(mixed $value): int
+    protected function coerce(mixed $value): float
     {
-        if (is_int($value)) {
+        if (is_float($value)) {
             return $value;
         }
         if (!$this->o_option_coerce) {
-            throw new TypeError('Input must be of type int.');
+            throw new TypeError('Input must be of type float.');
         }
         if (is_null($value)) {
-            return 0;
+            return 0.0;
         }
         if ($value instanceof self) {
             return $value->{$value->o_source_ref};
         }
         if (is_numeric($value)) {
-            $int_value = (int)$value;
-            if ($int_value == $value) {
-                return $int_value;
+            $float_value = (float)$value;
+            if ($float_value == $value) {
+                return $float_value;
             }
         }
-        throw new TypeError('Input must be usable as type int.');
+        throw new TypeError('Input must be usable as type float.');
     }
 }

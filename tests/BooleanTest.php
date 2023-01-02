@@ -1,81 +1,55 @@
 <?php
 
-/**
- * File for generic O\Boolean tests.
- * @package Phrity > O
- */
-
 declare(strict_types=1);
 
 namespace Phrity\O;
 
 use PHPUnit\Framework\TestCase;
 use Phrity\O\Boolean;
-use stdClass;
 
 /**
- * Generic O\Boolean tests.
+ * Phrity\O\Boolean class tests.
  */
 class BooleanTest extends TestCase
 {
-    /**
-     * Set up for all tests
-     */
     public function setUp(): void
     {
         error_reporting(-1);
     }
 
-    /**
-     * Test false input
-     */
-    public function testFalseInput(): void
+    public function testClass(): void
+    {
+        $bool = new Boolean(false);
+        $this->assertInstanceOf('Phrity\Comparison\Comparable', $bool);
+        $this->assertInstanceOf('Stringable', $bool);
+        $this->assertIsCallable([$bool, 'compare'], 'ComparableTrait->compare not callable');
+        $this->assertIsCallable([$bool, '__invoke'], 'InvokableTrait->__invoke not callable');
+        $this->assertIsCallable([$bool, '__toString'], 'StringableTrait->__toString not callable');
+    }
+
+    public function testConstructor(): void
     {
         $bool = new Boolean(false);
         $this->assertSame(false, $bool());
-        $this->assertSame(false, $bool(false));
-        $this->assertSame('false', "{$bool}");
-    }
-
-    /**
-     * Test true input
-     */
-    public function testTrueInput(): void
-    {
-        $bool = new Boolean(true);
+        $bool = new Boolean(null);
+        $this->assertSame(false, $bool());
+        $bool = new Boolean('123');
         $this->assertSame(true, $bool());
-        $this->assertSame(true, $bool(true));
-        $this->assertSame('true', "{$bool}");
+        $bool = new Boolean(new Boolean(true));
+        $this->assertSame(true, $bool());
     }
 
-    /**
-     * Test constructor w/ bad input data
-     */
     public function testConstructorArgumentType(): void
     {
-        $this->expectException('InvalidArgumentException');
-        $this->expectExceptionMessage('Unsupported input data for O\Boolean');
-        $bool = new Boolean(new stdClass());
+        $this->expectException('TypeError');
+        $this->expectExceptionMessage('Input must be usable as type bool.');
+        $bool = new Boolean('not a number');
     }
 
-    /**
-     * Test constructor w/ bad argument
-     */
     public function testConstructorArgumentCount(): void
     {
-        $this->expectException('InvalidArgumentException');
-        $this->expectExceptionMessage('Unsupported argument for O\Boolean');
-        $bool = new Boolean(true, 'unsupported');
-    }
-
-    /**
-     * Test setter w/ bad input data
-     */
-    public function testSetterException(): void
-    {
-        $bool = new Boolean();
-        $this->expectException('TypeError');
-        $this->expectExceptionMessage('Phrity\O\Boolean::__invoke()');
-        $bool(new stdClass());
+        $this->expectException('ArgumentCountError');
+        $this->expectExceptionMessage('Unsupported argument for Phrity\O\Boolean.');
+        $bool = new Boolean(false, 'unsupported');
     }
 }

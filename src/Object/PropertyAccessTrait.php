@@ -1,28 +1,15 @@
 <?php
 
-/**
- * File for O\Object\PropertyAccessTrait trait.
- * @package Phrity > O.
- */
-
 namespace Phrity\O\Object;
 
 use Error;
-use Phrity\Comparison\{
-    ComparisonTrait,
-    IncomparableException
-};
 
 /**
- * O\Object\PropertyAccessTrait trait.
+ * Phrity\O\Object\PropertyAccessTrait trait.
  */
 trait PropertyAccessTrait
 {
-    protected object $o_object_source;
-    protected string $o_source_ref = 'o_object_source';
-
-
-    // Property access methods
+    use TypeTrait;
 
     /**
      * Returns the value of specified property.
