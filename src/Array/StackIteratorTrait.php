@@ -1,24 +1,17 @@
 <?php
 
-/**
- * File for O\Array\StackIteratorTrait trait.
- * @package Phrity > O
- */
-
 namespace Phrity\O\Array;
 
 use Traversable;
 
 /**
- * O\Array\StackIteratorTrait trait.
+ * Phrity\O\Array\StackIteratorTrait trait.
  */
 trait StackIteratorTrait
 {
-    protected array $o_array_source = [];
-    protected string $o_source_ref = 'o_array_source';
+    use TypeTrait;
 
-
-    // IteratorAggregate interface implementation
+    // IteratorAggregate interface implementation.
 
     /**
      * Consume array (LIFO) and yield key/value pair.
@@ -28,8 +21,9 @@ trait StackIteratorTrait
     {
         return (function () {
             while (!empty($this->{$this->o_source_ref})) {
+                $value = end($this->{$this->o_source_ref});
                 $key = key($this->{$this->o_source_ref});
-                $value = array_shift($this->{$this->o_source_ref});
+                unset($this->{$this->o_source_ref}[$key]);
                 yield $key => $value;
             }
         })();

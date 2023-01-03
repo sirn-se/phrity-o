@@ -1,36 +1,24 @@
 <?php
 
-/**
- * File for O\Array\QueueTrait tests.
- * @package Phrity > O
- */
-
 declare(strict_types=1);
 
 namespace Phrity\O\Test\Array;
 
-use Phrity\O\Test\Array\QueueTraitClass;
 use PHPUnit\Framework\TestCase;
 
 /**
- * O\Array\QueueTrait tests.
+ * Phrity\O\Array\QueueTrait tests.
  */
-class QueueTraitTest extends TestCase
+class QueueTest extends TestCase
 {
-    /**
-     * Set up for all tests
-     */
     public function setUp(): void
     {
         error_reporting(-1);
     }
 
-    /**
-     * Test queue.
-     */
     public function testQueue(): void
     {
-        $queue = new QueueTraitClass();
+        $queue = new ImplClass([]);
         $queue->enqueue('A');
         $queue->enqueue('B');
         $queue->enqueue('C');

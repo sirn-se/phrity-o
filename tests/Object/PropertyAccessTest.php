@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Phrity\O\Object\PropertyAccessTrait tests.
  */
-class PropertyAccessTraitTest extends TestCase
+class PropertyAccessTest extends TestCase
 {
     public function setUp(): void
     {

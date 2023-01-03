@@ -1,185 +1,84 @@
 <?php
 
-/**
- * File for generic O\Queue tests.
- * @package Phrity > O
- */
-
 declare(strict_types=1);
 
 namespace Phrity\O;
 
+use PHPUnit\Framework\TestCase;
 use Phrity\O\Queue;
 
 /**
- * Generic O\Queue tests.
+ * Phrity\O\Queue tests.
  */
-class QueueTest extends \PHPUnit\Framework\TestCase
+class QueueTest extends TestCase
 {
-    /**
-     * Set up for all tests
-     */
     public function setUp(): void
     {
         error_reporting(-1);
     }
 
-
-    // Test constructor
-
-    /**
-     * Test constructor w/ associative arrays
-     */
-    public function testAssociativeConstructor(): void
+    public function testClass(): void
     {
-        $queue_1 = new Queue();
-        $this->assertEquals(0, $queue_1->count());
-
-        $queue_2 = new Queue(['a' => 1, 'b' => 2, 'c' => 3]);
-        $this->assertEquals(3, $queue_2->count());
-
-        $queue_3 = new Queue($queue_2);
-        $this->assertEquals(3, $queue_3->count());
+        $queue = new Queue();
+        $this->assertInstanceOf('Phrity\Comparison\Comparable', $queue);
+        $this->assertInstanceOf('Stringable', $queue);
+        $this->assertInstanceOf('IteratorAggregate', $queue);
+        $this->assertInstanceOf('Traversable', $queue);
+        $this->assertInstanceOf('Countable', $queue);
+        $this->assertIsCallable([$queue, 'compare'], 'ComparableTrait->compare not callable');
+        $this->assertIsCallable([$queue, '__toString'], 'StringableTrait->__toString not callable');
     }
 
-    /**
-     * Test constructor w/ numeric arrays
-     */
-    public function testNumericConstructor(): void
+    public function testConstructor(): void
     {
         $queue_1 = new Queue();
-        $this->assertEquals(0, $queue_1->count());
+        $this->assertCount(0, $queue_1);
 
         $queue_2 = new Queue([1, 2, 3]);
-        $this->assertEquals(3, $queue_2->count());
+        $this->assertCount(3, $queue_2);
 
-        $queue_3 = new Queue($queue_2);
-        $this->assertEquals(3, $queue_3->count());
+        $queue_3 = new Queue(null);
+        $this->assertCount(0, $queue_3);
     }
 
-    /**
-     * Test constructor w/ bad input data
-     */
     public function testConstructorArgumentType(): void
     {
-        $this->expectException('InvalidArgumentException');
-        $this->expectExceptionMessage('Unsupported input data for O\Queue');
+        $this->expectException('TypeError');
+        $this->expectExceptionMessage('Input must be usable as type array.');
         $queue = new Queue('unsupported');
     }
 
-    /**
-     * Test constructor w/ bad argument
-     */
     public function testConstructorArgumentCount(): void
     {
-        $this->expectException('InvalidArgumentException');
-        $this->expectExceptionMessage('Unsupported argument for O\Queue');
-        $queue = new Queue([1, 2, 3], 'unsupported');
+        $this->expectException('ArgumentCountError');
+        $this->expectExceptionMessage('Unsupported argument for Phrity\O\Queue.');
+        $queue = new Queue(['a' => 1, 'b' => 2], 'unsupported');
     }
 
-
-    // Test queue operations
-
-    /**
-     * Test enqueue/dequeue operations
-     */
     public function testQueueOperations(): void
     {
         $queue = new Queue([1, 2, 3]);
-        $this->assertEquals(1, $queue->dequeue());
-        $queue->enqueue(4);
-        $this->assertEquals(2, $queue->dequeue());
-        $this->assertEquals(3, $queue->dequeue());
-        $this->assertEquals(4, $queue->dequeue());
-        $this->assertNull($queue->dequeue());
-        $queue->enqueue(5);
-        $this->assertEquals(5, $queue->dequeue());
-    }
-
-
-    // Test Countable interface
-
-    /**
-     * Test implementation of Countable interface
-     */
-    public function testCountableImplementation(): void
-    {
-        $queue = new Queue([1, 2, 3]);
-        $this->assertEquals(3, $queue->count());
-    }
-
-
-    // Test IteratorAggregate interface
-
-    /**
-     * Test IteratorAggregate with numeric keys
-     */
-    public function testNumericIteratorAggregate(): void
-    {
-        $queue = new Queue([1, 2, 3]);
-        $this->assertInstanceOf('Generator', $queue->getIterator());
-        $i = 0;
+        $this->assertCount(3, $queue);
         foreach ($queue as $key => $value) {
             $this->assertEquals(0, $key);
-            $this->assertEquals($i + 1, $value);
-            $i++;
+            $this->assertEquals(1, $value);
+            break;
         }
-        $this->assertCount(0, $queue);
-    }
-
-    /**
-     * Test IteratorAggregate with non-numeric keys
-     */
-    public function testAssocIteratorAggregate(): void
-    {
-        $queue = new Queue(['a' => 1, 'b' => 2, 'c' => 3]);
-        $this->assertInstanceOf('Generator', $queue->getIterator());
-        $i = 0;
-        $a = ord('a');
+        $this->assertCount(2, $queue);
+        $this->assertEquals(2, $queue->dequeue());
+        $this->assertCount(1, $queue);
+        $queue->enqueue(4);
+        $this->assertCount(2, $queue);
         foreach ($queue as $key => $value) {
-            $this->assertEquals(chr($a + $i), $key);
-            $this->assertEquals($i + 1, $value);
-            $i++;
+            $this->assertEquals(0, $key);
+            $this->assertEquals(3, $value);
+            break;
         }
-        $this->assertCount(0, $queue);
-    }
-
-    // Test representation methods
-
-    /**
-     * Test toString method
-     */
-    public function testToString(): void
-    {
-        $obj = new Queue([1, 2, null, []]);
-        $this->assertEquals('Queue(4)', "{$obj}");
-    }
-
-
-    // Test comparison methods
-
-    /**
-     * Test Queue compare
-     */
-    public function testQueueCompare(): void
-    {
-        $queue_1 = new Queue([1, 2, 3]);
-        $queue_2 = new Queue([1, 2, 3]);
-        $queue_3 = new Queue([1, 2, 3, 4]);
-
-        $this->assertEquals(0, $queue_1->compare($queue_2));
-        $this->assertEquals(-1, $queue_1->compare($queue_3));
-        $this->assertEquals(1, $queue_3->compare($queue_2));
-    }
-
-    /**
-     * Test Queue failed comparison
-     */
-    public function testQueueIncomparable(): void
-    {
-        $queue = new Queue([1, 2, 3]);
-        $this->expectException('Phrity\Comparison\IncomparableException');
-        $this->expectExceptionMessage('Can only compare Phrity\O\Queue');
-        $queue->compare('Not comparable with O\Queue');
+        foreach ($queue as $key => $value) {
+            $this->assertEquals(0, $key);
+            $this->assertEquals(4, $value);
+            break;
+        }
+        $this->assertEmpty($queue);
     }
 }

@@ -9,7 +9,7 @@ use Phrity\O\Obj;
 use stdClass;
 
 /**
- * O\Obj tests.
+ * Phrity\O\Obj tests.
  */
 class ObjTest extends TestCase
 {
@@ -39,7 +39,7 @@ class ObjTest extends TestCase
         $this->assertEquals(2, $obj_2->b);
 
         $obj_4 = new Obj(new stdClass());
-        $this->assertFalse(isset($obj_5->a));
+        $this->assertFalse(isset($obj_4->a));
 
         $obj_5 = new Obj(null);
         $this->assertFalse(isset($obj_5->a));

@@ -1,22 +1,15 @@
 <?php
 
-/**
- * File for O\Array\ArrayAccessTrait trait.
- * @package Phrity > O
- */
-
 namespace Phrity\O\Array;
 
 /**
- * O\Array\ArrayAccessTrait trait.
+ * Phrity\O\Array\ArrayAccessTrait trait.
  */
 trait ArrayAccessTrait
 {
-    protected array $o_array_source = [];
-    protected string $o_source_ref = 'o_array_source';
+    use TypeTrait;
 
-
-    // ArrayAccess interface implementation
+    // ArrayAccess interface implementation.
 
     /**
      * Whether an offset exists.

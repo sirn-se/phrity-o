@@ -12,7 +12,6 @@ use Phrity\O\Str;
  */
 class StrTest extends TestCase
 {
-
     public function setUp(): void
     {
         error_reporting(-1);

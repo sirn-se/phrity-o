@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Phrity\O\Test\Number;
+namespace Phrity\O\Test\Array;
 
 use PHPUnit\Framework\TestCase;
 
 /**
- * Phrity\O\Number\StringableTrait tests.
+ * Phrity\O\Array\StringableTrait tests.
  */
 class StringableTest extends TestCase
 {
@@ -18,9 +18,7 @@ class StringableTest extends TestCase
 
     public function testToString(): void
     {
-        $float = new ImplClass(2.3);
-        $this->assertEquals('2.3', "{$float}");
-        $float = new ImplClass(-1.5);
-        $this->assertEquals('-1.5', "{$float}");
+        $array = new ImplClass([1, 2, null, []]);
+        $this->assertEquals('ImplClass(4)', "{$array}");
     }
 }

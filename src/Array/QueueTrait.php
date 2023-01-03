@@ -1,21 +1,15 @@
 <?php
 
-/**
- * File for O\Array\QueueTrait trait.
- * @package Phrity > O
- */
-
 namespace Phrity\O\Array;
 
 use Traversable;
 
 /**
- * O\Array\QueueTrait trait.
+ * Phrity\O\Array\QueueTrait trait.
  */
 trait QueueTrait
 {
-    protected array $o_array_source = [];
-    protected string $o_source_ref = 'o_array_source';
+    use TypeTrait;
 
     /**
      * Add item to the end of queue.

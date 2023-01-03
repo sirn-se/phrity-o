@@ -1,26 +1,19 @@
 <?php
 
-/**
- * File for O\Array\IteratorTrait trait.
- * @package Phrity > O
- */
-
 namespace Phrity\O\Array;
 
 /**
- * O\Array\IteratorTrait trait.
+ * Phrity\O\Array\IteratorTrait trait.
  */
 trait IteratorTrait
 {
-    protected array $o_array_source = [];
-    protected string $o_source_ref = 'o_array_source';
+    use TypeTrait;
 
-
-    // Iterator interface implementation
+    // Iterator interface implementation.
 
     /**
-     * Return the current element
-     * @return mixed Current element
+     * Return the current element.
+     * @return mixed Current element.
      */
     public function current(): mixed
     {
@@ -28,8 +21,8 @@ trait IteratorTrait
     }
 
     /**
-     * Return the key of the current element
-     * @return scalar|null Current key
+     * Return the key of the current element.
+     * @return scalar|null Current key.
      */
     public function key(): mixed
     {
@@ -37,7 +30,7 @@ trait IteratorTrait
     }
 
     /**
-     * Move forward to next element
+     * Move forward to next element.
      */
     public function next(): void
     {
@@ -45,7 +38,7 @@ trait IteratorTrait
     }
 
     /**
-     * Rewind the Iterator to the first element
+     * Rewind the Iterator to the first element.
      */
     public function rewind(): void
     {
@@ -53,8 +46,8 @@ trait IteratorTrait
     }
 
     /**
-     * Checks if current position is valid
-     * @return bool True if valid
+     * Checks if current position is valid.
+     * @return bool True if valid.
      */
     public function valid(): bool
     {
@@ -62,11 +55,11 @@ trait IteratorTrait
     }
 
 
-    // Iterator methods not in interface
+    // Iterator methods not in interface.
 
     /**
-     * Move backward to previous element
-     * @return mixed Returns the value in the previous position
+     * Move backward to previous element.
+     * @return mixed Returns the value in the previous position.
      */
     public function previous(): mixed
     {
@@ -74,8 +67,8 @@ trait IteratorTrait
     }
 
     /**
-     * Advance the Iterator to the last element
-     * @return mixed Returns the value of the last element
+     * Advance the Iterator to the last element.
+     * @return mixed Returns the value of the last element.
      */
     public function forward(): mixed
     {

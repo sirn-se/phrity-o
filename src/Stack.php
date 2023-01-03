@@ -1,40 +1,34 @@
 <?php
 
-/**
- * File for O\Stack class.
- * @package Phrity > O
- */
-
 namespace Phrity\O;
 
+use ArgumentCountError;
 use Countable;
-use InvalidArgumentException;
 use IteratorAggregate;
-use Stringable;
-use Phrity\Comparison\{
-    Comparable,
-    ComparisonTrait
-};
+use Phrity\Comparison\Comparable;
 use Phrity\O\Array\{
-    ArrayAccessTrait,
+    CoercionTrait,
     ComparableTrait,
     CountableTrait,
     StackIteratorTrait,
     StackTrait,
-    StringableTrait
+    StringableTrait,
+    TypeTrait
 };
+use Stringable;
 
 /**
- * O\Stack class.
+ * Phrity\O\Stack class.
  */
 class Stack implements Countable, IteratorAggregate, Comparable, Stringable
 {
-    use ComparisonTrait;
+    use CoercionTrait;
     use ComparableTrait;
     use CountableTrait;
     use StackIteratorTrait;
     use StackTrait;
     use StringableTrait;
+    use TypeTrait;
 
     /**
      * Constructor for O\Stack
@@ -42,33 +36,16 @@ class Stack implements Countable, IteratorAggregate, Comparable, Stringable
      */
     public function __construct(mixed ...$args)
     {
-        // Allow subclass to use additional input
+        // Setup - use coersion.
+        $this->o_option_coerce = true;
+
+        // Allow subclass to use additional input.
         $content = array_shift($args);
-        $this->bind($content);
+        $this->initialize(array_values($this->coerce($content)));
 
         if (!empty($args)) {
-            throw new InvalidArgumentException('Unsupported argument for O\Stack');
+            $class = self::class;
+            throw new ArgumentCountError("Unsupported argument for {$class}.");
         }
-    }
-
-    // Protected internal methods
-
-    /**
-     * Bind provided data to internal structure
-     * @param  mixed $content Input data
-     * @return array          The internal structure
-     */
-    protected function bind(mixed $content): array
-    {
-        if (is_null($content)) {
-            return $this->o_array_source = [];
-        }
-        if (is_array($content)) {
-            return $this->o_array_source = array_reverse($content);
-        }
-        if ($content instanceof self) {
-            return $this->o_array_source = array_reverse($content->o_array_source);
-        }
-        throw new InvalidArgumentException('Unsupported input data for O\Stack');
     }
 }

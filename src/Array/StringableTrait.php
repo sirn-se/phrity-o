@@ -1,26 +1,19 @@
 <?php
 
-/**
- * File for O\Array\StringableTrait trait.
- * @package Phrity > O
- */
-
 namespace Phrity\O\Array;
 
 /**
- * O\Array\StringableTrait trait.
+ * Phrity\O\Array\StringableTrait trait.
  */
 trait StringableTrait
 {
-    protected array $o_array_source = [];
-    protected string $o_source_ref = 'o_array_source';
+    use TypeTrait;
 
-
-    // Stringable interface implementation
+    // Stringable interface implementation.
 
     /**
-     * Return string representation
-     * @return string
+     * Return string representation.
+     * @return string String representation.
      */
     public function __toString(): string
     {

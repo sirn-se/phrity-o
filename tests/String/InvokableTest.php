@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Phrity\O\String\InvokableTrait tests.
  */
-class InvokableTraitTest extends TestCase
+class InvokableTest extends TestCase
 {
     public function setUp(): void
     {

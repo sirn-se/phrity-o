@@ -1,24 +1,17 @@
 <?php
 
-/**
- * File for O\Array\QueueIteratorTrait trait.
- * @package Phrity > O
- */
-
 namespace Phrity\O\Array;
 
 use Traversable;
 
 /**
- * O\Array\QueueIteratorTrait trait.
+ * Phrity\O\Array\QueueIteratorTrait trait.
  */
 trait QueueIteratorTrait
 {
-    protected array $o_array_source = [];
-    protected string $o_source_ref = 'o_array_source';
+    use TypeTrait;
 
-
-    // IteratorAggregate interface implementation
+    // IteratorAggregate interface implementation.
 
     /**
      * Consume array (FIFO) and yield key/value pair.

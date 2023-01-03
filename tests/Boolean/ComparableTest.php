@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Phrity\O\Boolean\ComparableTrait tests.
  */
-class ComparableTraitTest extends TestCase
+class ComparableTest extends TestCase
 {
     public function setUp(): void
     {

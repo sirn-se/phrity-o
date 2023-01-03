@@ -1,75 +1,53 @@
 <?php
 
-/**
- * File for O\Arr class.
- * @package Phrity > O
- */
-
 namespace Phrity\O;
 
+use ArgumentCountError;
 use ArrayAccess;
 use Countable;
 use Iterator;
-use Stringable;
-use InvalidArgumentException;
 use Phrity\Comparison\Comparable;
 use Phrity\O\Array\{
     ArrayAccessTrait,
+    CoercionTrait,
     ComparableTrait,
     CountableTrait,
     IteratorTrait,
-    StringableTrait
+    StringableTrait,
+    TypeTrait
 };
+use Stringable;
 
 /**
- * O\Arr class.
+ * Phrity\O\Arr class.
  */
 class Arr implements ArrayAccess, Countable, Iterator, Stringable, Comparable
 {
     use ArrayAccessTrait;
+    use CoercionTrait;
     use ComparableTrait;
     use CountableTrait;
     use IteratorTrait;
     use StringableTrait;
+    use TypeTrait;
 
     /**
-     * Constructor for O\Arr
-     * @param mixed $args Input data
+     * Constructor for Phrity\O\Integer.
+     * @param mixed ...$args Input data.
+     * @throws ArgumentCountError If too many arguments provided.
      */
     public function __construct(mixed ...$args)
     {
-        // Allow subclass to use additional input
+        // Setup - use coersion.
+        $this->o_option_coerce = true;
+
+        // Allow subclass to use additional input.
         $content = array_shift($args);
-        $this->bind($content);
+        $this->initialize($this->coerce($content));
 
         if (!empty($args)) {
-            throw new InvalidArgumentException('Unsupported argument for O\Arr');
+            $class = self::class;
+            throw new ArgumentCountError("Unsupported argument for {$class}.");
         }
-    }
-
-
-    // Protected internal methods
-
-    /**
-     * Bind provided data to internal structure
-     * @param  mixed $content Input data
-     * @return array          The internal structure
-     */
-    protected function bind(mixed $content): array
-    {
-        if (is_null($content)) {
-            return $this->o_array_source = [];
-        }
-        if (is_array($content)) {
-            return $this->o_array_source = $content;
-        }
-        if ($content instanceof self) {
-            return $this->o_array_source = $content->o_array_source;
-        }
-        if (is_object($content)) {
-            // Converts to associative array, only public properties of input object
-            return $this->o_array_source = json_decode(json_encode($content), true);
-        }
-        throw new InvalidArgumentException('Unsupported input data for O\Arr');
     }
 }
