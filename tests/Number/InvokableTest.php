@@ -32,9 +32,17 @@ class InvokableTest extends TestCase
 
     public function testSetterException(): void
     {
-        $int = new ImplClass(2.3);
+        $float = new ImplClass(2.3);
         $this->expectException('TypeError');
         $this->expectExceptionMessage('Phrity\O\Test\Number\ImplClass::__invoke()');
-        $int('not a float');
+        $float('not a float');
+    }
+
+    public function testArgumentCountError(): void
+    {
+        $float = new ImplClass(2.3);
+        $this->expectException('ArgumentCountError');
+        $this->expectExceptionMessage('Too many arguments.');
+        $float(0.1, 0.1);
     }
 }

@@ -37,4 +37,12 @@ class InvokableTest extends TestCase
         $this->expectExceptionMessage('Phrity\O\Test\Boolean\ImplClass::__invoke()');
         $bool('not a boolean');
     }
+
+    public function testArgumentCountError(): void
+    {
+        $bool = new ImplClass(false);
+        $this->expectException('ArgumentCountError');
+        $this->expectExceptionMessage('Too many arguments.');
+        $bool(true, true);
+    }
 }

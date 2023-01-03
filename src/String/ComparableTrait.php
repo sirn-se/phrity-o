@@ -29,6 +29,7 @@ trait ComparableTrait
             $class = self::class;
             throw new IncomparableException("Can only compare {$class}");
         }
-        return strcmp($this->{$this->o_source_ref}, $compare_with->{$compare_with->o_source_ref});
+        $cmp = strcmp($this->{$this->o_source_ref}, $compare_with->{$compare_with->o_source_ref});
+        return max(min($cmp, 1), -1); // Ensure correct range.
     }
 }

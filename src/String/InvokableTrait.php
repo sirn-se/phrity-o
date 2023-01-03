@@ -2,6 +2,8 @@
 
 namespace Phrity\O\String;
 
+use ArgumentCountError;
+
 /**
  * Phrity\O\String\InvokableTrait trait.
  */

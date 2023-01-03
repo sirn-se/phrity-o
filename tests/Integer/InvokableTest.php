@@ -37,4 +37,12 @@ class InvokableTest extends TestCase
         $this->expectExceptionMessage('Phrity\O\Test\Integer\ImplClass::__invoke()');
         $int('not an integer');
     }
+
+    public function testArgumentCountError(): void
+    {
+        $int = new ImplClass(23);
+        $this->expectException('ArgumentCountError');
+        $this->expectExceptionMessage('Too many arguments.');
+        $int(0, 0);
+    }
 }
