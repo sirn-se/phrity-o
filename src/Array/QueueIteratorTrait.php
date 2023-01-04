@@ -2,7 +2,7 @@
 
 namespace Phrity\O\Array;
 
-use Traversable;
+use Generator;
 
 /**
  * Phrity\O\Array\QueueIteratorTrait trait.
@@ -15,9 +15,9 @@ trait QueueIteratorTrait
 
     /**
      * Consume array (FIFO) and yield key/value pair.
-     * @return Traversable The iterator function.
+     * @return Generator The iterator function.
      */
-    public function getIterator(): Traversable
+    public function getIterator(): Generator
     {
         return (function () {
             while (!empty($this->{$this->o_source_ref})) {

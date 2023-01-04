@@ -1,31 +1,41 @@
-# Array > StringableTrait
+# [Array](../Array.md) / StringableTrait
 
 Trait that implements the [Stringable](https://www.php.net/manual/en/class.stringable) interface.
-Allows string conversion to `classname(count)` (namespaces are excluded).
+Allows string conversion of class to `classname(count)` (namespace is excluded).
 
-#### Trait synopsis
+## Trait synopsis
 
 ```php
 trait StringableTrait
 {
-     // Stringable interface methods
+    use TypeTrait;
 
-     public function __toString(): string;
+    // Stringable interface implementation.
+
+    /**
+     * Return string representation.
+     * @return string String representation.
+     */
+    public function __toString(): string;
 }
 ```
 
-#### Usage
+## Examples
 
 ```php
+
+use Phrity\O\Array\StringableTrait;
+
 class MyClass implements Stringable
 {
     use StringableTrait;
+
+    public function __construct(array $input)
+    {
+        $this->initialize($input);
+    }
 }
-```
 
-#### Examples
-
-```php
 $class = new MyClass(['a' => 1, 'b' => 2, 'c' => 3]);
 echo $class; // => "MyClass(3)"
 ```

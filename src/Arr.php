@@ -32,7 +32,7 @@ class Arr implements ArrayAccess, Countable, Iterator, Stringable, Comparable
     use TypeTrait;
 
     /**
-     * Constructor for Phrity\O\Integer.
+     * Constructor for Phrity\O\Arr.
      * @param mixed ...$args Input data.
      * @throws ArgumentCountError If too many arguments provided.
      */

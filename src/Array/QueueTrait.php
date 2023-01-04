@@ -2,8 +2,6 @@
 
 namespace Phrity\O\Array;
 
-use Traversable;
-
 /**
  * Phrity\O\Array\QueueTrait trait.
  */

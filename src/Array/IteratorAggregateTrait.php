@@ -2,7 +2,7 @@
 
 namespace Phrity\O\Array;
 
-use Traversable;
+use Generator;
 
 /**
  * Phrity\O\Array\IteratorAggregateTrait trait.
@@ -15,9 +15,9 @@ trait IteratorAggregateTrait
 
     /**
      * Iterate array and yield key/value pair.
-     * @return Traversable The iterator function.
+     * @return Generator The iterator function.
      */
-    public function getIterator(): Traversable
+    public function getIterator(): Generator
     {
         return (function () {
             foreach ($this->{$this->o_source_ref} as $key => $value) {

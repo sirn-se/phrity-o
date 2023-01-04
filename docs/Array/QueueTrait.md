@@ -1,33 +1,45 @@
-# Array > QueueTrait
+# [Array](../Array.md) / QueueTrait
 
-Adds queue methods.
+Implements queue methods.
 As a Queue (FIFO) implementation, `enqueue` will put items at the end and `dequeue` will retrieve the first item.
 
-
-#### Trait synopsis
+## Trait synopsis
 
 ```php
 trait QueueTrait
 {
-     // Queue methods
+    use TypeTrait;
 
-     public function enqueue(mixed $item): void;
-     public function dequeue(): mixed;
+    /**
+     * Add item to the end of queue.
+     * @param mixed $item Item to add.
+     */
+    public function enqueue(mixed $item): void;
+
+    /**
+     * Retrieve item from queue.
+     * @return mixed $item Get and remove first item in queue.
+     */
+    public function dequeue(): mixed;
 }
 ```
 
-#### Usage
+## Examples
 
 ```php
+
+use Phrity\O\Array\QueueTrait;
+
 class MyClass
 {
     use QueueTrait;
+
+    public function __construct()
+    {
+        $this->initialize();
+    }
 }
-```
 
-#### Examples
-
-```php
 $class = new MyClass();
 $class->enqueue('A');
 $class->enqueue('B');
