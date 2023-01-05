@@ -1,4 +1,4 @@
-# [Array](../Array.md) / ComparableTrait
+# [Boolean](../Boolean.md) / ComparableTrait
 
 Trait that implements the [Comparable](https://github.com/sirn-se/phrity-comparison) and
 [Equalable](https://github.com/sirn-se/phrity-comparison) interfaces.
@@ -71,7 +71,7 @@ trait ComparableTrait
 
 ```php
 
-use Phrity\O\Array\ComparableTrait;
+use Phrity\O\Boolean\ComparableTrait;
 use Phrity\Comparison\{
     Comparable,
     Equalable
@@ -81,14 +81,14 @@ class MyClass implements Comparable, Equalable
 {
     use ComparableTrait;
 
-    public function __construct(array $input)
+    public function __construct(bool $input)
     {
         $this->initialize($input);
     }
 }
 
-$class_a = new MyClass(['a' => 1, 'b' => 2, 'c' => 3]);
-$class_b = new MyClass(['a' => 4, 'b' => 5, 'c' => 8]);
+$class_a = new MyClass(false);
+$class_b = new MyClass(true);
 $class_a->equals($class_b);
 $class_a->greaterThan($class_b);
 $class_a->greaterThanOrEqual($class_b);

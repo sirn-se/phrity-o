@@ -51,7 +51,7 @@ class Queue implements Countable, IteratorAggregate, Comparable, Stringable
 
     /**
      * Compare $this with provided instance of the same class.
-     * @param  mixed $compare_with The object to compare with.
+     * @param  mixed $compare_with The instance to compare with.
      * @return int -1, 0 or +1 comparison result.
      */
     public function compare(mixed $compare_with): int;
@@ -99,7 +99,7 @@ class Queue implements Countable, IteratorAggregate, Comparable, Stringable
     // CountableTrait methods.
 
     /**
-     * Count elements of an object.
+     * Count elements of instance.
      * @return int Number of elements.
      */
     public function count(): int;
@@ -138,7 +138,7 @@ class Queue implements Countable, IteratorAggregate, Comparable, Stringable
 
     /**
      * Initializer, typically called in constructor.
-     * @param object $value Initial value.
+     * @param array $value Initial value.
      */
     protected function initialize(array $value = []): void;
 }

@@ -1,51 +1,43 @@
-# [Array](../Array.md) / Stack
+# [Boolean](../Boolean.md) / Boolean
 
-Stack implementation class. Uses the following traits;
+Generic boolean class. Uses the following traits;
 
 * [CoercionTrait](CoercionTrait.md)
 * [ComparableTrait](ComparableTrait.md)
-* [CountableTrait](CountableTrait.md)
-* [StackIteratorTrait](StackIteratorTrait.md)
-* [StackTrait](StackTrait.md)
+* [InvokableTrait](InvokableTrait.md)
 * [StringableTrait](StringableTrait.md)
 * [TypeTrait](TypeTrait.md)
 
 Implements the following interfaces;
 
 * [Comparable](https://github.com/sirn-se/phrity-comparison) and [Equalable](https://github.com/sirn-se/phrity-comparison)
-* [Countable](https://www.php.net/manual/en/class.countable.php)
 * [Stringable](https://www.php.net/manual/en/class.stringable).
-* [IteratorAggregate](https://www.php.net/manual/en/class.iterator.php) and [Traversable](https://www.php.net/manual/en/class.traversable.php)
 
 ## Trait synopsis
 
 ```php
-class Stack implements Countable, IteratorAggregate, Comparable, Stringable
+class Boolean implements Stringable, Comparable
 {
     use CoercionTrait;
     use ComparableTrait;
-    use CountableTrait;
-    use StackIteratorTrait;
-    use StackTrait;
+    use InvokableTrait;
     use StringableTrait;
     use TypeTrait;
 
     /**
-     * Constructor for Phrity\O\Queue.
+     * Constructor for Phrity\O\Boolean.
      * @param mixed ...$args Input data.
      * @throws ArgumentCountError If too many arguments provided.
      */
     public function __construct(mixed ...$args);
 
-    // CoercionTrait methods.
-
     /**
      * Internal coercion method.
      * @param mixed $value Value to coerce.
-     * @return array Resulting value.
+     * @return bool Resulting value.
      * @throws TypeError If invalid value provided.
      */
-    protected function coerce(mixed $value): array
+    protected function coerce(mixed $value): bool
 
     // ComparableTrait methods.
 
@@ -96,35 +88,15 @@ class Stack implements Countable, IteratorAggregate, Comparable, Stringable
      */
     public function lessThanOrEqual(mixed $compare_with): bool;
 
-    // CountableTrait methods.
+    // InvokableTrait methods.
 
     /**
-     * Count elements of instance.
-     * @return int Number of elements.
+     * Getter/setter implementation.
+     * @param  bool ...$args Input data.
+     * @return bool Current value.
+     * @throws ArgumentCountError If called with too many arguments.
      */
-    public function count(): int;
-
-    // StackIteratorTrait methods.
-
-    /**
-     * Consume array and yield key/value pair.
-     * @return Generator The iterator function.
-     */
-    public function getIterator(): Generator;
-
-    // StackTrait methods.
-
-    /**
-     * Add item to the top of stack.
-     * @param mixed $item Item to add.
-     */
-    public function push(mixed $item): void;
-
-    /**
-     * Retrieve item from stack.
-     * @return mixed $item Get and remove top item in stack.
-     */
-    public function pop(): mixed;
+    public function __invoke(bool ...$args): bool;
 
     // StringableTrait methods.
 
@@ -138,23 +110,19 @@ class Stack implements Countable, IteratorAggregate, Comparable, Stringable
 
     /**
      * Initializer, typically called in constructor.
-     * @param array $value Initial value.
+     * @param bool $value Initial value.
      */
-    protected function initialize(array $value = []): void;
+    protected function initialize(bool $value = false): void;
 }
 ```
 
 ## Examples
 
 ```php
-use Phrity\O\Stack;
+use Phrity\O\Boolean;
 
-$stack = new Stack([1, 2, 3]);
-$stack->push(4);
-$stack->pop();
-count($stack); // Countable support
-foreach ($stack as $key => $item) {
-    // Consuming iterator support
-}
-$stack->equals(new Stack([2, 3, 4])); // Comparison support
+$boolean = new Boolean(true);
+$boolean(false); // Invokable support
+$boolean->equals(new Boolean(false)); // Comparison support
+echo $boolean; // Stringable support
 ```

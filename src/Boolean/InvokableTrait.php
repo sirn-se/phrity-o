@@ -15,6 +15,7 @@ trait InvokableTrait
      * Getter/setter implementation.
      * @param  bool ...$args Input data.
      * @return bool Current value.
+     * @throws ArgumentCountError If called with too many arguments.
      */
     public function __invoke(bool ...$args): bool
     {

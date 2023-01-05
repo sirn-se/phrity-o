@@ -1,51 +1,43 @@
-# [Array](../Array.md) / Stack
+# [Object](../Object.md) / Obj
 
-Stack implementation class. Uses the following traits;
+Generic object class. Uses the following traits;
 
 * [CoercionTrait](CoercionTrait.md)
 * [ComparableTrait](ComparableTrait.md)
-* [CountableTrait](CountableTrait.md)
-* [StackIteratorTrait](StackIteratorTrait.md)
-* [StackTrait](StackTrait.md)
+* [PropertyAccessTrait](PropertyAccessTrait.md)
 * [StringableTrait](StringableTrait.md)
 * [TypeTrait](TypeTrait.md)
 
 Implements the following interfaces;
 
 * [Comparable](https://github.com/sirn-se/phrity-comparison) and [Equalable](https://github.com/sirn-se/phrity-comparison)
-* [Countable](https://www.php.net/manual/en/class.countable.php)
 * [Stringable](https://www.php.net/manual/en/class.stringable).
-* [IteratorAggregate](https://www.php.net/manual/en/class.iterator.php) and [Traversable](https://www.php.net/manual/en/class.traversable.php)
 
 ## Trait synopsis
 
 ```php
-class Stack implements Countable, IteratorAggregate, Comparable, Stringable
+class Obj implements Stringable, Comparable
 {
     use CoercionTrait;
     use ComparableTrait;
-    use CountableTrait;
-    use StackIteratorTrait;
-    use StackTrait;
+    use PropertyAccessTrait;
     use StringableTrait;
     use TypeTrait;
 
     /**
-     * Constructor for Phrity\O\Queue.
+     * Constructor for Phrity\O\Str.
      * @param mixed ...$args Input data.
      * @throws ArgumentCountError If too many arguments provided.
      */
     public function __construct(mixed ...$args);
 
-    // CoercionTrait methods.
-
     /**
      * Internal coercion method.
      * @param mixed $value Value to coerce.
-     * @return array Resulting value.
+     * @return string Resulting value.
      * @throws TypeError If invalid value provided.
      */
-    protected function coerce(mixed $value): array
+    protected function coerce(mixed $value): string
 
     // ComparableTrait methods.
 
@@ -96,35 +88,35 @@ class Stack implements Countable, IteratorAggregate, Comparable, Stringable
      */
     public function lessThanOrEqual(mixed $compare_with): bool;
 
-    // CountableTrait methods.
+    // PropertyAccessTrait methods.
 
     /**
-     * Count elements of instance.
-     * @return int Number of elements.
+     * Returns the value of specified property.
+     * @param  string $key The property to retrieve.
+     * @return mixed Value for property.
+     * @throws Error If specified property do not exist.
      */
-    public function count(): int;
-
-    // StackIteratorTrait methods.
+    public function __get(string $key): mixed;
 
     /**
-     * Consume array and yield key/value pair.
-     * @return Generator The iterator function.
+     * Assigns a value on specified property.
+     * @param string $key The property to assign the value to.
+     * @param mixed $value The value to set.
      */
-    public function getIterator(): Generator;
-
-    // StackTrait methods.
-
-    /**
-     * Add item to the top of stack.
-     * @param mixed $item Item to add.
-     */
-    public function push(mixed $item): void;
+    public function __set(string $key, mixed $value): void;
 
     /**
-     * Retrieve item from stack.
-     * @return mixed $item Get and remove top item in stack.
+     * Whether a property exists.
+     * @param string $key A property to check for.
+     * @return True if property exist.
      */
-    public function pop(): mixed;
+    public function __isset(string $key): bool;
+
+    /**
+     * Unsets a property.
+     * @param string $key The property to unset.
+     */
+    public function __unset(string $key): void;
 
     // StringableTrait methods.
 
@@ -138,23 +130,19 @@ class Stack implements Countable, IteratorAggregate, Comparable, Stringable
 
     /**
      * Initializer, typically called in constructor.
-     * @param array $value Initial value.
+     * @param string $value Initial value.
      */
-    protected function initialize(array $value = []): void;
+    protected function initialize(string $value = ""): void;
 }
 ```
 
 ## Examples
 
 ```php
-use Phrity\O\Stack;
+use Phrity\O\Str;
 
-$stack = new Stack([1, 2, 3]);
-$stack->push(4);
-$stack->pop();
-count($stack); // Countable support
-foreach ($stack as $key => $item) {
-    // Consuming iterator support
-}
-$stack->equals(new Stack([2, 3, 4])); // Comparison support
+$object = new Obj((object)["a" => 1]);
+$object->a; // property access support
+$object->equals(new Obj((object)["b" => 2])); // Comparison support
+echo $object; // Stringable support
 ```

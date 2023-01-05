@@ -1,4 +1,4 @@
-# Array > TypeTrait
+# [Array](../Array.md) / TypeTrait
 
 Base trait for all traits using array as source.
 Defines source property, options and the `initialize` method.
@@ -14,7 +14,7 @@ trait TypeTrait
 
     /**
      * Initializer, typically called in constructor.
-     * @param object $value Initial value.
+     * @param array $value Initial value.
      */
     protected function initialize(array $value = []): void;
 }

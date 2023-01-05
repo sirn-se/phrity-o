@@ -13,7 +13,7 @@ trait CountableTrait
     // Countable interface implementation.
 
     /**
-     * Count elements of an object.
+     * Count elements of instance.
      * @return int Number of elements.
      */
     public function count(): int;

@@ -19,7 +19,7 @@ trait ComparableTrait
 
     /**
      * Compare $this with provided instance of the same class
-     * @param  mixed $compare_with The object to compare with
+     * @param  mixed $compare_with The instance to compare with
      * @return int -1, 0 or +1 comparison result
      * @throws IncomparableException If provided input is not comparable.
      */

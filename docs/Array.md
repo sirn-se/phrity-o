@@ -40,7 +40,7 @@ Trait that support coercing non-array content as input.
 Implements [Comparable](https://github.com/sirn-se/phrity-comparison) and [Equalable](https://github.com/sirn-se/phrity-comparison) interfaces.
 Allows comparing class instances based on internal content.
 
-### CountableTrait](Array/CountableTrait.md)
+### [CountableTrait](Array/CountableTrait.md)
 
 Implements [Countable](https://www.php.net/manual/en/class.countable.php) interface.
 Enables `count()` function on class.
