@@ -1,4 +1,4 @@
-# [Array](../Array.md) / QueueTrait
+# [Docs](../../README.md) / [Array](../Array.md) / QueueTrait
 
 Implements queue methods.
 As a Queue (FIFO) implementation, `enqueue` will put items at the end and `dequeue` will retrieve the first item.

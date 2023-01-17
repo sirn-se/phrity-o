@@ -1,4 +1,4 @@
-# [Array](../Array.md) / IteratorAggregateTrait
+# [Docs](../../README.md) / [Array](../Array.md) / IteratorAggregateTrait
 
 Trait that implements the [IteratorAggregate](https://www.php.net/manual/en/class.iteratoraggregate) and
 [Traversable](https://www.php.net/manual/en/class.traversable.php) interfaces.

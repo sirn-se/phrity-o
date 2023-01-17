@@ -1,8 +1,10 @@
-## Number classes
+# [Docs](../../README.md) / String
+
+## String classes
 
 The following ready-made classes are available.
 
-### [Number](Number/Integer.md)
+### [String](String/Str.md)
 
 Generic float class.
 Uses CoercionTrait, ComparableTrait, InvokableTrait, StringableTrait and TypeTrait.
@@ -13,43 +15,43 @@ Implements Comparable and Stringable interfaces.
 
 The following traits provide functionality. Adding more than one of these traits do not cause conflicts.
 
-### [CoercionTrait](Number/CoercionTrait.md)
+### [CoercionTrait](String/CoercionTrait.md)
 
-Trait that support coercing non-float content as input.
+Trait that support coercing non-string content as input.
 
-### [ComparableTrait](Number/ComparableTrait.md)
+### [ComparableTrait](String/ComparableTrait.md)
 
 Implements [Comparable](https://github.com/sirn-se/phrity-comparison) and [Equalable](https://github.com/sirn-se/phrity-comparison) interfaces.
 Allows comparing class instances based on internal content.
 
-### [InvokableTrait](Number/InvokableTrait.md)
+### [InvokableTrait](String/InvokableTrait.md)
 
 Allows get and set by invoke call.
 
-### [StringableTrait](Number/StringableTrait.md)
+### [StringableTrait](String/StringableTrait.md)
 
 Implements [Stringable](https://www.php.net/manual/en/class.stringable) interface.
 Allows string conversion of class to numeric output.
 
-### [TypeTrait](Number/TypeTrait.md)
+### [TypeTrait](String/TypeTrait.md)
 
-Base trait for all traits using float as source.
+Base trait for all traits using string as source.
 Defines source property, options and the `initialize` method.
 
 
 ## Defining data source
 
-By default, source data is stored in protected property `$o_float_source`.
+By default, source data is stored in protected property `$o_string_source`.
 
 If your class is using another property to keep float data, it may define the source property by setting
 `$o_source_ref` to the name of that property. The float traits use this definition;
 
 ```php
-    protected float $o_float_source;
-    protected string $o_source_ref = 'o_integer_source';
+    protected string $o_string_source;
+    protected string $o_source_ref = 'o_string_source';
 ```
 
-Example using standard integer source.
+Example using standard string source.
 
 ```php
 class MyClass
@@ -59,17 +61,17 @@ class MyClass
     use InvokableTrait;
     use StringableTrait;
 
-    public function __construct(float $data)
+    public function __construct(string $data)
     {
         // Set data provided in constructor.
-        $this->o_float_source = $data;
+        $this->o_string_source = $data;
     }
 }
 
-$my = new MyClass(123.45);
+$my = new MyClass("hey");
 ```
 
-Example using non-standard float source.
+Example using non-standard string source.
 ```php
 class MyClass
 {
@@ -79,9 +81,9 @@ class MyClass
     use StringableTrait;
 
     // Define the variable shat should hold float source data
-    protected float $my_data_source;
+    protected string $my_data_source;
 
-    public function __construct(float $data)
+    public function __construct(string $data)
     {
         // Tell the traits where to find the source data.
         $this->o_source_ref = 'my_data_source';
@@ -91,5 +93,5 @@ class MyClass
     }
 }
 
-$my = new MyClass(123.45);
+$my = new MyClass("hey");
 ```

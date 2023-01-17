@@ -1,4 +1,4 @@
-# [Array](../Array.md) / StackTrait
+# [Docs](../../README.md) / [Array](../Array.md) / StackTrait
 
 Adds stack methods.
 As a Stack (LIFO) implementation, `push` will put items at the top and `pop` will retrieve the last added item.

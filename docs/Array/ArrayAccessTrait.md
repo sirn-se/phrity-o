@@ -1,4 +1,4 @@
-# [Array](../Array.md) / ArrayAccessTrait
+# [Docs](../../README.md) / [Array](../Array.md) / ArrayAccessTrait
 
 Trait that implements the [ArrayAccess](https://www.php.net/manual/en/class.arrayaccess.php) interface.
 Allows accessing class as an array, using `[]` with offset to get, set and check array content.

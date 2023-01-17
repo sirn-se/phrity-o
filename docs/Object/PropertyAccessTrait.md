@@ -1,4 +1,4 @@
-# [Object](../Object.md) / PropertyAccessTrait
+# [Docs](../../README.md) / [Object](../Object.md) / PropertyAccessTrait
 
 Enable accessing source data as object properties.
 

@@ -1,4 +1,4 @@
-# [Number](../Number.md) / CoercionTrait
+# [Docs](../../README.md) / [Number](../Number.md) / CoercionTrait
 
 Trait that support coercing non-float content as input.
 By default, only support float input. By setting `o_option_coerce` to `true`, the following input is supported.
@@ -22,7 +22,7 @@ trait CoercionTrait
      * @return float Resulting value.
      * @throws TypeError If invalid value provided.
      */
-    protected function coerce(mixed $value): float
+    protected function coerce(mixed $value): float;
 }
 ```
 

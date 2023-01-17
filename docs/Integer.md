@@ -1,3 +1,5 @@
+# [Docs](../../README.md) / Integer
+
 ## Integer classes
 
 The following ready-made classes are available.

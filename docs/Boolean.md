@@ -1,3 +1,5 @@
+# [Docs](../../README.md) / Boolean
+
 ## Boolean classes
 
 The following ready-made classes are available.
@@ -45,7 +47,7 @@ If your class is using another property to keep boolean data, it may define the 
 `$o_source_ref` to the name of that property. The boolean traits use this definition;
 
 ```php
-    protected array $o_boolean_source;
+    protected bool $o_boolean_source;
     protected string $o_source_ref = 'o_boolean_source';
 ```
 

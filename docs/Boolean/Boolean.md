@@ -1,4 +1,4 @@
-# [Boolean](../Boolean.md) / Boolean
+# [Docs](../../README.md) / [Boolean](../Boolean.md) / Boolean
 
 Generic boolean class. Uses the following traits;
 
@@ -11,7 +11,7 @@ Generic boolean class. Uses the following traits;
 Implements the following interfaces;
 
 * [Comparable](https://github.com/sirn-se/phrity-comparison) and [Equalable](https://github.com/sirn-se/phrity-comparison)
-* [Stringable](https://www.php.net/manual/en/class.stringable).
+* [Stringable](https://www.php.net/manual/en/class.stringable)
 
 ## Trait synopsis
 
@@ -37,7 +37,7 @@ class Boolean implements Stringable, Comparable
      * @return bool Resulting value.
      * @throws TypeError If invalid value provided.
      */
-    protected function coerce(mixed $value): bool
+    protected function coerce(mixed $value): bool;
 
     // ComparableTrait methods.
 

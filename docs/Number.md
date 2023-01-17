@@ -1,8 +1,10 @@
+# [Docs](../../README.md) / Number
+
 ## Number classes
 
 The following ready-made classes are available.
 
-### [Number](Number/Integer.md)
+### [Number](Number/Number.md)
 
 Generic float class.
 Uses CoercionTrait, ComparableTrait, InvokableTrait, StringableTrait and TypeTrait.
@@ -46,7 +48,7 @@ If your class is using another property to keep float data, it may define the so
 
 ```php
     protected float $o_float_source;
-    protected string $o_source_ref = 'o_integer_source';
+    protected string $o_source_ref = 'o_float_source';
 ```
 
 Example using standard integer source.

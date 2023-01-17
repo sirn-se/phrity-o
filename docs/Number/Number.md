@@ -1,4 +1,4 @@
-# [Number](../Number.md) / Number
+# [Docs](../../README.md) / [Number](../Number.md) / Number
 
 Generic float class. Uses the following traits;
 
@@ -11,7 +11,7 @@ Generic float class. Uses the following traits;
 Implements the following interfaces;
 
 * [Comparable](https://github.com/sirn-se/phrity-comparison) and [Equalable](https://github.com/sirn-se/phrity-comparison)
-* [Stringable](https://www.php.net/manual/en/class.stringable).
+* [Stringable](https://www.php.net/manual/en/class.stringable)
 
 ## Trait synopsis
 
@@ -37,7 +37,7 @@ class Number implements Stringable, Comparable
      * @return float Resulting value.
      * @throws TypeError If invalid value provided.
      */
-    protected function coerce(mixed $value): float
+    protected function coerce(mixed $value): float;
 
     // ComparableTrait methods.
 

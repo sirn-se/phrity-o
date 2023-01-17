@@ -1,4 +1,4 @@
-# [Integer](../Integer.md) / TypeTrait
+# [Docs](../../README.md) / [Integer](../Integer.md) / TypeTrait
 
 Base trait for all traits using integer as source.
 Defines source property, options and the `initialize` method.

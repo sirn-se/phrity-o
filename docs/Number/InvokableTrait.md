@@ -1,4 +1,4 @@
-# [Number](../Number.md) / InvokableTrait
+# [Docs](../../README.md) / [Number](../Number.md) / InvokableTrait
 
 Allows get and set by invoke call.
 

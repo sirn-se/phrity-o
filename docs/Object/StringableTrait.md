@@ -1,4 +1,4 @@
-# [Object](../Object.md) / StringableTrait
+# [Docs](../../README.md) / [Object](../Object.md) / StringableTrait
 
 Trait that implements the [Stringable](https://www.php.net/manual/en/class.stringable) interface.
 Allows string conversion of class to `classname` (namespace is excluded).

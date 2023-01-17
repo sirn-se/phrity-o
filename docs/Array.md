@@ -1,3 +1,5 @@
+# [Docs](../../README.md) / Array
+
 ## Array classes
 
 The following ready-made classes are available.

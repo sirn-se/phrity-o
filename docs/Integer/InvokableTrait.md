@@ -1,4 +1,4 @@
-# [Integer](../Integer.md) / InvokableTrait
+# [Docs](../../README.md) / [Integer](../Integer.md) / InvokableTrait
 
 Allows get and set by invoke call.
 

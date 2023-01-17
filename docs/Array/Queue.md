@@ -1,4 +1,4 @@
-# [Array](../Array.md) / Queue
+# [Docs](../../README.md) / [Array](../Array.md) / Queue
 
 Queue implementation class. Uses the following traits;
 
@@ -14,7 +14,7 @@ Implements the following interfaces;
 
 * [Comparable](https://github.com/sirn-se/phrity-comparison) and [Equalable](https://github.com/sirn-se/phrity-comparison)
 * [Countable](https://www.php.net/manual/en/class.countable.php)
-* [Stringable](https://www.php.net/manual/en/class.stringable).
+* [Stringable](https://www.php.net/manual/en/class.stringable)
 * [IteratorAggregate](https://www.php.net/manual/en/class.iterator.php) and [Traversable](https://www.php.net/manual/en/class.traversable.php)
 
 ## Trait synopsis
@@ -45,7 +45,7 @@ class Queue implements Countable, IteratorAggregate, Comparable, Stringable
      * @return array Resulting value.
      * @throws TypeError If invalid value provided.
      */
-    protected function coerce(mixed $value): array
+    protected function coerce(mixed $value): array;
 
     // ComparableTrait methods.
 

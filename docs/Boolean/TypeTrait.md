@@ -1,4 +1,4 @@
-# [Boolean](../Boolean.md) / TypeTrait
+# [Docs](../../README.md) / [Boolean](../Boolean.md) / TypeTrait
 
 Base trait for all traits using boolean as source.
 Defines source property, options and the `initialize` method.

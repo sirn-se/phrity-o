@@ -1,4 +1,4 @@
-# [Array](../Array.md) / CountableTrait
+# [Docs](../../README.md) / [Array](../Array.md) / CountableTrait
 
 Trait that implements the [Countable](https://www.php.net/manual/en/class.countable.php) interface.
 Enables `count()` function on class.

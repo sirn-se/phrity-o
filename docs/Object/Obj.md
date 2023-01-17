@@ -1,4 +1,4 @@
-# [Object](../Object.md) / Obj
+# [Docs](../../README.md) / [Object](../Object.md) / Obj
 
 Generic object class. Uses the following traits;
 
@@ -11,7 +11,7 @@ Generic object class. Uses the following traits;
 Implements the following interfaces;
 
 * [Comparable](https://github.com/sirn-se/phrity-comparison) and [Equalable](https://github.com/sirn-se/phrity-comparison)
-* [Stringable](https://www.php.net/manual/en/class.stringable).
+* [Stringable](https://www.php.net/manual/en/class.stringable)
 
 ## Trait synopsis
 
@@ -37,7 +37,7 @@ class Obj implements Stringable, Comparable
      * @return string Resulting value.
      * @throws TypeError If invalid value provided.
      */
-    protected function coerce(mixed $value): string
+    protected function coerce(mixed $value): string;
 
     // ComparableTrait methods.
 

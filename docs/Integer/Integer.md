@@ -1,4 +1,4 @@
-# [Integer](../Integer.md) / Integer
+# [Docs](../../README.md) / [Integer](../Integer.md) / Integer
 
 Generic integer class. Uses the following traits;
 
@@ -11,7 +11,7 @@ Generic integer class. Uses the following traits;
 Implements the following interfaces;
 
 * [Comparable](https://github.com/sirn-se/phrity-comparison) and [Equalable](https://github.com/sirn-se/phrity-comparison)
-* [Stringable](https://www.php.net/manual/en/class.stringable).
+* [Stringable](https://www.php.net/manual/en/class.stringable)
 
 ## Trait synopsis
 
@@ -37,7 +37,7 @@ class Integer implements Stringable, Comparable
      * @return int Resulting value.
      * @throws TypeError If invalid value provided.
      */
-    protected function coerce(mixed $value): int
+    protected function coerce(mixed $value): int;
 
     // ComparableTrait methods.
 

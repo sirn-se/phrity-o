@@ -1,3 +1,5 @@
+# [Docs](../../README.md) / Object
+
 ## Object classes
 
 The following ready-made classes are available.
@@ -22,7 +24,7 @@ Trait that support coercing non-float content as input.
 Implements [Comparable](https://github.com/sirn-se/phrity-comparison) and [Equalable](https://github.com/sirn-se/phrity-comparison) interfaces.
 Allows comparing class instances based on internal content.
 
-### [InvokableTrait](Object/PropertyAccessTrait.md)
+### [PropertyAccessTrait](Object/PropertyAccessTrait.md)
 
 Enable accessing source data as object properties.
 

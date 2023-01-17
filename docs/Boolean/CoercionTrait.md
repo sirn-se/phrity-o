@@ -1,4 +1,4 @@
-# [Boolean](../Boolean.md) / CoercionTrait
+# [Docs](../../README.md) / [Boolean](../Boolean.md) / CoercionTrait
 
 Trait that support coercing non-boolean content as input.
 By default, only support boolean input. By setting `o_option_coerce` to `true`, the following input is supported.
@@ -21,7 +21,7 @@ trait CoercionTrait
      * @return bool Resulting value.
      * @throws TypeError If invalid value provided.
      */
-    protected function coerce(mixed $value): bool
+    protected function coerce(mixed $value): bool;
 }
 ```
 

@@ -1,4 +1,4 @@
-# [Array](../Array.md) / StackIteratorTrait
+# [Docs](../../README.md) / [Array](../Array.md) / StackIteratorTrait
 
 Same as IteratorAggregateTrait, except it will **consume** array content.
 As a Stack (LIFO) iterator, it will consume from the end of the array and backwards.

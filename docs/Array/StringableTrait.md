@@ -1,4 +1,4 @@
-# [Array](../Array.md) / StringableTrait
+# [Docs](../../README.md) / [Array](../Array.md) / StringableTrait
 
 Trait that implements the [Stringable](https://www.php.net/manual/en/class.stringable) interface.
 Allows string conversion of class to `classname(count)` (namespace is excluded).

@@ -1,4 +1,4 @@
-# [Array](../Array.md) / TypeTrait
+# [Docs](../../README.md) / [Array](../Array.md) / TypeTrait
 
 Base trait for all traits using array as source.
 Defines source property, options and the `initialize` method.

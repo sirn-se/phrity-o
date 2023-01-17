@@ -1,4 +1,4 @@
-# [Number](../Number.md) / TypeTrait
+# [Docs](../../README.md) / [Number](../Number.md) / TypeTrait
 
 Base trait for all traits using float as source.
 Defines source property, options and the `initialize` method.

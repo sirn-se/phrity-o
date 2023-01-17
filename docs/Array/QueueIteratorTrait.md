@@ -1,4 +1,4 @@
-# [Array](../Array.md) / QueueIteratorTrait
+# [Docs](../../README.md) / [Array](../Array.md) / QueueIteratorTrait
 
 Same as IteratorAggregateTrait, except it will **consume** array content.
 As a Queue (FIFO) iterator, it will consume from the start of the array and forward.

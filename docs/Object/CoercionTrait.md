@@ -1,4 +1,4 @@
-# [Object](../Object.md) / CoercionTrait
+# [Docs](../../README.md) / [Object](../Object.md) / CoercionTrait
 
 Trait that support coercing non-object content as input.
 By default, only support anonymous object input. By setting `o_option_coerce` to `true`, the following input is supported.
@@ -22,7 +22,7 @@ trait CoercionTrait
      * @return object Resulting value.
      * @throws TypeError If invalid value provided.
      */
-    protected function coerce(mixed $value): object
+    protected function coerce(mixed $value): object;
 }
 ```
 

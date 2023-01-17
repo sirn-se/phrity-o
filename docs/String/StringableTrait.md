@@ -1,4 +1,4 @@
-# [String](../String.md) / StringableTrait
+# [Docs](../../README.md) / [String](../String.md) / StringableTrait
 
 Trait that implements the [Stringable](https://www.php.net/manual/en/class.stringable) interface.
 Allows string conversion of class to string output.

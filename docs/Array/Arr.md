@@ -1,4 +1,4 @@
-# [Array](../Array.md) / Arr
+# [Docs](../../README.md) / [Array](../Array.md) / Arr
 
 Generic array class. Uses the following traits;
 
@@ -15,7 +15,7 @@ Implements the following interfaces;
 * [ArrayAccess](https://www.php.net/manual/en/class.arrayaccess.php)
 * [Comparable](https://github.com/sirn-se/phrity-comparison) and [Equalable](https://github.com/sirn-se/phrity-comparison)
 * [Countable](https://www.php.net/manual/en/class.countable.php)
-* [Stringable](https://www.php.net/manual/en/class.stringable).
+* [Stringable](https://www.php.net/manual/en/class.stringable)
 * [Iterator](https://www.php.net/manual/en/class.iterator.php) and [Traversable](https://www.php.net/manual/en/class.traversable.php)
 
 ## Trait synopsis
@@ -75,7 +75,7 @@ class Arr implements ArrayAccess, Countable, Iterator, Stringable, Comparable
      * @return array Resulting value.
      * @throws TypeError If invalid value provided.
      */
-    protected function coerce(mixed $value): array
+    protected function coerce(mixed $value): array;
 
     // ComparableTrait methods.
 

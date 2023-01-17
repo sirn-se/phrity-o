@@ -1,4 +1,4 @@
-# [Object](../Object.md) / TypeTrait
+# [Docs](../../README.md) / [Object](../Object.md) / TypeTrait
 
 Base trait for all traits using object as source.
 Defines source property, options and the `initialize` method.
@@ -9,7 +9,7 @@ Defines source property, options and the `initialize` method.
 trait TypeTrait
 {
     protected object $o_object_source;
-    protected string $o_source_ref = 'o_float_source';
+    protected string $o_source_ref = 'o_object_source';
     protected bool $o_option_coerce = false;
 
     /**

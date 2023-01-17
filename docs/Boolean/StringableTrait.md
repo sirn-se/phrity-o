@@ -1,4 +1,4 @@
-# [Boolean](../Boolean.md) / StringableTrait
+# [Docs](../../README.md) / [Boolean](../Boolean.md) / StringableTrait
 
 Trait that implements the [Stringable](https://www.php.net/manual/en/class.stringable) interface.
 Allows string conversion of class to "false" or "true".

@@ -1,4 +1,4 @@
-# [Integer](../Integer.md) / CoercionTrait
+# [Docs](../../README.md) / [Integer](../Integer.md) / CoercionTrait
 
 Trait that support coercing non-integer content as input.
 By default, only support integer input. By setting `o_option_coerce` to `true`, the following input is supported.
@@ -22,7 +22,7 @@ trait CoercionTrait
      * @return int Resulting value.
      * @throws TypeError If invalid value provided.
      */
-    protected function coerce(mixed $value): int
+    protected function coerce(mixed $value): int;
 }
 ```
 

@@ -1,4 +1,4 @@
-# [Array](../Array.md) / CoercionTrait
+# [Docs](../../README.md) / [Array](../Array.md) / CoercionTrait
 
 Trait that support coercing non-array content as input.
 By default, only support array input. By setting `o_option_coerce` to `true`, the following input is supported.
@@ -21,7 +21,7 @@ trait CoercionTrait
      * @return array Resulting value.
      * @throws TypeError If invalid value provided.
      */
-    protected function coerce(mixed $value): array
+    protected function coerce(mixed $value): array;
 }
 ```
 

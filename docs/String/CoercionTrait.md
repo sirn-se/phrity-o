@@ -1,4 +1,4 @@
-# [String](../String.md) / CoercionTrait
+# [Docs](../../README.md) / [String](../String.md) / CoercionTrait
 
 Trait that support coercing non-string content as input.
 By default, only support string input. By setting `o_option_coerce` to `true`, the following input is supported.
@@ -25,7 +25,7 @@ trait CoercionTrait
      * @return string Resulting value.
      * @throws TypeError If invalid value provided.
      */
-    protected function coerce(mixed $value): string
+    protected function coerce(mixed $value): string;
 }
 ```
 

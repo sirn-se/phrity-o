@@ -1,4 +1,4 @@
-# [Boolean](../Boolean.md) / InvokableTrait
+# [Docs](../../README.md) / [Boolean](../Boolean.md) / InvokableTrait
 
 Allows get and set by invoke call.
 

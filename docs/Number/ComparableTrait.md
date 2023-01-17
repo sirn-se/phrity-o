@@ -1,4 +1,4 @@
-# [Number](../Number.md) / ComparableTrait
+# [Docs](../../README.md) / [Number](../Number.md) / ComparableTrait
 
 Trait that implements the [Comparable](https://github.com/sirn-se/phrity-comparison) and
 [Equalable](https://github.com/sirn-se/phrity-comparison) interfaces.
