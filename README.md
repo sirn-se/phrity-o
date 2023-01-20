@@ -127,6 +127,7 @@ $stack->equals(new Stack([2, 3, 4])); // Comparison support
 
 | Version | PHP | |
 | --- | --- | --- |
+| `2.0` | `^8.0` | Implementation as Traits |
 | `1.5` | `^8.0` | Fix for PHP 8.x versions |
 | `1.4` | `^7.1\|^8.0` |  |
 | `1.3` | `^7.1` | `Queue` and  `Stack` collection classes |
