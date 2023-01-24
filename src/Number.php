@@ -16,7 +16,7 @@ use Stringable;
 /**
  * Phrity\O\Number class.
  */
-class Number implements Comparable, Stringable
+class Number implements Comparable, Stringable, SourceInterface
 {
     use CoercionTrait;
     use ComparableTrait;

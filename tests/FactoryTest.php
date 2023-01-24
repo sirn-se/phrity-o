@@ -17,7 +17,7 @@ class FactoryTest extends TestCase
         error_reporting(-1);
     }
 
-    public function testFactory(): void
+    public function testFactoryConvert(): void
     {
         $factory = new Factory();
 
@@ -44,6 +44,29 @@ class FactoryTest extends TestCase
         $class = $factory->convert('my string');
         $this->assertInstanceOf('Phrity\O\Str', $class);
         $this->assertSame('my string', $class());
+    }
+
+    public function testFactoryNoConvert(): void
+    {
+        $factory = new Factory();
+
+        $class = $factory->convert($source = new Arr([1, 2, 3]));
+        $this->assertSame($source, $class);
+
+        $class = $factory->convert($source = new Boolean(true));
+        $this->assertSame($source, $class);
+
+        $class = $factory->convert($source = new Integer(123));
+        $this->assertSame($source, $class);
+
+        $class = $factory->convert($source = new Number(123.45));
+        $this->assertSame($source, $class);
+
+        $class = $factory->convert($source = new Obj((object)['a' => 1, 'b'  => 2]));
+        $this->assertSame($source, $class);
+
+        $class = $factory->convert($source = new Str('my string'));
+        $this->assertSame($source, $class);
     }
 
     public function testFactoryInvalidConvert(): void

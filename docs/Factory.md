@@ -13,21 +13,13 @@ $instance = $factory->convert(true); // -> Boolean instance
 $instance = $factory->convert(123); // -> Integer instance
 $instance = $factory->convert(123.45); // -> Number instance
 $instance = $factory->convert((object)['a' => 1, 'b' => 2]); // -> Obj instance
-$instance = $factory->convert([1, 2, 3]); // -> Arr instance
-
+$instance = $factory->convert('my string'); // -> Str instance
 ```
 
+## Class synopsis
 
-        $class = $factory->convert(true);
-        $this->assertInstanceOf('Phrity\O\Boolean', $class);
-
-        $class = $factory->convert(0);
-        $this->assertInstanceOf('Phrity\O\Integer', $class);
-
-        $class = $factory->convert(0.0);
-        $this->assertInstanceOf('Phrity\O\Number', $class);
-
-        $class = $factory->convert((object)[]);
-        $this->assertInstanceOf('Phrity\O\Obj', $class);
-
-        $class = $factory->convert('');
+```php
+class Factory {
+    public function convert(mixed $source, bool $recursive = false): object;
+}
+```

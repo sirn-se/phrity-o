@@ -21,7 +21,7 @@ use Stringable;
 /**
  * Phrity\O\Arr class.
  */
-class Arr implements ArrayAccess, Countable, Iterator, Stringable, Comparable
+class Arr implements ArrayAccess, Countable, Iterator, Stringable, Comparable, SourceInterface
 {
     use ArrayAccessTrait;
     use CoercionTrait;

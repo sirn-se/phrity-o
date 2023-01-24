@@ -16,7 +16,7 @@ use Stringable;
 /**
  * Phrity\O\Boolean class.
  */
-class Boolean implements Comparable, Stringable
+class Boolean implements Comparable, Stringable, SourceInterface
 {
     use CoercionTrait;
     use ComparableTrait;

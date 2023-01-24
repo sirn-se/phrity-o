@@ -10,13 +10,17 @@ use RuntimeException;
 class Factory
 {
     /**
-     * Conversion method; any input is converted into an O instance.
+     * Conversion method; any input is converted into an "O" instance.
      * @param mixed $source The input to convert.
      * @param bool $recursive If arrays and objects should convert recursivily.
-     * @return object The resulting O instance.
+     * @return object The resulting "O" instance.
      */
     public function convert(mixed $source, bool $recursive = false): object
     {
+        if ($source instanceof SourceInterface) {
+            return $source; // Don't re-convert "O" classes.
+        }
+
         $type = gettype($source);
         switch ($type) {
             case 'array':

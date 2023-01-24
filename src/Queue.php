@@ -20,7 +20,7 @@ use Stringable;
 /**
  * Phrity\O\Queue class.
  */
-class Queue implements Countable, IteratorAggregate, Comparable, Stringable
+class Queue implements Countable, IteratorAggregate, Comparable, Stringable, SourceInterface
 {
     use CoercionTrait;
     use ComparableTrait;

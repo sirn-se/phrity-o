@@ -20,7 +20,7 @@ use Stringable;
 /**
  * Phrity\O\Stack class.
  */
-class Stack implements Countable, IteratorAggregate, Comparable, Stringable
+class Stack implements Countable, IteratorAggregate, Comparable, Stringable, SourceInterface
 {
     use CoercionTrait;
     use ComparableTrait;
