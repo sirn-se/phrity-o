@@ -25,7 +25,7 @@ class Factory
         switch ($type) {
             case 'array':
                 if ($recursive) {
-                    $this->arrayRecursion($source);
+                    $source = $this->arrayRecursion($source);
                 }
                 return new Arr($source);
             case 'boolean':
@@ -36,7 +36,7 @@ class Factory
                 return new Number($source);
             case 'object':
                 if ($recursive) {
-                    $this->objectRecursion($source);
+                    $source = $this->objectRecursion($source);
                 }
                 return new Obj($source);
             case 'string':
@@ -48,10 +48,11 @@ class Factory
     /**
      * Recursion handler for arrays.
      * @param array $source The input to apply recursion to.
+     * @return array Converted source.
      */
-    private function arrayRecursion(array $source): void
+    private function arrayRecursion(array $source): array
     {
-        array_map(function ($item) {
+        return array_map(function ($item) {
             return $this->convert($item, true);
         }, $source);
     }
@@ -59,10 +60,11 @@ class Factory
     /**
      * Recursion handler for objects.
      * @param object $source The input to apply recursion to.
+     * @return object Converted source.
      */
-    private function objectRecursion(object $source): void
+    private function objectRecursion(object $source): object
     {
-        array_map(function ($item) {
+        return (object)array_map(function ($item) {
             return $this->convert($item, true);
         }, get_object_vars($source));
     }

@@ -69,6 +69,39 @@ class FactoryTest extends TestCase
         $this->assertSame($source, $class);
     }
 
+    public function testFactoryRecursiveConvert(): void
+    {
+        $factory = new Factory();
+
+        $class = $factory->convert([
+            1,
+            'my string',
+            [1, 2, 3],
+            (object)['a' => 1, 'b'  => 2]
+        ], true);
+        $this->assertInstanceOf('Phrity\O\Arr', $class);
+        $this->assertInstanceOf('Phrity\O\Integer', $class[0]);
+        $this->assertInstanceOf('Phrity\O\Str', $class[1]);
+        $this->assertInstanceOf('Phrity\O\Arr', $class[2]);
+        $this->assertInstanceOf('Phrity\O\Integer', $class[2][0]);
+        $this->assertInstanceOf('Phrity\O\Obj', $class[3]);
+        $this->assertInstanceOf('Phrity\O\Integer', $class[3]->a);
+
+        $class = $factory->convert((object)[
+            'a' => 1,
+            'b' => 'my string',
+            'c' => [1, 2, 3],
+            'd' => (object)['a' => 1, 'b'  => 2]
+        ], true);
+        $this->assertInstanceOf('Phrity\O\Obj', $class);
+        $this->assertInstanceOf('Phrity\O\Integer', $class->a);
+        $this->assertInstanceOf('Phrity\O\Str', $class->b);
+        $this->assertInstanceOf('Phrity\O\Arr', $class->c);
+        $this->assertInstanceOf('Phrity\O\Integer', $class->c[0]);
+        $this->assertInstanceOf('Phrity\O\Obj', $class->d);
+        $this->assertInstanceOf('Phrity\O\Integer', $class->d->a);
+    }
+
     public function testFactoryInvalidConvert(): void
     {
         $factory = new Factory();
