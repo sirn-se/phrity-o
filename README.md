@@ -29,6 +29,16 @@ composer require phrity/o
 * [String](docs/String.md) class and traits
 
 
+## Factory
+
+The [factory class](docs/Factory.md) converts scalars, arrays and objects into corresponding "O" instance.
+
+```php
+$factory = new Factory();
+$instance = $factory->convert([1, 2, 3]); // -> Arr instance
+```
+
+
 ## Classes
 
 The following ready-made classes are available.
