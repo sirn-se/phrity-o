@@ -37,10 +37,12 @@ class ImplClass implements ArrayAccess, Iterator
      * Constructor for test class.
      * @oparam array $data Initial value.
      * @oparam bool $coerce Coercion mode.
+     * @oparam bool $access_supress_error Access error mode.
      */
-    public function __construct(array $data, bool $coerce = false)
+    public function __construct(array $data, bool $coerce = false, bool $access_supress_error = false)
     {
         $this->o_option_coerce = $coerce;
+        $this->o_option_access_supress_error = $access_supress_error;
         $this->initialize($data);
     }
 

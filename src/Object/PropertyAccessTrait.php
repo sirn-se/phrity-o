@@ -2,7 +2,7 @@
 
 namespace Phrity\O\Object;
 
-use Error;
+use DomainException;
 
 /**
  * Phrity\O\Object\PropertyAccessTrait trait.
@@ -19,10 +19,13 @@ trait PropertyAccessTrait
      */
     public function __get(string $key): mixed
     {
-        if (!$this->__isset($key)) {
-            throw new Error("Undefined object property {$key}");
+        if ($this->__isset($key)) {
+            return $this->{$this->o_source_ref}->$key;
         }
-        return $this->{$this->o_source_ref}->$key;
+        if ($this->o_option_access_supress_error) {
+            return null;
+        }
+        throw new DomainException("Undefined object property '{$key}'.");
     }
 
     /**

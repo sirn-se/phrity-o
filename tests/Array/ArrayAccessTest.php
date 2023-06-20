@@ -63,8 +63,14 @@ class ArrayAccessTest extends TestCase
     public function testUndefinedOffset(): void
     {
         $array = new ImplClass([1, 2, 3]);
-        $this->expectError('PHPUnit\Framework\Error\Error');
-        $this->expectErrorMessage('Undefined array key 4');
+        $this->expectException('OutOfBoundsException');
+        $this->expectExceptionMessage("Array offset '4' is out of bounds.");
         $array->offsetGet(4);
+    }
+
+    public function testUndefinedOffsetSupressError(): void
+    {
+        $array = new ImplClass([1, 2, 3], false, true);
+        $this->assertNull($array->offsetGet(4));
     }
 }

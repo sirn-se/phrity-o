@@ -31,8 +31,14 @@ class PropertyAccessTest extends TestCase
     public function testUndefinedProperty(): void
     {
         $object = new ImplClass((object)[]);
-        $this->expectError('PHPUnit\Framework\Error\Error');
-        $this->expectErrorMessage('Undefined object property undefined');
+        $this->expectException('DomainException');
+        $this->expectExceptionMessage("Undefined object property 'undefined'.");
         $object->undefined;
+    }
+
+    public function testUndefinedPropertySupressError(): void
+    {
+        $object = new ImplClass((object)[], false, true);
+        $this->assertNull($object->undefined);
     }
 }
