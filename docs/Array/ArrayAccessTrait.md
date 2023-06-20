@@ -3,6 +3,9 @@
 Trait that implements the [ArrayAccess](https://www.php.net/manual/en/class.arrayaccess.php) interface.
 Allows accessing class as an array, using `[]` with offset to get, set and check array content.
 
+Get with non-existing offset will throw [OutOfBoundsException](https://www.php.net/manual/en/class.outofboundsexception),
+or return null if option `o_option_access_supress_error` is set to `true`.
+
 ## Trait synopsis
 
 ```php

@@ -24,6 +24,11 @@ Trait that support coercing non-float content as input.
 Implements [Comparable](https://github.com/sirn-se/phrity-comparison) and [Equalable](https://github.com/sirn-se/phrity-comparison) interfaces.
 Allows comparing class instances based on internal content.
 
+### [JsonSerializableTrait](Object/JsonSerializableTrait.md)
+
+Implements [JsonSerializable](https://www.php.net/manual/en/jsonserializable.jsonserialize.php) interface.
+Provides class properties for JSON encode.
+
 ### [PropertyAccessTrait](Object/PropertyAccessTrait.md)
 
 Enable accessing source data as object properties.
@@ -37,6 +42,16 @@ Allows string conversion of class to numeric output.
 
 Base trait for all traits using object as source.
 Defines source property, options and the `initialize` method.
+
+
+## Iterator traits
+
+The following traits provide iterators.
+
+### [IteratorAggregateTrait](Object/IteratorAggregateTrait.md)
+
+Implements [IteratorAggregate](https://www.php.net/manual/en/class.iteratoraggregate) and [Traversable](https://www.php.net/manual/en/class.traversable.php) interfaces.
+Enables traversing methods such as `foreach()` by aggregating a [Generator](https://www.php.net/manual/en/class.generator).
 
 
 ## Defining data source

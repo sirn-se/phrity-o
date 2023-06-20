@@ -4,9 +4,13 @@ declare(strict_types=1);
 
 namespace Phrity\O\Test\Object;
 
+use IteratorAggregate;
+use JsonSerializable;
 use Phrity\O\Object\{
     CoercionTrait,
     ComparableTrait,
+    IteratorAggregateTrait,
+    JsonSerializableTrait,
     PropertyAccessTrait,
     StringableTrait,
     TypeTrait
@@ -15,10 +19,12 @@ use Phrity\O\Object\{
 /**
  * Trait-using class for Phrity\O\Object\* tests.
  */
-class ImplClass
+class ImplClass implements IteratorAggregate, JsonSerializable
 {
     use CoercionTrait;
     use ComparableTrait;
+    use IteratorAggregateTrait;
+    use JsonSerializableTrait;
     use PropertyAccessTrait;
     use StringableTrait;
     use TypeTrait;

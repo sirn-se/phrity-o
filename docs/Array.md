@@ -47,6 +47,11 @@ Allows comparing class instances based on internal content.
 Implements [Countable](https://www.php.net/manual/en/class.countable.php) interface.
 Enables `count()` function on class.
 
+### [JsonSerializableTrait](Array/JsonSerializableTrait.md)
+
+Implements [JsonSerializable](https://www.php.net/manual/en/jsonserializable.jsonserialize.php) interface.
+Provides array content for JSON encode.
+
 ### [QueueTrait](Array/QueueTrait.md)
 
 Implements queue methods.

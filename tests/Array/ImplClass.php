@@ -6,12 +6,14 @@ namespace Phrity\O\Test\Array;
 
 use ArrayAccess;
 use Iterator;
+use JsonSerializable;
 use Phrity\O\Array\{
     ArrayAccessTrait,
     CoercionTrait,
     ComparableTrait,
     CountableTrait,
     IteratorTrait,
+    JsonSerializableTrait,
     QueueTrait,
     StackTrait,
     StringableTrait,
@@ -21,13 +23,14 @@ use Phrity\O\Array\{
 /**
  * Trait-using class for Phrity\O\Array\* tests.
  */
-class ImplClass implements ArrayAccess, Iterator
+class ImplClass implements ArrayAccess, Iterator, JsonSerializable
 {
     use ArrayAccessTrait;
     use CoercionTrait;
     use ComparableTrait;
     use CountableTrait;
     use IteratorTrait;
+    use JsonSerializableTrait;
     use QueueTrait;
     use StackTrait;
     use StringableTrait;
