@@ -7,9 +7,9 @@ namespace Phrity\O\Test\Object;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Phrity\O\Object\JsonSerializableTraitTest tests.
+ * Phrity\O\Object\JsonSerializableTest tests.
  */
-class JsonSerializableTraitTest extends TestCase
+class JsonSerializableTest extends TestCase
 {
     public function setUp(): void
     {

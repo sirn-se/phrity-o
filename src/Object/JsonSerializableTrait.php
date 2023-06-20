@@ -15,7 +15,7 @@ trait JsonSerializableTrait
      * Return content for JSON serialization.
      * @return mixed Class serialization content.
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): mixed
     {
         return $this->{$this->o_source_ref};
     }
