@@ -4,6 +4,8 @@ Generic object class. Uses the following traits;
 
 * [CoercionTrait](CoercionTrait.md)
 * [ComparableTrait](ComparableTrait.md)
+* [IteratorAggregateTrait](IteratorAggregateTrait.md)
+* [JsonSerializableTrait](JsonSerializableTrait.md)
 * [PropertyAccessTrait](PropertyAccessTrait.md)
 * [StringableTrait](StringableTrait.md)
 * [TypeTrait](TypeTrait.md)
@@ -11,15 +13,19 @@ Generic object class. Uses the following traits;
 Implements the following interfaces;
 
 * [Comparable](https://github.com/sirn-se/phrity-comparison) and [Equalable](https://github.com/sirn-se/phrity-comparison)
+* [IteratorAggregate](https://www.php.net/manual/en/class.iteratoraggregate) and [Traversable](https://www.php.net/manual/en/class.traversable.php)
+* [JsonSerializable](https://www.php.net/manual/en/class.jsonserializable.php)
 * [Stringable](https://www.php.net/manual/en/class.stringable)
 
 ## Trait synopsis
 
 ```php
-class Obj implements Stringable, Comparable
+class Obj implements Comparable, IteratorAggregate, JsonSerializable, Stringable
 {
     use CoercionTrait;
     use ComparableTrait;
+    use IteratorAggregateTrait;
+    use JsonSerializableTrait;
     use PropertyAccessTrait;
     use StringableTrait;
     use TypeTrait;
@@ -87,6 +93,21 @@ class Obj implements Stringable, Comparable
      * @throws IncomparableException If $this can not be compared with $compare_with.
      */
     public function lessThanOrEqual(mixed $compare_with): bool;
+
+    // IteratorAggregate methods.
+
+    /**
+     * Iterate object properties and yield key/value pair.
+     * @return Generator The iterator function.
+     */
+    public function getIterator(): Generator;
+
+    // JsonSerializableTrait methods.
+
+    /**
+     * @return mixed Class serialization content
+     */
+    public function jsonSerialize(): mixed;
 
     // PropertyAccessTrait methods.
 

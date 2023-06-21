@@ -21,12 +21,15 @@ class ArrTest extends TestCase
     public function testClass(): void
     {
         $arr = new Arr();
-        $this->assertInstanceOf('Phrity\Comparison\Comparable', $arr);
-        $this->assertInstanceOf('Stringable', $arr);
-        $this->assertInstanceOf('Iterator', $arr);
-        $this->assertInstanceOf('Traversable', $arr);
         $this->assertInstanceOf('ArrayAccess', $arr);
         $this->assertInstanceOf('Countable', $arr);
+        $this->assertInstanceOf('Iterator', $arr);
+        $this->assertInstanceOf('JsonSerializable', $arr);
+        $this->assertInstanceOf('Phrity\Comparison\Comparable', $arr);
+        $this->assertInstanceOf('Phrity\Comparison\Equalable', $arr);
+        $this->assertInstanceOf('Phrity\O\SourceInterface', $arr);
+        $this->assertInstanceOf('Stringable', $arr);
+        $this->assertInstanceOf('Traversable', $arr);
         $this->assertIsCallable([$arr, 'compare'], 'ComparableTrait->compare not callable');
         $this->assertIsCallable([$arr, '__toString'], 'StringableTrait->__toString not callable');
     }

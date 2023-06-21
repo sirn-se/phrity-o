@@ -7,6 +7,7 @@ Generic array class. Uses the following traits;
 * [ComparableTrait](ComparableTrait.md)
 * [CountableTrait](CountableTrait.md)
 * [IteratorTrait](IteratorTrait.md)
+* [JsonSerializableTrait](JsonSerializableTrait.md)
 * [StringableTrait](StringableTrait.md)
 * [TypeTrait](TypeTrait.md)
 
@@ -15,19 +16,21 @@ Implements the following interfaces;
 * [ArrayAccess](https://www.php.net/manual/en/class.arrayaccess.php)
 * [Comparable](https://github.com/sirn-se/phrity-comparison) and [Equalable](https://github.com/sirn-se/phrity-comparison)
 * [Countable](https://www.php.net/manual/en/class.countable.php)
-* [Stringable](https://www.php.net/manual/en/class.stringable)
 * [Iterator](https://www.php.net/manual/en/class.iterator.php) and [Traversable](https://www.php.net/manual/en/class.traversable.php)
+* [JsonSerializable](https://www.php.net/manual/en/class.jsonserializable.php)
+* [Stringable](https://www.php.net/manual/en/class.stringable)
 
 ## Trait synopsis
 
 ```php
-class Arr implements ArrayAccess, Countable, Iterator, Stringable, Comparable
+class Arr implements ArrayAccess, Comparable, Countable, Iterator, JsonSerializable, Stringable
 {
     use ArrayAccessTrait;
     use CoercionTrait;
     use ComparableTrait;
     use CountableTrait;
     use IteratorTrait;
+    use JsonSerializableTrait;
     use StringableTrait;
     use TypeTrait;
 
@@ -177,6 +180,13 @@ class Arr implements ArrayAccess, Countable, Iterator, Stringable, Comparable
      * @return mixed Returns the value of the last element.
      */
     public function forward(): mixed;
+
+    // JsonSerializableTrait methods.
+
+    /**
+     * @return mixed Class serialization content
+     */
+    public function jsonSerialize(): mixed;
 
     // StringableTrait methods.
 

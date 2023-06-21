@@ -24,7 +24,7 @@ trait ComparableTrait
     {
         if (!$compare_with instanceof self) {
             $class = self::class;
-            throw new IncomparableException("Can only compare {$class}");
+            throw new IncomparableException("Can only compare {$class}.");
         }
         if ($this->{$this->o_source_ref} == $compare_with->{$this->o_source_ref}) {
             return 0;

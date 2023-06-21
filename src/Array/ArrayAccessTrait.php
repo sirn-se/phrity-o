@@ -2,6 +2,8 @@
 
 namespace Phrity\O\Array;
 
+use OutOfBoundsException;
+
 /**
  * Phrity\O\Array\ArrayAccessTrait trait.
  */
@@ -28,7 +30,13 @@ trait ArrayAccessTrait
      */
     public function offsetGet(mixed $offset): mixed
     {
-        return $this->{$this->o_source_ref}[$offset];
+        if (array_key_exists($offset, $this->{$this->o_source_ref})) {
+            return $this->{$this->o_source_ref}[$offset];
+        }
+        if ($this->o_option_access_supress_error) {
+            return null;
+        }
+        throw new OutOfBoundsException("Array offset '{$offset}' is out of bounds.");
     }
 
     /**

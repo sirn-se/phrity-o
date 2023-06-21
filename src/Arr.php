@@ -6,6 +6,7 @@ use ArgumentCountError;
 use ArrayAccess;
 use Countable;
 use Iterator;
+use JsonSerializable;
 use Phrity\Comparison\Comparable;
 use Phrity\O\Array\{
     ArrayAccessTrait,
@@ -13,6 +14,7 @@ use Phrity\O\Array\{
     ComparableTrait,
     CountableTrait,
     IteratorTrait,
+    JsonSerializableTrait,
     StringableTrait,
     TypeTrait
 };
@@ -21,13 +23,14 @@ use Stringable;
 /**
  * Phrity\O\Arr class.
  */
-class Arr implements ArrayAccess, Countable, Iterator, Stringable, Comparable, SourceInterface
+class Arr implements ArrayAccess, Countable, Iterator, JsonSerializable, Stringable, Comparable, SourceInterface
 {
     use ArrayAccessTrait;
     use CoercionTrait;
     use ComparableTrait;
     use CountableTrait;
     use IteratorTrait;
+    use JsonSerializableTrait;
     use StringableTrait;
     use TypeTrait;
 

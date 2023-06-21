@@ -10,6 +10,7 @@ trait TypeTrait
     protected object $o_object_source;
     protected string $o_source_ref = 'o_object_source';
     protected bool $o_option_coerce = false;
+    protected bool $o_option_access_supress_error = false;
 
     /**
      * Initializer, typically called in constructor.

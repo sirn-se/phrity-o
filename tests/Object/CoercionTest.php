@@ -19,58 +19,58 @@ class CoercionTest extends TestCase
 
     public function testDirect(): void
     {
-        $int = new ImplClass((object)[], false);
-        $this->assertEquals((object)[], $int->testCoercion(new stdClass()));
+        $object = new ImplClass((object)[], false);
+        $this->assertEquals((object)[], $object->testCoercion(new stdClass()));
     }
 
     public function testCoercion(): void
     {
-        $int = new ImplClass((object)[], true);
-        $this->assertEquals((object)[], $int->testCoercion(new stdClass()));
-        $this->assertEquals((object)[], $int->testCoercion(null));
-        $this->assertEquals((object)['a' => 1], $int->testCoercion(['a' => 1]));
-        $this->assertEquals((object)['a' => 1], $int->testCoercion(new ImportClass()));
-        $this->assertEquals((object)['a' => 1], $int->testCoercion(new ImplClass((object)['a' => 1])));
+        $object = new ImplClass((object)[], true);
+        $this->assertEquals((object)[], $object->testCoercion(new stdClass()));
+        $this->assertEquals((object)[], $object->testCoercion(null));
+        $this->assertEquals((object)['a' => 1], $object->testCoercion(['a' => 1]));
+        $this->assertEquals((object)['a' => 1], $object->testCoercion(new ImportClass()));
+        $this->assertEquals((object)['a' => 1], $object->testCoercion(new ImplClass((object)['a' => 1])));
     }
 
     public function testFailedCoercion(): void
     {
-        $int = new ImplClass((object)[], true);
+        $object = new ImplClass((object)[], true);
         $this->expectException('TypeError');
         $this->expectExceptionMessage('Input must be usable as type object.');
-        $int->testCoercion(123.45);
+        $object->testCoercion(123.45);
     }
 
 
     public function testInvalidNullCoercion(): void
     {
-        $int = new ImplClass((object)[], false);
+        $object = new ImplClass((object)[], false);
         $this->expectException('TypeError');
         $this->expectExceptionMessage('Input must be of type object.');
-        $int->testCoercion(null);
+        $object->testCoercion(null);
     }
 
     public function testInvalidArrayCoercion(): void
     {
-        $int = new ImplClass((object)[], false);
+        $object = new ImplClass((object)[], false);
         $this->expectException('TypeError');
         $this->expectExceptionMessage('Input must be of type object.');
-        $int->testCoercion(['a' => 1]);
+        $object->testCoercion(['a' => 1]);
     }
 
     public function testInvalidClassCoercion(): void
     {
-        $int = new ImplClass((object)[], false);
+        $object = new ImplClass((object)[], false);
         $this->expectException('TypeError');
         $this->expectExceptionMessage('Input must be of type object.');
-        $int->testCoercion(new ImplClass((object)[]));
+        $object->testCoercion(new ImplClass((object)[]));
     }
 
     public function testInvalidObjectCoercion(): void
     {
-        $int = new ImplClass((object)[], false);
+        $object = new ImplClass((object)[], false);
         $this->expectException('TypeError');
         $this->expectExceptionMessage('Input must be of type object.');
-        $int->testCoercion(new ImportClass());
+        $object->testCoercion(new ImportClass());
     }
 }

@@ -21,8 +21,13 @@ class ObjTest extends TestCase
     public function testClass(): void
     {
         $obj = new Obj();
+        $this->assertInstanceOf('IteratorAggregate', $obj);
+        $this->assertInstanceOf('JsonSerializable', $obj);
         $this->assertInstanceOf('Phrity\Comparison\Comparable', $obj);
+        $this->assertInstanceOf('Phrity\Comparison\Equalable', $obj);
+        $this->assertInstanceOf('Phrity\O\SourceInterface', $obj);
         $this->assertInstanceOf('Stringable', $obj);
+        $this->assertInstanceOf('Traversable', $obj);
         $this->assertIsCallable([$obj, 'compare'], 'ComparableTrait->compare not callable');
         $this->assertIsCallable([$obj, '__toString'], 'StringableTrait->__toString not callable');
     }

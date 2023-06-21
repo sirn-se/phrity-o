@@ -7,7 +7,7 @@ The following ready-made classes are available.
 ### [Arr](Array/Arr.md)
 
 Generic array class.
-Uses ArrayAccessTrait, CoercionTrait, ComparableTrait, CountableTrait, IteratorTrait, StringableTrait and TypeTrait.
+Uses ArrayAccessTrait, CoercionTrait, ComparableTrait, CountableTrait, IteratorTrait, JsonSerializableTrait, StringableTrait and TypeTrait.
 Implements ArrayAccess, Comparable, Countable, Stringable and Iterator interfaces.
 
 ### [Queue](Array/Queue.md)
@@ -19,7 +19,7 @@ Implements Comparable, Countable, Stringable and IteratorAggregate interfaces.
 ### [Stack](Array/Stack.md)
 
 Stack implementation class.
-Uses CoercionTrait, ComparableTrait, CountableTrait, StackIteratorTrait,StackTrait, StringableTrait and TypeTrait.
+Uses CoercionTrait, ComparableTrait, CountableTrait, StackIteratorTrait, StackTrait, StringableTrait and TypeTrait.
 Implements Comparable, Countable, Stringable and IteratorAggregate interfaces.
 
 
@@ -46,6 +46,11 @@ Allows comparing class instances based on internal content.
 
 Implements [Countable](https://www.php.net/manual/en/class.countable.php) interface.
 Enables `count()` function on class.
+
+### [JsonSerializableTrait](Array/JsonSerializableTrait.md)
+
+Implements [JsonSerializable](https://www.php.net/manual/en/jsonserializable.jsonserialize.php) interface.
+Provides array content for JSON encode.
 
 ### [QueueTrait](Array/QueueTrait.md)
 

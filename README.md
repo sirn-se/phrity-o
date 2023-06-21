@@ -45,11 +45,11 @@ The following ready-made classes are available.
 
 | Class | Source | Implements |
 | --- | --- | --- |
-| [Arr](docs/Array/Arr.md)              | `array`   | [ArrayAccess](https://www.php.net/manual/en/class.arrayaccess.php) [Comparable](https://github.com/sirn-se/phrity-comparison) [Countable](https://www.php.net/manual/en/class.countable.php) [Equalable](https://github.com/sirn-se/phrity-comparison) [Iterator](https://www.php.net/manual/en/class.iterator.php) [Stringable](https://www.php.net/manual/en/class.stringable) [Traversable](https://www.php.net/manual/en/class.traversable.php) |
+| [Arr](docs/Array/Arr.md)              | `array`   | [ArrayAccess](https://www.php.net/manual/en/class.arrayaccess.php) [Comparable](https://github.com/sirn-se/phrity-comparison) [Countable](https://www.php.net/manual/en/class.countable.php) [Equalable](https://github.com/sirn-se/phrity-comparison) [Iterator](https://www.php.net/manual/en/class.iterator.php) [JsonSerializable](docs/Array/JsonSerializable.md) [Stringable](https://www.php.net/manual/en/class.stringable) [Traversable](https://www.php.net/manual/en/class.traversable.php) |
 | [Boolean](docs/Boolean/Boolean.md)    | `bool`    | [Comparable](https://github.com/sirn-se/phrity-comparison) [Equalable](https://github.com/sirn-se/phrity-comparison) [Stringable](https://www.php.net/manual/en/class.stringable) |
 | [Integer](docs/Integer/Integer.md)    | `int`     | [Comparable](https://github.com/sirn-se/phrity-comparison) [Equalable](https://github.com/sirn-se/phrity-comparison) [Stringable](https://www.php.net/manual/en/class.stringable) |
 | [Number](docs/Number/Number.md)       | `float`   | [Comparable](https://github.com/sirn-se/phrity-comparison) [Equalable](https://github.com/sirn-se/phrity-comparison) [Stringable](https://www.php.net/manual/en/class.stringable) |
-| [Obj](docs/Object/Obj.md)             | `object`  | [Comparable](https://github.com/sirn-se/phrity-comparison) [Equalable](https://github.com/sirn-se/phrity-comparison) [Stringable](https://www.php.net/manual/en/class.stringable) |
+| [Obj](docs/Object/Obj.md)             | `object`  | [Comparable](https://github.com/sirn-se/phrity-comparison) [Equalable](https://github.com/sirn-se/phrity-comparison) [IteratorAggregate](https://www.php.net/manual/en/class.iteratoraggregate) [JsonSerializable](docs/Object/JsonSerializable.md) [Stringable](https://www.php.net/manual/en/class.stringable) [Traversable](https://www.php.net/manual/en/class.traversable.php) |
 | [Stack](docs/Array/Stack.md)          | `array`   | [Comparable](https://github.com/sirn-se/phrity-comparison) [Countable](https://www.php.net/manual/en/class.countable.php) [Equalable](https://github.com/sirn-se/phrity-comparison) [IteratorAggregate](https://www.php.net/manual/en/class.iteratoraggregate) [Stringable](https://www.php.net/manual/en/class.stringable) [Traversable](https://www.php.net/manual/en/class.traversable.php) |
 | [Str](docs/String/Str.md)             | `string`  | [Comparable](https://github.com/sirn-se/phrity-comparison) [Equalable](https://github.com/sirn-se/phrity-comparison) [Stringable](https://www.php.net/manual/en/class.stringable) |
 | [Queue](docs/Array/Queue.md)          | `array`   | [Comparable](https://github.com/sirn-se/phrity-comparison) [Countable](https://www.php.net/manual/en/class.countable.php) [Equalable](https://github.com/sirn-se/phrity-comparison) [IteratorAggregate](https://www.php.net/manual/en/class.iteratoraggregate) [Stringable](https://www.php.net/manual/en/class.stringable) [Traversable](https://www.php.net/manual/en/class.traversable.php) |
@@ -66,8 +66,9 @@ Traits are defined by source type. The following traits are available.
 | ComparableTrait           | [Comparable](https://github.com/sirn-se/phrity-comparison) [Equalable](https://github.com/sirn-se/phrity-comparison) | [Array](docs/Array/ComparableTrait.md) [Boolean](docs/Boolean/ComparableTrait.md) [Integer](docs/Integer/ComparableTrait.md) [Number](docs/Number/ComparableTrait.md) [Object](docs/Object/ComparableTrait.md) [String](docs/String/ComparableTrait.md) |
 | CountableTrait            | [Countable](https://www.php.net/manual/en/class.countable.php) | [Array](docs/Array/CountableTrait.md) |
 | InvokableTrait            |  | [Boolean](docs/Boolean/InvokableTrait.md) [Integer](docs/Integer/InvokableTrait.md) [Number](docs/Number/InvokableTrait.md) [String](docs/String/InvokableTrait.md) |
-| IteratorAggregateTrait    | [IteratorAggregate](https://www.php.net/manual/en/class.iteratoraggregate) [Traversable](https://www.php.net/manual/en/class.traversable.php) | [Array](docs/Array/IteratorAggregateTrait.md) |
+| IteratorAggregateTrait    | [IteratorAggregate](https://www.php.net/manual/en/class.iteratoraggregate) [Traversable](https://www.php.net/manual/en/class.traversable.php) | [Array](docs/Array/IteratorAggregateTrait.md) [Object](docs/Object/IteratorAggregateTrait.md) |
 | IteratorTrait             | [Iterator](https://www.php.net/manual/en/class.iterator.php) [Traversable](https://www.php.net/manual/en/class.traversable.php) | [Array](docs/Array/IteratorTrait.md) |
+| JsonSerializableTrait     | [JsonSerializable](https://www.php.net/manual/en/jsonserializable.jsonserialize.php) | [Array](docs/Array/JsonSerializable.md) [Object](docs/Object/JsonSerializable.md) |
 | PropertyAccessTrait       |  | [Object](docs/Object/PropertyAccessTrait.md) |
 | QueueIteratorTrait        | [IteratorAggregate](https://www.php.net/manual/en/class.iteratoraggregate) [Traversable](https://www.php.net/manual/en/class.traversable.php) | [Array](docs/Array/QueueIteratorTrait.md) |
 | QueueTrait                |  | [Array](docs/Array/QueueTrait.md) |
@@ -137,6 +138,7 @@ $stack->equals(new Stack([2, 3, 4])); // Comparison support
 
 | Version | PHP | |
 | --- | --- | --- |
+| `2.1` | `^8.0` | JsonSerializable, improved ArrayAccess and PropertyAccess |
 | `2.0` | `^8.0` | Implementation as Traits |
 | `1.5` | `^8.0` | Fix for PHP 8.x versions |
 | `1.4` | `^7.1\|^8.0` |  |

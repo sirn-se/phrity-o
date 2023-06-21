@@ -2,6 +2,9 @@
 
 Enable accessing source data as object properties.
 
+Get on non-existing property will throw [DomainException](https://www.php.net/manual/en/class.domainexception),
+or return null if option `o_option_access_supress_error` is set to `true`.
+
 ## Trait synopsis
 
 ```php

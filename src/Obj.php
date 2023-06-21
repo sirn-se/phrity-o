@@ -3,10 +3,14 @@
 namespace Phrity\O;
 
 use ArgumentCountError;
+use IteratorAggregate;
+use JsonSerializable;
 use Phrity\Comparison\Comparable;
 use Phrity\O\Object\{
     CoercionTrait,
     ComparableTrait,
+    IteratorAggregateTrait,
+    JsonSerializableTrait,
     PropertyAccessTrait,
     StringableTrait,
     TypeTrait
@@ -16,10 +20,12 @@ use Stringable;
 /**
  * Phrity\O\Obj class.
  */
-class Obj implements Comparable, Stringable, SourceInterface
+class Obj implements Comparable, IteratorAggregate, JsonSerializable, Stringable, SourceInterface
 {
     use CoercionTrait;
     use ComparableTrait;
+    use IteratorAggregateTrait;
+    use JsonSerializableTrait;
     use PropertyAccessTrait;
     use StringableTrait;
     use TypeTrait;
