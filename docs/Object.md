@@ -7,7 +7,7 @@ The following ready-made classes are available.
 ### [Object](Object/Obj.md)
 
 Generic object class.
-Uses CoercionTrait, ComparableTrait, PropertyAccessTrait, StringableTrait and TypeTrait.
+Uses CoercionTrait, ComparableTrait, IteratorAggregateTrait, JsonSerializableTrait, PropertyAccessTrait, StringableTrait and TypeTrait.
 Implements Comparable and Stringable interfaces.
 
 
