@@ -25,7 +25,9 @@ class QueueTest extends TestCase
         $this->assertInstanceOf('IteratorAggregate', $queue);
         $this->assertInstanceOf('Traversable', $queue);
         $this->assertInstanceOf('Countable', $queue);
+        /** @phpstan-ignore method.alreadyNarrowedType */
         $this->assertIsCallable([$queue, 'compare'], 'ComparableTrait->compare not callable');
+        /** @phpstan-ignore method.alreadyNarrowedType */
         $this->assertIsCallable([$queue, '__toString'], 'StringableTrait->__toString not callable');
     }
 

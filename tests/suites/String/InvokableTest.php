@@ -35,6 +35,7 @@ class InvokableTest extends TestCase
         $string = new ImplClass('aaa');
         $this->expectException('TypeError');
         $this->expectExceptionMessage('Phrity\O\Test\String\ImplClass::__invoke()');
+        /** @phpstan-ignore argument.type */
         $string(1);
     }
 

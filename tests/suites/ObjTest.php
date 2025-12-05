@@ -28,7 +28,9 @@ class ObjTest extends TestCase
         $this->assertInstanceOf('Phrity\O\SourceInterface', $obj);
         $this->assertInstanceOf('Stringable', $obj);
         $this->assertInstanceOf('Traversable', $obj);
+        /** @phpstan-ignore method.alreadyNarrowedType */
         $this->assertIsCallable([$obj, 'compare'], 'ComparableTrait->compare not callable');
+        /** @phpstan-ignore method.alreadyNarrowedType */
         $this->assertIsCallable([$obj, '__toString'], 'StringableTrait->__toString not callable');
     }
 
@@ -38,9 +40,11 @@ class ObjTest extends TestCase
         $this->assertFalse(isset($obj_1->a));
 
         $obj_2 = new Obj(['a' => 1, 'b' => 2]);
+        /** @phpstan-ignore property.notFound */
         $this->assertEquals(2, $obj_2->b);
 
         $obj_3 = new Obj($obj_2);
+        /** @phpstan-ignore property.notFound */
         $this->assertEquals(2, $obj_2->b);
 
         $obj_4 = new Obj(new stdClass());

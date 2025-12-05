@@ -9,7 +9,8 @@ namespace Phrity\O\Test\Object;
  */
 class ImportClass
 {
-    public $a = 1;
-    protected $b = 2;
-    private $c = 3;
+    public int $a = 1;
+    protected int $b = 2;
+    /** @phpstan-ignore property.onlyWritten */
+    private int $c = 3;
 }

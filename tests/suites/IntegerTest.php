@@ -22,8 +22,11 @@ class IntegerTest extends TestCase
         $int = new Integer();
         $this->assertInstanceOf('Phrity\Comparison\Comparable', $int);
         $this->assertInstanceOf('Stringable', $int);
+        /** @phpstan-ignore method.alreadyNarrowedType */
         $this->assertIsCallable([$int, 'compare'], 'ComparableTrait->compare not callable');
+        /** @phpstan-ignore method.alreadyNarrowedType */
         $this->assertIsCallable([$int, '__invoke'], 'InvokableTrait->__invoke not callable');
+        /** @phpstan-ignore method.alreadyNarrowedType */
         $this->assertIsCallable([$int, '__toString'], 'StringableTrait->__toString not callable');
     }
 

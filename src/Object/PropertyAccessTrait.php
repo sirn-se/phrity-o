@@ -15,7 +15,7 @@ trait PropertyAccessTrait
      * Returns the value of specified property.
      * @param  string $key The property to retrieve.
      * @return mixed Value for property.
-     * @throws Error If specified property do not exist.
+     * @throws DomainException If specified property do not exist.
      */
     public function __get(string $key): mixed
     {
@@ -44,7 +44,7 @@ trait PropertyAccessTrait
     /**
      * Whether a property exists.
      * @param string $key A property to check for.
-     * @return True if property exist.
+     * @return bool True if property exist.
      */
     public function __isset(string $key): bool
     {

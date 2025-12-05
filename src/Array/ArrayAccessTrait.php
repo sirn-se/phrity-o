@@ -16,7 +16,7 @@ trait ArrayAccessTrait
     /**
      * Whether an offset exists.
      * @param  mixed $offset An offset to check for.
-     * @return True if offset exist.
+     * @return bool True if offset exist.
      */
     public function offsetExists(mixed $offset): bool
     {

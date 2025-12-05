@@ -14,7 +14,7 @@ trait CoercionTrait
     /**
      * Internal coercion method.
      * @param mixed $value Value to coerce.
-     * @return array Resulting value.
+     * @return array<array-key, mixed>  Resulting value.
      * @throws TypeError If invalid value provided.
      */
     protected function coerce(mixed $value): array
@@ -33,7 +33,7 @@ trait CoercionTrait
         }
         if (is_object($value)) {
             // Converts to associative array, only public properties of input object.
-            return json_decode(json_encode($value), true);
+            return json_decode(json_encode($value) ?: '', true);
         }
         throw new TypeError('Input must be usable as type array.');
     }

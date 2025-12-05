@@ -30,7 +30,9 @@ class ArrTest extends TestCase
         $this->assertInstanceOf('Phrity\O\SourceInterface', $arr);
         $this->assertInstanceOf('Stringable', $arr);
         $this->assertInstanceOf('Traversable', $arr);
+        /** @phpstan-ignore method.alreadyNarrowedType */
         $this->assertIsCallable([$arr, 'compare'], 'ComparableTrait->compare not callable');
+        /** @phpstan-ignore method.alreadyNarrowedType */
         $this->assertIsCallable([$arr, '__toString'], 'StringableTrait->__toString not callable');
     }
 

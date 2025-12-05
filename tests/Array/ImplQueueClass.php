@@ -12,6 +12,7 @@ use Phrity\O\Array\{
 
 /**
  * Trait-using class for Phrity\O\Array\* tests.
+ * @implements IteratorAggregate<array-key, mixed>
  */
 class ImplQueueClass implements IteratorAggregate
 {
@@ -20,8 +21,8 @@ class ImplQueueClass implements IteratorAggregate
 
     /**
      * Constructor for test class.
-     * @oparam array $data Initial value.
-     * @oparam bool $coerce Coercion mode.
+     * @param array<array-key, mixed> $data Initial value.
+     * @param bool $coerce Coercion mode.
      */
     public function __construct(array $data, bool $coerce = false)
     {

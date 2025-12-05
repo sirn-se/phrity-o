@@ -39,6 +39,7 @@ class FactoryTest extends TestCase
 
         $class = $factory->convert((object)['a' => 1, 'b'  => 2]);
         $this->assertInstanceOf('Phrity\O\Obj', $class);
+        /** @phpstan-ignore property.notFound */
         $this->assertSame(1, $class->a);
 
         $class = $factory->convert('my string');
@@ -85,6 +86,7 @@ class FactoryTest extends TestCase
         $this->assertInstanceOf('Phrity\O\Arr', $class[2]);
         $this->assertInstanceOf('Phrity\O\Integer', $class[2][0]);
         $this->assertInstanceOf('Phrity\O\Obj', $class[3]);
+        /** @phpstan-ignore property.notFound */
         $this->assertInstanceOf('Phrity\O\Integer', $class[3]->a);
 
         $class = $factory->convert((object)[
@@ -94,11 +96,16 @@ class FactoryTest extends TestCase
             'd' => (object)['a' => 1, 'b'  => 2]
         ], true);
         $this->assertInstanceOf('Phrity\O\Obj', $class);
+        /** @phpstan-ignore property.notFound */
         $this->assertInstanceOf('Phrity\O\Integer', $class->a);
+        /** @phpstan-ignore property.notFound */
         $this->assertInstanceOf('Phrity\O\Str', $class->b);
+        /** @phpstan-ignore property.notFound */
         $this->assertInstanceOf('Phrity\O\Arr', $class->c);
         $this->assertInstanceOf('Phrity\O\Integer', $class->c[0]);
+        /** @phpstan-ignore property.notFound */
         $this->assertInstanceOf('Phrity\O\Obj', $class->d);
+        /** @phpstan-ignore property.notFound */
         $this->assertInstanceOf('Phrity\O\Integer', $class->d->a);
     }
 

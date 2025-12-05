@@ -7,6 +7,7 @@ namespace Phrity\O\Array;
  */
 trait TypeTrait
 {
+    /** @var array<array-key, mixed> $o_array_source */
     protected array $o_array_source;
     protected string $o_source_ref = 'o_array_source';
     protected bool $o_option_coerce = false;
@@ -14,7 +15,7 @@ trait TypeTrait
 
     /**
      * Initializer, typically called in constructor.
-     * @param object $value Initial value.
+     * @param array<array-key, mixed>  $value Initial value.
      */
     protected function initialize(array $value = []): void
     {
