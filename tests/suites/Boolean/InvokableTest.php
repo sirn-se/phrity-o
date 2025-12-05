@@ -35,6 +35,7 @@ class InvokableTest extends TestCase
         $bool = new ImplClass(false);
         $this->expectException('TypeError');
         $this->expectExceptionMessage('Phrity\O\Test\Boolean\ImplClass::__invoke()');
+        /** @phpstan-ignore argument.type */
         $bool('not a boolean');
     }
 

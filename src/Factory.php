@@ -47,8 +47,8 @@ class Factory
 
     /**
      * Recursion handler for arrays.
-     * @param array $source The input to apply recursion to.
-     * @return array Converted source.
+     * @param array<array-key, mixed> $source The input to apply recursion to.
+     * @return array<array-key, mixed> Converted source.
      */
     private function arrayRecursion(array $source): array
     {

@@ -25,7 +25,9 @@ class StackTest extends TestCase
         $this->assertInstanceOf('IteratorAggregate', $stack);
         $this->assertInstanceOf('Traversable', $stack);
         $this->assertInstanceOf('Countable', $stack);
+        /** @phpstan-ignore method.alreadyNarrowedType */
         $this->assertIsCallable([$stack, 'compare'], 'ComparableTrait->compare not callable');
+        /** @phpstan-ignore method.alreadyNarrowedType */
         $this->assertIsCallable([$stack, '__toString'], 'StringableTrait->__toString not callable');
     }
 

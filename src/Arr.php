@@ -22,6 +22,8 @@ use Stringable;
 
 /**
  * Phrity\O\Arr class.
+ * @implements ArrayAccess<array-key, mixed>
+ * @implements Iterator<array-key, mixed>
  */
 class Arr implements ArrayAccess, Countable, Iterator, JsonSerializable, Stringable, Comparable, SourceInterface
 {

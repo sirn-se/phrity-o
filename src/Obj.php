@@ -19,6 +19,7 @@ use Stringable;
 
 /**
  * Phrity\O\Obj class.
+ * @implements IteratorAggregate<array-key, mixed>
  */
 class Obj implements Comparable, IteratorAggregate, JsonSerializable, Stringable, SourceInterface
 {

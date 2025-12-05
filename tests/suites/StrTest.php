@@ -22,8 +22,11 @@ class StrTest extends TestCase
         $str = new Str();
         $this->assertInstanceOf('Phrity\Comparison\Comparable', $str);
         $this->assertInstanceOf('Stringable', $str);
+        /** @phpstan-ignore method.alreadyNarrowedType */
         $this->assertIsCallable([$str, 'compare'], 'ComparableTrait->compare not callable');
+        /** @phpstan-ignore method.alreadyNarrowedType */
         $this->assertIsCallable([$str, '__invoke'], 'InvokableTrait->__invoke not callable');
+        /** @phpstan-ignore method.alreadyNarrowedType */
         $this->assertIsCallable([$str, '__toString'], 'StringableTrait->__toString not callable');
     }
 

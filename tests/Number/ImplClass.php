@@ -25,8 +25,8 @@ class ImplClass
 
     /**
      * Constructor for test class.
-     * @oparam float $data Initial value.
-     * @oparam bool $coerce Coercion mode.
+     * @param float $data Initial value.
+     * @param bool $coerce Coercion mode.
      */
     public function __construct(float $data, bool $coerce = false)
     {
@@ -36,7 +36,7 @@ class ImplClass
 
     /**
      * Method used for coercion tests.
-     * @oparam mixed $content Value to coerce.
+     * @param mixed $content Value to coerce.
      * @return float Coerced value.
      */
     public function testCoercion(mixed $content): float

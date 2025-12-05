@@ -19,6 +19,7 @@ use Stringable;
 
 /**
  * Phrity\O\Stack class.
+ * @implements IteratorAggregate<array-key, mixed>
  */
 class Stack implements Countable, IteratorAggregate, Comparable, Stringable, SourceInterface
 {

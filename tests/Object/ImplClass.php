@@ -18,6 +18,7 @@ use Phrity\O\Object\{
 
 /**
  * Trait-using class for Phrity\O\Object\* tests.
+ * @implements IteratorAggregate<array-key, mixed>
  */
 class ImplClass implements IteratorAggregate, JsonSerializable
 {
@@ -31,9 +32,9 @@ class ImplClass implements IteratorAggregate, JsonSerializable
 
     /**
      * Constructor for test class.
-     * @oparam object $data Initial value.
-     * @oparam bool $coerce Coercion mode.
-     * @oparam bool $access_supress_error Access error mode.
+     * @param object $data Initial value.
+     * @param bool $coerce Coercion mode.
+     * @param bool $access_supress_error Access error mode.
      */
     public function __construct(object $data, bool $coerce = false, bool $access_supress_error = false)
     {
@@ -44,7 +45,7 @@ class ImplClass implements IteratorAggregate, JsonSerializable
 
     /**
      * Method used for coercion tests.
-     * @oparam mixed $content Value to coerce.
+     * @param mixed $content Value to coerce.
      * @return object Coerced value.
      */
     public function testCoercion(mixed $content): object

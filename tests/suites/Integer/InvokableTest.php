@@ -35,6 +35,7 @@ class InvokableTest extends TestCase
         $int = new ImplClass(23);
         $this->expectException('TypeError');
         $this->expectExceptionMessage('Phrity\O\Test\Integer\ImplClass::__invoke()');
+        /** @phpstan-ignore argument.type */
         $int('not an integer');
     }
 

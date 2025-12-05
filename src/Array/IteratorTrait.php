@@ -22,7 +22,7 @@ trait IteratorTrait
 
     /**
      * Return the key of the current element.
-     * @return scalar|null Current key.
+     * @return array-key Current key.
      */
     public function key(): mixed
     {

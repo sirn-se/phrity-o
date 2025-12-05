@@ -22,8 +22,11 @@ class BooleanTest extends TestCase
         $bool = new Boolean(false);
         $this->assertInstanceOf('Phrity\Comparison\Comparable', $bool);
         $this->assertInstanceOf('Stringable', $bool);
+        /** @phpstan-ignore method.alreadyNarrowedType */
         $this->assertIsCallable([$bool, 'compare'], 'ComparableTrait->compare not callable');
+        /** @phpstan-ignore method.alreadyNarrowedType */
         $this->assertIsCallable([$bool, '__invoke'], 'InvokableTrait->__invoke not callable');
+        /** @phpstan-ignore method.alreadyNarrowedType */
         $this->assertIsCallable([$bool, '__toString'], 'StringableTrait->__toString not callable');
     }
 

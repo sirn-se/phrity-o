@@ -14,9 +14,9 @@ trait TypeTrait
 
     /**
      * Initializer, typically called in constructor.
-     * @param object $value Initial value.
+     * @param object|null $value Initial value.
      */
-    protected function initialize(object $value = null): void
+    protected function initialize(object|null $value = null): void
     {
         if (!isset($this->{$this->o_source_ref})) {
             $this->{$this->o_source_ref} = $value ?: (object)[];

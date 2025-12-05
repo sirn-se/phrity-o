@@ -19,6 +19,7 @@ use Stringable;
 
 /**
  * Phrity\O\Queue class.
+ * @implements IteratorAggregate<array-key, mixed>
  */
 class Queue implements Countable, IteratorAggregate, Comparable, Stringable, SourceInterface
 {

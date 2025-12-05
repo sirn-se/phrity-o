@@ -21,6 +21,7 @@ class PropertyAccessTest extends TestCase
         $object = new ImplClass((object)[]);
         $this->assertFalse(isset($object->aaa));
         unset($object->aaa); // Should not cause error when unset
+        /** @phpstan-ignore property.notFound */
         $object->aaa = 'a property value';
         $this->assertTrue(isset($object->aaa));
         $this->assertEquals('a property value', $object->aaa);
@@ -33,12 +34,14 @@ class PropertyAccessTest extends TestCase
         $object = new ImplClass((object)[]);
         $this->expectException('DomainException');
         $this->expectExceptionMessage("Undefined object property 'undefined'.");
+        /** @phpstan-ignore property.notFound, expr.resultUnused */
         $object->undefined;
     }
 
     public function testUndefinedPropertySupressError(): void
     {
         $object = new ImplClass((object)[], false, true);
+        /** @phpstan-ignore property.notFound */
         $this->assertNull($object->undefined);
     }
 }

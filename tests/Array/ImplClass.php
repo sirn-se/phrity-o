@@ -22,6 +22,8 @@ use Phrity\O\Array\{
 
 /**
  * Trait-using class for Phrity\O\Array\* tests.
+ * @implements ArrayAccess<array-key, mixed>
+ * @implements Iterator<array-key, mixed>
  */
 class ImplClass implements ArrayAccess, Iterator, JsonSerializable
 {
@@ -38,9 +40,9 @@ class ImplClass implements ArrayAccess, Iterator, JsonSerializable
 
     /**
      * Constructor for test class.
-     * @oparam array $data Initial value.
-     * @oparam bool $coerce Coercion mode.
-     * @oparam bool $access_supress_error Access error mode.
+     * @param array<array-key, mixed> $data Initial value.
+     * @param bool $coerce Coercion mode.
+     * @param bool $access_supress_error Access error mode.
      */
     public function __construct(array $data, bool $coerce = false, bool $access_supress_error = false)
     {
@@ -51,8 +53,8 @@ class ImplClass implements ArrayAccess, Iterator, JsonSerializable
 
     /**
      * Method used for coercion tests.
-     * @oparam mixed $content Value to coerce.
-     * @return array Coerced value.
+     * @param mixed $content Value to coerce.
+     * @return array<array-key, mixed> Coerced value.
      */
     public function testCoercion(mixed $content): array
     {
