@@ -41,9 +41,9 @@ class StackIteratorTest extends TestCase
     {
         $queue = new ImplStackClass(['a' => 1, 'b' => 2, 'c' => 3]);
         $i = 2;
-        $a = ord('a');
         foreach ($queue as $key => $value) {
-            $this->assertEquals(chr($a + $i), $key);
+            /** @var int<0, 2> $i */
+            $this->assertEquals(chr($i + 97), $key);
             $this->assertEquals($i + 1, $value);
             $i--;
         }

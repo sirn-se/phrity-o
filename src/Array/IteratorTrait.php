@@ -51,7 +51,7 @@ trait IteratorTrait
      */
     public function valid(): bool
     {
-        return array_key_exists(key($this->{$this->o_source_ref}), $this->{$this->o_source_ref});
+        return array_key_exists(key($this->{$this->o_source_ref}) ?? '', $this->{$this->o_source_ref});
     }
 
 
