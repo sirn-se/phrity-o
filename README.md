@@ -1,5 +1,4 @@
 [![Build Status](https://github.com/sirn-se/phrity-o/actions/workflows/acceptance.yml/badge.svg)](https://github.com/sirn-se/phrity-o/actions)
-[![Coverage Status](https://coveralls.io/repos/github/sirn-se/phrity-o/badge.svg?branch=master)](https://coveralls.io/github/sirn-se/phrity-o?branch=master)
 
 # O
 
